@@ -1,0 +1,379 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".java" #>
+<#
+	TableHost host = (TableHost)(Host);
+	host.Fieldlist.Sort(CodeCommon.CompareByintOrder);
+	string[] keys = CodeCommon.GetInParameter(host.Keys,true).Split(' ');
+	string myname = getStringName(host.GetModelClass(host.TableName).Replace("t_",""));
+    string key_type = keys[0];
+    string key_name = keys[1];
+
+    if(key_type=="string")
+    	key_type = "String";
+    if(key_type=="float"||key_type=="double")
+    	key_type = "double";
+    if(key_type=="bool")
+    	key_type = "int";
+
+
+#>
+package com.avicsafety.dao;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+
+import org.xutils.DbManager;
+import org.xutils.common.util.KeyValue;
+import org.xutils.db.sqlite.WhereBuilder;
+import org.xutils.ex.DbException;
+
+import android.database.Cursor;
+
+import com.avicsafety.model.M_<#=myname#>;
+import com.avicsafety.lib.tools.ConnectionUtil;
+
+
+public class D_<#=myname#>{
+
+	/**
+	 * 通过主键获得实体
+	 * @param db
+	 * @param id
+	 * @return
+	 */
+	public M_<#=myname#> getModel(DbManager db, <#=key_type#> <#=key_name#>){
+		M_<#=myname#> model = null;
+		try {
+			model = db.selector(M_<#=myname#>.class).where("<#=key_name#>","=",<#=key_name#>).findFirst();
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+
+	/**
+	 * 获取对象列表 所有 不分页
+	 * @param db
+	 * @return
+	 */
+	public List<M_<#=myname#>> getList(DbManager db){
+		return getList(db, "");
+	}
+
+	/**
+	 * 获取对象列表 按排序 不分页
+	 * @param db
+	 * @param order
+	 * @return
+	 */
+	public List<M_<#=myname#>> getList(DbManager db, String order){
+		return getList(db, null, order);
+	}
+
+	/**
+	 * 获取对象列表 按条件 不分页
+	 * @param db
+	 * @param wb
+	 * @return
+	 */
+	public List<M_<#=myname#>> getList(DbManager db, WhereBuilder wb){
+		return getList(db, wb, "");
+	}
+
+	/**
+	 * 获取对象列表 按排序和条件 不分页
+	 * @param db
+	 * @param wb
+	 * @param order
+	 * @return
+	 */
+	public List<M_<#=myname#>> getList(DbManager db, WhereBuilder wb, String order){
+		List<M_<#=myname#>> list = null;
+		try {
+			String[] v = checkOrderBy(order);
+			boolean flag = Boolean.valueOf(v[0]);
+			order = v[1];
+			if(order.length()>0){
+				if(wb==null)
+					list = db.selector(M_<#=myname#>.class).orderBy(order,flag).findAll();
+				else
+					list = db.selector(M_<#=myname#>.class).where(wb).orderBy(order,flag).findAll();
+			}else{
+				if(wb==null)
+					list = db.selector(M_<#=myname#>.class).findAll();
+				else
+					list = db.selector(M_<#=myname#>.class).where(wb).findAll();
+			}
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	/**
+	 * 获取对象列表 所有 分页
+	 * @param db
+	 * @param pageIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public List<M_<#=myname#>> getList(DbManager db, int pageIndex, int pageSize){
+		return getList(db,null,"",pageIndex,pageSize);
+	}
+
+	/**
+	 * 获取对象列表 按排序 分页
+	 * @param db
+	 * @param pageIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public List<M_<#=myname#>> getList(DbManager db, String order, int pageIndex, int pageSize){
+		return getList(db,null,order,pageIndex,pageSize);
+	}
+
+	/**
+	 * 获取对象列表 按条件 分页
+	 * @param db
+	 * @param wb
+	 * @param pageIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public List<M_<#=myname#>> getList(DbManager db, WhereBuilder wb, int pageIndex, int pageSize){
+		return getList(db,wb,"",pageIndex,pageSize);
+	}
+
+	/**
+	 * 获取对象列表 按排序和条件 分页
+	 * @param db
+	 * @param wb
+	 * @param pageIndex
+	 * @param pageSize
+	 * @return
+	 */
+	public List<M_<#=myname#>> getList(DbManager db, WhereBuilder wb, String order, int pageIndex, int pageSize){
+		List<M_<#=myname#>> list = null;
+		try {
+        	String[] v = checkOrderBy(order);
+			boolean flag = Boolean.valueOf(v[0]);
+			order = v[1];
+			if(order.length()>0){
+				if(wb==null)
+					list = db.selector(M_<#=myname#>.class).orderBy(order,flag).limit(pageSize).offset(pageIndex*pageSize-pageSize).findAll();
+				else
+					list = db.selector(M_<#=myname#>.class).where(wb).orderBy(order,flag).limit(pageSize).offset(pageIndex*pageSize-pageSize).findAll();
+			}else{
+				if(wb==null)
+					list = db.selector(M_<#=myname#>.class).limit(pageSize).offset(pageIndex*pageSize-pageSize).findAll();
+				else
+					list = db.selector(M_<#=myname#>.class).where(wb).limit(pageSize).offset(pageIndex*pageSize-pageSize).findAll();
+			}
+
+			}catch (DbException e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	/**
+	 * 获取列表按SQL语句
+	 * @param db
+	 * @param sql
+	 * @return
+	 */
+	public List<M_<#=myname#>> getListBySql(DbManager db, String sql){
+		List<M_<#=myname#>> list = new ArrayList<M_<#=myname#>>();
+
+		try {
+			Cursor cursor = db.execQuery(sql);
+			ConnectionUtil u = new ConnectionUtil();
+			Collection collection = u.get(cursor, M_<#=myname#>.class);
+			for (Iterator it = collection.iterator(); it.hasNext();) {
+				list.add((M_<#=myname#>) it.next());
+			}
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	/**
+	 * 插入一个对象
+	 * @param db
+	 * @param model
+	 */
+	public void add(DbManager db, M_<#=myname#> model) {
+		try {
+			db.save(model);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 更新一个对象
+	 * @param db
+	 * @param model
+	 */
+	public void update(DbManager db, M_<#=myname#> model) {
+		try {
+			db.saveOrUpdate(model);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 通过主键更新一组字段内容
+	 * @param db
+	 * @param id
+	 * @param kv
+	 */
+	public void update(DbManager db, <#=key_type#> <#=key_name#>, KeyValue... kv) {
+		try {
+			db.update(M_<#=myname#>.class, WhereBuilder.b("<#=key_name#>", "=", <#=key_name#>),kv);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 根据给定条件更新一组字段内容
+	 * @param db
+	 * @param wb
+	 * @param kv
+	 */
+	public void update(DbManager db, WhereBuilder wb, KeyValue... kv) {
+		try {
+			db.update(M_<#=myname#>.class, wb,kv);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 通过主键删除数据
+	 * @param db
+	 * @param id
+	 */
+	public void delete(DbManager db, <#=key_type#> <#=key_name#>) {
+		try {
+			db.delete(M_<#=myname#>.class, WhereBuilder.b("<#=key_name#>","=",<#=key_name#>));
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 通过给定的条件删除数据
+	 * @param db
+	 * @param wb
+	 */
+	public void delete(DbManager db, WhereBuilder wb) {
+		try {
+			db.delete(M_<#=myname#>.class, wb);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 删除所有数据
+	 * @param db
+	 */
+	public void deleteAll(DbManager db) {
+		try {
+			db.delete(M_<#=myname#>.class);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	/**
+	 * 得到数量
+	 * @param db
+	 * @return
+	 */
+	public long getCount(DbManager db){
+		long v = 0;
+		try {
+			v = db.selector(M_<#=myname#>.class).count();
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+		return v;
+	}
+
+	/**
+	 * 得到给定的条件的数据数量
+	 * @param db
+	 * @param wb
+	 * @return
+	 */
+	public long getCount(DbManager db, WhereBuilder wb){
+		long v = 0;
+		try {
+			v = db.selector(M_<#=myname#>.class).where(wb).count();
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+		return v;
+	}
+
+     /**
+	 * 执行一条SQL语句
+	 * @param db
+	 * @param wb
+	 * @return
+	 */
+	public void execute(DbManager db, String sql){
+		try {
+			db.execQuery(sql);
+		} catch (DbException e) {
+			e.printStackTrace();
+		}
+		return;
+	}
+
+	private String[] checkOrderBy(String order) {
+		// TODO Auto-generated method stub
+		if(order==null||order.length()==0){
+			return new String[]{"false",""};
+		}
+		String isdesc;
+		if(order.contains("desc")){
+			isdesc = "true";
+			order = order.trim().replace("desc", "").trim();
+		}
+		else{
+			isdesc = "false";
+			order = order.trim().replace("asc", "").trim();
+		}
+		return new String[]{isdesc, order};
+	}
+
+}
+
+<#+
+
+private string getStringName(string str){
+	string str2 = "";
+	for (int i = 0; i < str.Length; i++) {
+        string temp =  str.Substring(i, 1);
+        if (temp == "_") {
+            temp = str.Substring(i+1, 1).ToUpper();
+            i++;
+        }
+        if(i==0){
+        	temp = temp.ToUpper();
+        }
+        str2 += temp;
+   	}
+   	return str2;
+}
+
+#>

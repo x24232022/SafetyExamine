@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/file_list_item_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_launcher"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件名 : "
+        android:layout_alignTop="@+id/file_list_item_img"
+        android:layout_toRightOf="@+id/file_list_item_img"
+        android:layout_toEndOf="@+id/file_list_item_img"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:id="@+id/textView3"/>
+    <TextView
+        android:id="@+id/file_list_item_tx1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello Word！"
+        android:singleLine="true"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_toRightOf="@+id/textView6"
+        android:layout_toEndOf="@+id/textView6"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="文件地址 : "
+        android:id="@+id/textView6"
+        android:layout_alignBottom="@+id/file_list_item_img"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"/>
+    <TextView
+        android:id="@+id/file_list_item_tx2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello Word tow"
+        android:singleLine="true"
+        android:layout_toRightOf="@+id/textView6"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

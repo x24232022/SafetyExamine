@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../AvicLibrarys/AreaSelector/AreaSelector.iml" filepath="$PROJECT_DIR$/../AvicLibrarys/AreaSelector/AreaSelector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AvicLibrarys/AvicLibrarys.iml" filepath="$PROJECT_DIR$/../AvicLibrarys/AvicLibrarys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AvicLibrarys/AvicsafetyLib/AvicsafetyLib.iml" filepath="$PROJECT_DIR$/../AvicLibrarys/AvicsafetyLib/AvicsafetyLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SafetyExamine.iml" filepath="$PROJECT_DIR$/SafetyExamine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AvicLibrarys/TencentMapLib/TencentMapLib.iml" filepath="$PROJECT_DIR$/../AvicLibrarys/TencentMapLib/TencentMapLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>

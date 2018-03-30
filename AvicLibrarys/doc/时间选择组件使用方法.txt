@@ -1,0 +1,11 @@
+DateTimePickerDialog dialog = new DateTimePickerDialog(oThis, System.currentTimeMillis());
+dialog.setOnDateTimeSetListener(new OnDateTimeSetListener() {
+	@Override
+	public void OnDateTimeSet(AlertDialog dialog, long date) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String dateString = formatter.format(date);
+		et_tel1.setText(dateString);
+
+	}
+});
+dialog.show();

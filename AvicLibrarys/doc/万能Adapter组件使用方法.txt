@@ -1,0 +1,176 @@
+package com.avicsafety.company;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
+
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+
+import com.avicsafety.lib.Adapter.CommonAdapter;
+import com.avicsafety.lib.Adapter.ViewHolder;
+import com.avicsafety.model.M_F_COMPANY;
+import com.avicsafety.security.BaseActivity;
+import com.avicsafety.security.R;
+import com.avicsafety.service.CompanyManager;
+
+@ContentView(R.layout.activity_list)
+public class CompanyListActivity extends BaseActivity {
+
+	private final int ACTION_ADD = 22000;
+	private final int ACTION_MODIFY = 22001;
+	private final int ACTION_DELETE = 22002;
+	
+	private List<M_F_COMPANY> mData;
+	private CommonAdapter<M_F_COMPANY> mAdapter;
+	private Builder listview_action_dialog;
+	private Builder delete_confirm_dialog;
+	private int SelectedIndex = 0;
+	private CompanyManager companyManager;
+	
+	@Override
+	protected void InitializeComponent() {
+		super.InitializeComponent();
+		
+		//初始化 列表动作对话框
+		listview_action_dialog = new AlertDialog.Builder(this, R.style.CustomDialog);
+		listview_action_dialog.setItems(new String[]{"查看","删除","取消"}, new DialogInterface.OnClickListener(){
+			@Override
+			public void onClick(DialogInterface _dialog, int which) {
+				switch(which){
+					case 0:
+						handler.sendEmptyMessage(ACTION_MODIFY);
+						break;
+					case 1:
+						delete_confirm_dialog.show();
+						break;
+					case 2:
+						_dialog.dismiss();
+						break;
+				}
+			}
+        }); 
+		listview_action_dialog.create();
+		
+		//初始化 删除动作对话框
+		delete_confirm_dialog = new AlertDialog.Builder(this);
+		delete_confirm_dialog.setMessage("确认删除吗？");
+		delete_confirm_dialog.setTitle("提示");
+		delete_confirm_dialog.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface _dialog, int which) {
+				handler.sendEmptyMessage(ACTION_DELETE);
+			}
+        });
+		delete_confirm_dialog.setNegativeButton("取消", null);
+		delete_confirm_dialog.create();
+	}
+
+	@Override
+	protected void InitializeData() {
+		super.InitializeData();
+		companyManager = new CompanyManager();	
+		
+		mData = new ArrayList<M_F_COMPANY>();
+		list_view.setAdapter(mAdapter = new CommonAdapter<M_F_COMPANY>(
+				getApplicationContext(), mData, R.layout.item_common_list){
+			@Override
+			public void convert(ViewHolder helper, M_F_COMPANY item) {
+				helper.setText(R.id.tv_common_list_name, item.getQymc());
+			}});
+		
+		load();
+	}
+
+	@Override
+	protected void InitializeEvent() {
+		super.InitializeEvent();
+		list_view.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int index,long arg3) {
+				SelectedIndex = index;
+				listview_action_dialog.show();
+			}});
+	}
+	
+	private void load(){
+		//TODO 此处更新数据代码
+		 mData = companyManager.getList();
+		 mAdapter.setmDatas(mData);
+		 mAdapter.notifyDataSetChanged();
+	}
+	
+	protected Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+
+			if (msg.what == ACTION_ADD) {
+				//TODO 新增
+				Intent intent = new Intent();
+				intent.setClass(oThis, CompanyDetailActivity.class);
+				intent.putExtra("param", "");
+				startActivityForResult(intent, 9001);
+			} else if (msg.what == ACTION_MODIFY) {
+				//TODO 修改和查看
+				Intent intent = new Intent();
+				intent.setClass(oThis, CompanyDetailActivity.class);
+				intent.putExtra("param", mData.get(SelectedIndex).getGuid());
+				startActivityForResult(intent, 9001);
+			} else if (msg.what == ACTION_DELETE) {
+				//TODO 删除
+				companyManager.delete(mData.get(SelectedIndex));
+				load();
+			} else {
+				//这里其他自定义的 handler
+			}
+		}
+	};
+	
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (requestCode) {
+		case 9001:
+			if(resultCode==RESULT_OK){
+				load();
+			}
+			break;
+		case 9002:
+			
+			break;
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.menu, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_add:
+			handler.sendEmptyMessage(ACTION_ADD);
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+
+	@ViewInject(R.id.list_view)
+	private ListView list_view;
+}

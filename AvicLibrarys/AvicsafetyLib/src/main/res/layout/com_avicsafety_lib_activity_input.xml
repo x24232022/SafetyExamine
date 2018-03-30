@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#06a0e9"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/tv_com_avicsafety_lib_input_back"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_back_selecter"
+            android:gravity="center"
+            android:text="@string/back"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_com_avicsafety_lib_input_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="标题栏"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_com_avicsafety_lib_input_confirm"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_selecter"
+            android:text="确定"
+            android:textColor="@color/FFFFFF" />
+
+    </LinearLayout>
+
+<EditText
+    android:id="@+id/et_com_avicsafety_lib_input_text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:ems="10" >
+
+    <requestFocus />
+</EditText>
+
+<TextView
+    android:id="@+id/et_com_avicsafety_lib_input_help"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginTop="8dp"
+    android:text="help" />
+
+</LinearLayout>

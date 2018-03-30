@@ -1,0 +1,76 @@
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e2e2e2"
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#06a0e9"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:background="@drawable/shap_rounded_corner"
+            android:layout_toLeftOf="@+id/lib_tv_cancel"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="3dp"
+            android:layout_centerVertical="true">
+
+            <ImageView
+                android:id="@+id/lib_iv_search"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="7dp"
+                android:src="@android:drawable/ic_search_category_default" />
+
+            <AutoCompleteTextView
+                android:id="@+id/lib_at_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/lib_iv_clear"
+                android:layout_toRightOf="@+id/lib_iv_search"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:text="氯气"
+                android:textSize="17sp">
+
+            </AutoCompleteTextView>
+
+            <ImageView
+                android:id="@+id/lib_iv_clear"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/cancel_button"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/lib_tv_cancel"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="2dp"
+            android:gravity="center_vertical"
+            android:textColor="#ffffff"
+            android:text=" 取消" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lib_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp" >
+    </ListView>
+
+</LinearLayout>

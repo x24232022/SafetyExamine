@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    android:weightSum="1">
+
+    <TextView
+
+        android:id="@+id/my_dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设置首个工单时间"
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e1e1e1"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.03" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_setDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预计出发时间" />
+
+        <EditText
+            android:id="@+id/et_setdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="\t    点击选择时间    \t"
+            android:textColorHint="#e1e1e1"
+            android:clickable="true"
+            android:focusableInTouchMode="false"
+            android:focusable="false"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_settime_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="站址路程时间" />
+
+        <EditText
+            android:id="@+id/et_settime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#e1e1e1"
+            android:clickable="true"
+            android:hint="\t    点击输入数字    \t"
+            android:inputType="number"
+            />
+        <TextView
+            android:id="@+id/tv_settime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="（分钟）" />
+
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

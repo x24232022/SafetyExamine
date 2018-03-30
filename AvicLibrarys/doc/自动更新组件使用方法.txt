@@ -1,0 +1,20 @@
+程序更新组件的使用方法：
+在调用页面中：
+  1.在需要更新的代码中加入 其中参数CONF.APPLICATION_PATH 是更新APK包下载的位置
+UpdateManager manager = new UpdateManager(this);
+manager.setmDownloadPath(CONF.APPLICATION_PATH);
+manager.checkUpdate();
+
+2.注意：在androidMainfest.xml中配置
+	    <meta-data 
+            android:name="AppUpdateUrl" 
+            android:value="http://www.avicsafety.com/app_update.aspx?type=5"/>
+            
+            AppUpdateUrl是更新所访问的网站地址
+            
+            
+            这个网址需要到我们网站后台注册一下
+            http://www.avicsafety.com/webManage/
+            
+            admin  zzz123123...
+

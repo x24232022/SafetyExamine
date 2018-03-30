@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_Whitetext"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/rl_main_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/welcome"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <!-- <ImageView
+              android:id="@+id/iv_login_Logo"
+              android:layout_width="150dp"
+              android:layout_height="80dp"
+              android:layout_alignParentTop="true"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="30dp"
+              android:src="@mipmap/ic_launcher" />
+
+          <TextView
+              android:id="@+id/tv_main_welcome_text"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_below="@+id/iv_login_Logo"
+              android:layout_centerHorizontal="true"
+              android:paddingTop="20dp"
+              android:text="中航安卓系统"
+              android:textSize="22sp" />-->
+
+        <TextView
+            android:id="@+id/tv_main_version_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView5"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:text="V1.000"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/color_Whitetext" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_horizontal"
+            android:text="@string/copyright"
+            android:textColor="@color/color_Whitetext" />
+
+    </LinearLayout>
+
+    <include layout="@layout/toolbar" />
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/tab_pager"
+        android:layout_weight="1"
+        android:overScrollMode="never"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#eeeeeeee"/>
+
+    <com.avicsafety.ShenYangTowerComService.view.TabContainerView
+        android:id="@+id/ll_tab_container"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:background="#ffffffff"/>
+
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/my_home_fragment"
+        android:name="com.avicsafety.ShenYangTowerComService.Fragement.MainActivityFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragement_home" />
+
+
+
+</LinearLayout>

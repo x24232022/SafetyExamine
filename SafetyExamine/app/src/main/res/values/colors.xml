@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <drawable name="blue">#770000ff</drawable>
+    <color name="black">#ff000000</color>
+    <color name="progressBar_background">#646464</color>
+    <color name="content">#666</color>
+    <color name="actionBarTitle">#ffffff</color>
+    <color name="main_bg">#eeeeee</color>
+    <color name="fff">#ffffff</color>
+    <color name="actionBarbg">#06a0e9</color>
+    <color name="lineColor">#ffcccccc</color>
+    <color name="primary">#06a0e9</color>
+    <color name="primary_dark">#06a0e9</color>
+    <color name="status_bar_color">@color/primary_dark</color>
+    <color name="connection_state_bar_bg">#ffffe1</color>
+    <color name="button_bg">#ffab6e</color>
+    <color name="main_text">#56667A</color>
+    <color name="bgColor">#06a0e9</color>
+    <color name="grey">#CCCCCC</color>
+
+    <color name="color_AMB_blue">#38ADFF</color>
+    <color name="color_AMB_red">#F2725E</color>
+    <color name="color_AMB_gray">#808992</color>
+    <color name="color_Whitetext">#FFFFFF</color>
+    <color name="color_Blacktext">#000000</color>
+    <color name="color_Frame">#CFCFCF</color>
+    <color name="color_search_button">#EEEEEE</color>
+    <color name="color_listview_bg">#01A4A4</color>
+
+    <color name="main_bottom_tab_textcolor_normal">#999999</color>
+    <color name="main_bottom_tab_textcolor_selected">@color/normal_color</color>
+
+    <color name="normal_color">#38ADFF</color>
+    <color name="normal_colors">#0093fe</color>
+
+    <color name="translucent">#41ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="none_color">#00000000</color>
+    <color name="red">#FF0033</color>
+    <color name="gray">#aaaaaa</color>
+    <color name="white">#ffffffff</color>
+    <color name="lan">#0099EE</color>
+    <color name="blcak">#000000</color>
+
+
+
+
+    <color name="what">#FFFFFF</color>
+    <color name="logbg">#ff0094c8</color>
+    <color name="frame_focused">#FFA07A</color>
+    <color name="startColor">#ffffffff</color>
+    <color name="centerColor">#77ffffff</color>
+    <color name="endColor">#00ffffff</color>
+    <color name="logTextColor">#64bda4</color>
+    <color name="btn_login_bg">#e4ecd0</color>
+    <color name="refresh_head_bg">#2B2B2B</color>
+    <color name="frame_unfocused">#cdeae1</color>
+    <color name="title_bg">#38aaab</color>
+    <color name="view_bg">#ceced2</color>
+    <color name="line_bg">#efeff4</color>
+    <color name="high">#ff5c5c</color>
+    <color name="in">#d3b216</color>
+    <color name="low">#68e64f</color>
+    <color name="station_name">#333</color>
+    <color name="station_address">#666</color>
+    <color name="location_address">#1E90FF</color>
+    <color name="dividing_line">#CED1D4</color>
+    <color name="btn_bg">#3399ff</color>
+    <color name="tab_select">#4698ff</color>
+    <color name="frame_color">#7bdbdc</color>
+    <color name="level_1">#f54336</color>
+    <color name="level_2">#ff7e00</color>
+    <color name="level_3">#cdcf0f</color>
+    <color name="level_4">#2296e0</color>
+    <color name="hui">#e1e1e1</color>
+</resources>

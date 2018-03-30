@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="law_type">
+        <item>法律、行政法规和国务院文件</item>
+        <item>国务院部门规章</item>
+        <item>国务院安委会、安委办文件</item>
+        <item>国家安全监管总局文件</item>
+        <item>辽宁省地方性法规、政府规章和文件</item>
+        <item>辽宁省安委会、安委办文件</item>
+        <item>省安全生产监管局等部门文件</item>
+        <item>危险化学品及烟花爆竹相关标准规范目录 </item>
+    </string-array>
+    <string-array name="law_value">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="company_gis_arts_key">
+        <item>光气及光气化工艺</item>
+        <item>电解工艺（氯碱）</item>
+        <item>氯化工艺</item>
+        <item>硝化工艺</item>
+        <item>合成氨工艺</item>
+        <item>裂解（裂化）工艺</item>
+        <item>氟化工艺</item>
+        <item>加氢工艺</item>
+        <item>重氮化工艺</item>
+        <item>氧化工艺</item>
+        <item>过氧化工艺</item>
+        <item>胺基化工艺</item>
+        <item>磺化工艺</item>
+        <item>聚合工艺</item>
+        <item>烷基化工艺</item>
+        <item>新型煤化工工艺</item>
+        <item>电石生产工艺</item>
+        <item>偶氮化工艺</item>
+    </string-array>
+    <string-array name="company_gis_arts_value">
+        <item>光气及光气化工艺</item>
+        <item>电解工艺（氯碱）</item>
+        <item>氯化工艺</item>
+        <item>硝化工艺</item>
+        <item>合成氨工艺</item>
+        <item>裂解（裂化）工艺</item>
+        <item>氟化工艺</item>
+        <item>加氢工艺</item>
+        <item>重氮化工艺</item>
+        <item>氧化工艺</item>
+        <item>过氧化工艺</item>
+        <item>胺基化工艺</item>
+        <item>磺化工艺</item>
+        <item>聚合工艺</item>
+        <item>烷基化工艺</item>
+        <item>新型煤化工工艺</item>
+        <item>电石生产工艺</item>
+        <item>偶氮化工艺</item>
+    </string-array>
+    <string-array name="company_gis_type">
+        <item>剧毒</item>
+        <item>重点监管</item>
+        <item>易制毒</item>
+        <item>易制爆</item>
+    </string-array>
+    <string-array name="company_gis_origin">
+        <item>辽宁数据</item>
+        <item>国家数据</item>
+    </string-array>
+    <!-- AccidentCaseActivity -->
+    <string-array name="accident_case_area">
+        <item>国内</item>
+        <item>国外</item>
+    </string-array>
+    <string-array name="accident_case_classify">
+        <item>物体打击</item>
+        <item>车辆伤害</item>
+        <item>机械伤害</item>
+        <item>起重伤害</item>
+        <item>触电</item>
+        <item>淹溺</item>
+        <item>灼烫</item>
+        <item>火灾</item>
+        <item>高处坠落</item>
+        <item>坍塌</item>
+        <item>冒顶片帮</item>
+        <item>透水</item>
+        <item>放炮</item>
+        <item>火药爆炸</item>
+        <item>瓦斯爆炸</item>
+        <item>锅炉爆炸</item>
+        <item>容器爆炸</item>
+        <item>其他爆炸</item>
+        <item>中毒和窒息</item>
+        <item>其他伤害</item>
+    </string-array>
+    <string-array name="accident_case_month">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+    <string-array name="outnumber">
+        <item>100人以上</item>
+        <item>50人～99人</item>
+        <item>30人～49人</item>
+        <item>1～29人</item>
+        <item>0人</item>
+    </string-array>
+    <array name="tab_main_title">
+        <item>微信</item>
+        <item>通讯录</item>
+        <item>朋友圈</item>
+        <item>设置</item>
+    </array>
+</resources>

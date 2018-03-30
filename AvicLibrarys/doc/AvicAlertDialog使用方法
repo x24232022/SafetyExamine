@@ -1,0 +1,33 @@
+AvicAlertDialog 使用方法
+AvicAlertDialog 共有两种形式：1.只有“确认”按键的弹出框  2.有“确认”按键和“取消”按键
+
+new AvicAlertDialog类并传入参数
+AvicAlertDialog dialog = new AvicAlertDialog(Context context,int icon,String message,int type);
+1.传入cotext参数
+2.传入弹出框显示的图标，在上方显示
+3.传入弹出框显示的内容信息
+  如果想要文字换行可以在文字末尾使用“\n”或者使用“@”
+4.传入弹出框显示的类型
+  1) type == 1 使用的是第一种形式
+  2) type == 2 使用的是第二种形式
+
+使用AvicDialog 的对象对弹出框进行按键监听
+1.使用第一种形式的弹出框调用setOkListener();方方法实现按键监听
+       dialog.setOkListener(new AlertDialogC.OkListener() {
+       @Override
+       public void PositiveButton(View view, String yes) {
+
+       }
+       });
+2.使用第二种形式的弹出框调用setInterceptEvent();方法实现按键监听
+       dialog.setInterceptEvent(new AlertDialogC.InterceptEvent() {
+       @Override
+       public void PositiveButton(View view, String yes) {
+
+       }
+
+       @Override
+       public void NegativeButton(View view, String no) {
+
+       }
+       });

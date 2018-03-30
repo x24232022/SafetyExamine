@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:weightSum="1"
+              android:id="@+id/n_gd_list_xfd_item">
+
+    <LinearLayout
+        android:id="@+id/ll_lll"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:minHeight="80dp"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+
+                android:layout_margin="10dp"
+                android:id="@+id/tv_number"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="GZ20160121-176"
+                android:textSize="30px"
+                android:textColor="@color/color_AMB_gray"
+                android:layout_alignBottom="@+id/tv_theme1_gd"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_theme1_gd"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp"
+                android:text=" 中兴动环-沈阳-移动网/移动网沈河区沈阳市沈河区广谊电工站Z01-直流系统输出电压;下限告警 "
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:layout_alignParentTop="true"
+                 />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_hidden"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:background="#ff0000"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/tv_item_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="删除"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            />
+    </LinearLayout>
+</LinearLayout>

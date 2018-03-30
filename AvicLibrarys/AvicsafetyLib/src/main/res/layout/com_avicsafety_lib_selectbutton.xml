@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_centerInParent="true"
+    >
+
+    <TextView
+        android:layout_centerInParent="true"
+        android:padding="3dp"
+        android:layout_margin="5dp"
+        android:id="@+id/text01"
+        android:text="中航"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_toRightOf="@+id/text01"
+        android:layout_centerVertical="true"
+        android:id="@+id/iamgeview01"
+        android:layout_marginLeft="5dp"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/btn_icon_unpress" />
+
+
+</RelativeLayout>

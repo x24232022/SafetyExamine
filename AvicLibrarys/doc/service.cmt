@@ -1,0 +1,315 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".java" #>
+<#
+	TableHost host = (TableHost)(Host);
+	host.Fieldlist.Sort(CodeCommon.CompareByintOrder);
+	string[] keys = CodeCommon.GetInParameter(host.Keys,true).Split(' ');
+	string myname = getStringName(host.GetModelClass(host.TableName).Replace("t_",""));
+    string key_type = keys[0];
+    string key_name = keys[1];
+
+    if(key_type=="string")
+    	key_type = "String";
+    if(key_type=="float"||key_type=="double")
+    	key_type = "double";
+    if(key_type=="bool")
+    	key_type = "int";
+#>
+package com.avicsafety.ShenYangTowerComService.service;
+
+import com.avicsafety.lib.tools.DateDeserializerUtils;
+import com.avicsafety.lib.tools.L;
+import com.avicsafety.ShenYangTowerComService.dao.D_<#= myname#>;
+import com.avicsafety.lib.interfaces.OnNetworkAccessToListListener;
+import com.avicsafety.lib.interfaces.OnNetworkAccessToMessageListener;
+import com.avicsafety.lib.interfaces.OnNetworkAccessToModelListener;
+import com.avicsafety.ShenYangTowerComService.model.M_<#= myname#>;
+
+import java.util.Date;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.db.sqlite.WhereBuilder;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import org.xutils.db.sqlite.WhereBuilder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+public class <#= myname#>Manager extends abstract_service {
+
+	public <#= myname#>Manager(){
+		super();
+	}
+
+	static {
+		abstract_service.init();
+	}
+
+	/**
+	 * 获取一个对象实体
+	 */
+	public M_<#= myname#> getModel(<#= key_type#> <#= key_name#>){
+		D_<#= myname#> dao = new D_<#= myname#>();
+		return dao.getModel(base_db, <#= key_name#>);
+	}
+
+	/**
+	 * 获取所有列表
+	 */
+	public List<M_<#= myname#>> getList(){
+		D_<#= myname#> dao = new D_<#= myname#>();
+		return dao.getList(base_db);
+	}
+
+	/**
+	 * 通过条件检索  wb不建议暴露到逻辑层
+	 */
+	public List<M_<#= myname#>> getList(WhereBuilder wb, String order){
+		D_<#= myname#> dao = new D_<#= myname#>();
+		return dao.getList(base_db, wb, order);
+	}
+
+
+	/**
+	 * 分页和排序获取列表
+	 */
+	public List<M_<#= myname#>> getList(WhereBuilder wb, String order, int pageIndex, int pageSize ){
+		D_<#= myname#> dao = new D_<#= myname#>();
+		return  dao.getList(base_db, wb, order, pageIndex, pageSize);
+	}
+
+	/**
+	 * 插入一个对象
+	 */
+	public void add(M_<#= myname#> model){
+		D_<#= myname#> dao = new D_<#= myname#>();
+		dao.add(base_db, model);
+	}
+
+	/**
+	 * 更新一个对象
+	 */
+	public void update(M_<#= myname#> model){
+		D_<#= myname#> dao = new D_<#= myname#>();
+		dao.update(base_db, model);
+	}
+
+	/**
+	 * 删除一个对象
+	 */
+	public void delete(<#= key_type#> <#= key_name#>){
+		D_<#= myname#> dao = new D_<#= myname#>();
+		dao.delete(base_db, <#= key_name#>);
+	}
+
+	/**
+	 * 删除一个对象
+	 */
+	public void delete(M_<#= myname#> model){
+		D_<#= myname#> dao = new D_<#= myname#>();
+		this.delete(model.get<#= key_name.Substring(0,1).ToUpper()#><#= key_name.ToString().Substring(1)#>());
+	}
+
+	/**
+	 * 这只是一个按条件搜索的例子  他是 private 可以组成任意WhereBuilder 对象传递过去
+	 */
+	private List<M_<#= myname#>> getList(int pageIndex, int pageSize, String order, String... where){
+		//假设这里 where 是  "id=2"  order = "guid desc" or "guid"
+		D_<#= myname#> dao = new D_<#= myname#>();
+		WhereBuilder wb = WhereBuilder.b();
+		for(String s : where){
+			if(s.contains("=")){
+				String[] array = s.split("=");
+				wb.and(array[0],"=",array[1]);
+			}
+		}
+		return  dao.getList(base_db,wb, order, pageIndex, pageSize);
+	}
+
+    /**
+     * 解析json 获取列表
+     */
+    protected List<M_<#= myname#>> getListByJSON(JSONArray jsonArray) {
+    		java.lang.reflect.Type type = new TypeToken<List<M_<#= myname#>>>() {}.getType();
+            List<M_<#= myname#>> list = GsonUtils.tobean(jsonArray.toString(),type);
+    		return list;
+    }
+
+    /**
+     * 解析json 获取一个Model
+     */
+    protected M_<#= myname#> getModelByJSON(JSONObject jsonObject) {
+    		Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new DateDeserializerUtils()).setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+    		java.lang.reflect.Type type = new TypeToken<M_<#= myname#>>() {}.getType();
+    		M_<#= myname#> model = gson.fromJson(jsonObject.toString(), type);
+    		return model;
+    }
+
+	/**
+     * getListByServ
+     *
+     * @param params
+     * @param listener
+     */
+    public void getListByServ(RequestParams params, final OnNetworkAccessToListListener<M_<#= myname#>> listener) {
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onCancelled(CancelledException arg0) {
+
+            }
+
+            @Override
+            public void onError(Throwable arg0, boolean arg1) {
+                listener.onFail("获取数据失败");
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+
+            @Override
+            public void onSuccess(String result) {
+                JSONObject res;
+                try {
+                    res = new JSONObject(result);
+                    String code = res.getString("Code");
+                    if (code.equals("200")) {
+                        JSONArray array = res.getJSONArray("Response");
+                        if(array==null) listener.onSuccess(null);
+                        java.lang.reflect.Type type = new TypeToken<List<M_<#= myname#>>>() {}.getType();
+                        List<M_<#= myname#>> list = GsonUtils.tobean(jsonArray.toString(),type);
+                        listener.onSuccess(list);
+                    } else {
+                        listener.onFail("获取数据失败");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    L.v(e.getMessage());
+                    listener.onFail("服务器出错，请稍后再试");
+                }
+            }
+        });
+    }
+
+    /**
+     * getModel
+     *
+     * @param params
+     * @param listener
+     */
+    public void getModelByServ(RequestParams params, final OnNetworkAccessToModelListener<M_<#= myname#>> listener) {
+        x.http().get(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onCancelled(CancelledException arg0) {
+
+            }
+
+            @Override
+            public void onError(Throwable arg0, boolean arg1) {
+                listener.onFail("获取数据失败");
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+
+            @Override
+            public void onSuccess(String result) {
+                JSONObject res;
+                try {
+                    res = new JSONObject(result);
+                    String code = res.getString("Code");
+                    if (code.equals("200")) {
+                        JSONObject obj = res.getJSONObject("Response");
+                        if (obj == null) {
+                            listener.onSuccess(null);
+                        } else {
+                            M_<#= myname#> model = getModelByJSON(obj);
+                            listener.onSuccess(model);
+                        }
+                    } else {
+                        listener.onFail("获取数据失败");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    L.v(e.getMessage());
+                    listener.onFail("服务器出错，请稍后再试");
+                }
+            }
+        });
+    }
+
+
+    /**
+     * postData
+     *
+     * @param params
+     * @param listener
+     */
+    public void postData(RequestParams params, final OnNetworkAccessToMessageListener listener) {
+        x.http().post(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onCancelled(CancelledException arg0) {
+
+            }
+
+            @Override
+            public void onError(Throwable arg0, boolean arg1) {
+                listener.onFail("提交数据失败");
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+
+            @Override
+            public void onSuccess(String result) {
+                JSONObject res;
+                try {
+                    res = new JSONObject(result);
+                    String code = res.getString("Code");
+                    if (code.equals("200")) {
+                        String message = res.getString("Message");
+                        listener.onSuccess(message);
+
+                    } else {
+                        listener.onFail("提交数据失败");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    L.v(e.getMessage());
+                    listener.onFail("服务器出错，请稍后再试");
+                }
+            }
+        });
+    }
+}
+
+<#+
+
+private string getStringName(string str){
+	string str2 = "";
+	for (int i = 0; i < str.Length; i++) {
+        string temp =  str.Substring(i, 1);
+        if (temp == "_") {
+            temp = str.Substring(i+1, 1).ToUpper();
+            i++;
+        }
+        if(i==0){
+        	temp = temp.ToUpper();
+        }
+        str2 += temp;
+   	}
+   	return str2;
+}
+
+#>

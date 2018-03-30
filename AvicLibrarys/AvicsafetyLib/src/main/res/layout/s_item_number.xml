@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:background="@drawable/s_item_white_selecter" >
+
+    <TextView
+        android:id="@+id/view_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="15dp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="#FFeeeeee" />
+
+    <Button
+        android:id="@+id/btn_com_avicsafety_lib_number_increase"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="28dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/btn_lib_white_selecter"
+        android:text="+"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/view_value"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/btn_com_avicsafety_lib_number_increase"
+        android:background="@drawable/btn_lib_view_selecter"
+        android:ems="10"
+        android:gravity="right"
+        android:inputType="numberDecimal"
+        android:text="0"
+        android:textColor="#555" />
+
+    <Button
+        android:id="@+id/btn_com_avicsafety_lib_number_decrease"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="40dp"
+        android:layout_height="28dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/view_value"
+        android:background="@drawable/btn_lib_white_selecter"
+        android:text="-"
+        android:textSize="18sp" />
+
+</RelativeLayout>

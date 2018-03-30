@@ -1,0 +1,6 @@
+include ':AvicLibrarys'
+project (':AvicLibrarys').projectDir = new File('../AvicLibrarys/')
+include ':AvicLibrarys:AvicsafetyLib'
+include ':AvicLibrarys:TencentMapLib'
+include ':AvicLibrarys:AreaSelector'
+include ':app'

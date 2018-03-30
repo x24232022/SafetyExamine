@@ -1,0 +1,50 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".java" #>
+<#
+	TableHost host = (TableHost)(Host);
+	host.Fieldlist.Sort(CodeCommon.CompareByintOrder);
+#>
+import org.xutils.db.annotation.Column;
+import org.xutils.db.annotation.Table;
+
+@Table(name="<#= host.GetModelClass(host.TableName) #>")
+public class M_<#= getStringName(host.GetModelClass(host.TableName).Replace("t_","")) #>{
+<# foreach (ColumnInfo c in host.Fieldlist)
+{ #>
+	<# if(!c.IsPrimaryKey ){#>
+    @Column(name = "<#= c.ColumnName.ToString()#>")<#} else{ #>
+    @Column(name = "<#= c.ColumnName.ToString()#>",isId=true)<#}#>
+
+	private <#= c.TypeName=="text" ? "String" : "" #><#= c.TypeName=="integer" ? "int" : "" #><#= c.TypeName=="real" ? "double" : "" #> <#= c.ColumnName.ToString()#>;
+<#}#>
+<# foreach (ColumnInfo c in host.Fieldlist)
+{ #>
+	public <#= c.TypeName=="text" ? "String" : "" #><#= c.TypeName=="integer" ? "int" : "" #><#= c.TypeName=="real" ? "double" : "" #> get<#= c.ColumnName.ToString().Substring(0,1).ToUpper()#><#= c.ColumnName.ToString().Substring(1)#>() {
+		return <#= c.ColumnName.ToString()#>;
+	}
+	public void set<#= c.ColumnName.ToString().Substring(0,1).ToUpper()#><#= c.ColumnName.ToString().Substring(1)#>(<#= c.TypeName=="text" ? "String" : "" #><#= c.TypeName=="integer" ? "int" : "" #><#= c.TypeName=="real" ? "double" : "" #> <#= c.ColumnName.ToString()#>) {
+		this.<#= c.ColumnName.ToString()#> = <#= c.ColumnName.ToString()#>;
+	}
+<#}#>
+}
+
+
+<#+
+
+private string getStringName(string str){
+	string str2 = "";
+	for (int i = 0; i < str.Length; i++) {
+        string temp =  str.Substring(i, 1);
+        if (temp == "_") {
+            temp = str.Substring(i+1, 1).ToUpper();
+            i++;
+        }
+        if(i==0){
+        	temp = temp.ToUpper();
+        }
+        str2 += temp;
+   	}
+   	return str2;
+}
+
+#>

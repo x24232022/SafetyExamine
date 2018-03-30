@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        layout="@layout/toolbar"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dividing_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/linear_hight"
+        android:layout_marginLeft="@dimen/margin_left"
+        android:layout_marginRight="@dimen/margin_left"
+        android:layout_marginTop="@dimen/margin_left"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:text="@string/prin"
+            android:textColor="@color/station_address"
+            android:textSize="@dimen/textSize" />
+
+        <Spinner
+            android:id="@+id/sp_person"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/linear_hight"
+            android:layout_weight="7"
+            android:background="@drawable/et_bg"
+            android:gravity="center_vertical"
+            android:textColor="@color/station_name"
+            android:textSize="@dimen/textSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_left"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/linear_hight"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center_vertical"
+            android:text="@string/remark"
+            android:textColor="@color/station_address"
+            android:textSize="@dimen/textSize" />
+
+        <EditText
+            android:id="@+id/et_remark"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/linear_hight"
+            android:layout_marginBottom="-1dp"
+            android:layout_marginTop="-1dp"
+            android:layout_weight="7"
+            android:background="@drawable/et_bg"
+            android:gravity="center_vertical"
+            android:textColor="@color/station_name"
+            android:paddingStart="0dp"
+            android:paddingLeft="@dimen/padding"
+            android:paddingEnd="0dp"
+            android:textSize="@dimen/textSize" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_transfer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/linear_hight"
+        android:text="@string/transfer"
+        android:background="@drawable/btn_bg"
+        android:layout_margin="@dimen/titleTextSize"
+        android:textColor="@color/what"
+         />
+
+</LinearLayout>

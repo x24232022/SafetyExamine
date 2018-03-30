@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#ffeeeeee" >
+        <requestFocus />
+    </View>
+
+    <com.avicsafety.lib.CustomView.AvicTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:lable="IP地址"
+        app:value=""
+        android:id="@+id/atv_server_config_ip" />
+
+    <com.avicsafety.lib.CustomView.AvicTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:lable="端口号"
+        app:value=""
+        android:id="@+id/atv_server_config_port" />
+
+    <TextView
+        android:text="请配置服务器的IP地址和端口"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tv_server_config_tip"
+        android:layout_margin="20dp" />
+
+
+</LinearLayout>

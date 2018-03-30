@@ -1,0 +1,48 @@
+xml格式
+<com.avicsafety.lib.CustomView.AvicListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null" 
+        />
+ activity格式
+ 要实现  IsLoadingListener
+implements IsLoadingListener 
+
+初始化需要做的
+list_view.setOnLoadingListener(this);
+
+重写onLoad()的方法
+eg：//分步加载方法
+private Handler handler = new Handler();
+private int pageIndex = 1;//页码
+private int pageSize = 20;//每页加载的数量
+private boolean lastFlag = false;//是否加载到最后了
+
+	@Override
+	public void onLoad() {
+		handler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				// 加入
+				if (!lastFlag) {
+					pageIndex++;
+					List<M_LawStudy> newData = new ArrayList<M_LawStudy>();
+					newData = manager.getListByKey(key, pageIndex, pageSize);
+					if (newData.size() > 0) {
+						for (int i = 0; i < newData.size(); i++) {
+							mData.add(newData.get(i));
+						}
+						mAdapter.notifyDataSetChanged();
+					} else {
+						lastFlag = true;
+						Tools.showAlertTip("没有更多了", oThis);
+					}
+				} else {
+					Tools.showAlertTip("没有更多了", oThis);
+				}
+				list_view.complateLoad();
+			}
+		}, 3000);
+	}

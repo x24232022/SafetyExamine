@@ -1,0 +1,24 @@
+一、区域选择组件的使用方法：
+在调用页面中：
+  1.发送请求
+Intent in = new Intent(CompanyAddActivity.this,SelectPageActivity.class);
+
+in.putExtra("headline", "选择区域");//区域选择页面的头部标题（可选）
+in.putExtra("startPoision", "皇姑区");//设置开始的位置如可填："辽宁省"，"沈阳市"，"皇姑区"……默认是辽宁省全部的数据（可选）
+in.putExtra("end", 2);//设置结束的位置，这里指显示的层数（可选）
+in.putExtra("areaDbpath", "trouble_check");// 用于设置数据库的路径（可选）
+startActivityForResult(in, 2000);
+
+  2.接收返回数据
+在onActivityResult回调函数中，接收的数据
+String qyszd = data.getStringExtra("qyszd");//区域
+String qyszdId = data.getStringExtra("qyszdId");区域Id
+
+  3.注意：在androidMainfest.xml中配置
+   a.配置sd卡读写权限 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+   b.配置：
+<activity
+    android:name="com.avicsafety.lib.TreeManager.SelectPageActivity"
+    android:screenOrientation="portrait"
+    android:theme="@style/MyActionBarTheme" >
+</activity>

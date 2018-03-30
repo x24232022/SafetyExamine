@@ -1,0 +1,995 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        layout="@layout/toolbar"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- 未接单的 -->
+
+            <LinearLayout
+                android:id="@+id/ll_already"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="visible" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/station_name"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_station_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/station_address"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_station_address"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/location_address"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+                
+                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/ssoperta"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_station_ssoperta"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/station_level"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_responsible_unit"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/principal"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_station_level"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+                <LinearLayout
+                    android:id="@+id/ll_fault_vtype"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="供电类型:"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_fault_vtype"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_fault_vtype"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_fault_theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="主题:"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_fault_theme"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_fault_theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_fault_locationStr"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="地市:"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_fault_locationStr"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_fault_locationStr"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_fault_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="区域:"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_fault_area"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_fault_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_fault_btsType"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="基站类型:"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_fault_btsType"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_fault_btsType"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_fault_faultNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="故障工单号:"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_fault_faultNo"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_fault_faultNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_fault_creator"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="创建人姓名:"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_fault_creator"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_fault_creator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_fault_troubleNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="集团工单编号"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_fault_troubleNo"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_fault_troubleNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/responsible_unit"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_principal"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+                
+                <LinearLayout
+                    android:id="@+id/ll_fult_work"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/fault_time"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_fault_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_startPower"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/station_startTime"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_station_startTime"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:id="@+id/ll_endPower"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/station_endTime"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_station_endTime"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/life_time"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_life_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:visibility="gone"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/duration"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_duration"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:visibility="gone"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/machine"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_machine"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/cable_length"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_cable_length"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+            </LinearLayout>
+
+            <!-- 已经接单的 -->
+
+            <LinearLayout
+                android:id="@+id/ll_received"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/order_time"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_order_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/generators"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_generators"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/contact"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_contact"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/generator_address"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_generator_address"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/generation_time"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_generation_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/linear_hight"
+                    android:layout_marginLeft="@dimen/margin_left"
+                    android:layout_marginRight="@dimen/margin_left"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:gravity="center_vertical"
+                        android:text="@string/end_time"
+                        android:textColor="@color/station_address"
+                        android:textSize="@dimen/textSize" />
+
+                    <TextView
+                        android:id="@+id/tv_end_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/station_name"
+                        android:textSize="@dimen/textSize" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dividing_line" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/ll_operating"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/titleTextSize"
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_orders"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/linear_hight"
+            android:layout_marginLeft="@dimen/padding"
+            android:layout_marginRight="@dimen/padding"
+            android:layout_weight="5"
+            android:background="@drawable/btn_bg"
+            android:gravity="center"
+            android:text="@string/orders"
+            android:textColor="@color/what"
+            android:textSize="@dimen/textSize" />
+
+        <TextView
+            android:id="@+id/tv_turn_down"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/linear_hight"
+            android:layout_marginLeft="@dimen/padding"
+            android:layout_marginRight="@dimen/padding"
+            android:layout_weight="5"
+            android:background="@drawable/btn_bg"
+            android:gravity="center"
+            android:text="@string/turn_down"
+            android:textColor="@color/what"
+            android:textSize="@dimen/textSize" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/titleTextSize"
+        android:visibility="gone"
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_start_power"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/linear_hight"
+            android:layout_marginLeft="@dimen/padding"
+            android:layout_marginRight="@dimen/padding"
+            android:layout_weight="5"
+            android:background="@drawable/btn_bg"
+            android:text="@string/begn_power"
+            android:textColor="@color/what"
+            android:textSize="@dimen/activity_margin" />
+
+        <Button
+            android:id="@+id/btn_end_power"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/linear_hight"
+            android:layout_marginLeft="@dimen/padding"
+            android:layout_marginRight="@dimen/padding"
+            android:layout_weight="5"
+            android:background="@drawable/btn_bg"
+            android:text="@string/end_power"
+            android:textColor="@color/what"
+            android:textSize="@dimen/activity_margin" />
+    </LinearLayout>
+
+</LinearLayout>

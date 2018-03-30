@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AvicButton">
+        <attr name="buttonColor" format="string">
+            <enum name="Green" value="10003" />
+            <enum name="Red" value="10002" />
+            <enum name="Blue" value="10001" />
+            <enum name="White" value="10000" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="AvicView">
+        <attr name="lable" format="string" />
+        <attr name="value" format="string" />
+        <attr name="show_line" format="boolean" />
+        <attr name="lable_width" format="dimension" />
+        <attr name="max_line" format="integer" />
+        <attr name="substring_number" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="AvicPhotoList">
+        <attr name="photo_lable" format="string" />
+        <attr name="photo_show_line" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="AvicItemList">
+        <attr name="item_lable" format="string" />
+        <attr name="item_show_line" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="AvicSelect">
+        <attr name="select_lable" format="string" />
+        <attr name="select_value" format="string" />
+        <attr name="select_hint" format="string" />
+    </declare-styleable>
+    <declare-styleable name="AvicEditText">
+        <attr name="edit_lable" format="string" />
+        <attr name="edit_value" format="string" />
+        <attr name="edit_hint" format="string" />
+    </declare-styleable>
+    <declare-styleable name="AvicSelectAlone">
+        <attr name="alone_text" format="string" />
+        <attr name="alone_value" format="string" />
+        <attr name="alone_hint" format="string" />
+    </declare-styleable>
+
+</resources>

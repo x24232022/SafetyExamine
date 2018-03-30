@@ -1,0 +1,84 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+     >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#06a0e9"
+        android:gravity="center_vertical" >
+
+        <TextView
+            android:id="@+id/tv_photo_list_back"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/btn_back_selecter"
+            android:gravity="center"
+            android:text="@string/back"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tv_photo_list_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/photo_manager"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_photo_list_submit"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
+            android:layout_margin="5dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/btn_selecter"
+            android:text="@string/enter"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:verticalSpacing="1.5px" 
+        android:horizontalSpacing="1.5px"
+        android:numColumns="3" >
+
+    </GridView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#06a0e9"
+        android:gravity="center_vertical" >
+
+        <Button
+            android:id="@+id/btn_photo_list_take_photo"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/btn_selecter"
+            android:text="@string/take_photo"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="" />
+
+    </LinearLayout>
+
+</LinearLayout>

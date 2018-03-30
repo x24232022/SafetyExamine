@@ -1,0 +1,24 @@
+腾讯地图定位的使用方法：
+在调用页面中：
+  1.需要在相应事件中加入: 
+Intent intent = new Intent(this, PhotoListActivity.class);
+				intent.putExtra("max", 4);   //选择最大图片数量
+				intent.putExtra("min", 2);   //选择最小图片数量
+				intent.putExtra("data", temp);  //选中的图片数组  数组中为图片路径  
+				intent.putStringArrayListExtra("list", (ArrayList<String>)list);  //也可以传递一个ArrayList<String>  
+				//intent.putExtra("path", tools.getSDPath() + File.separator + "app_path");   //图片默认存放的地址 废弃
+				intent.putExtra("title", "单位门脸和证照的图片");  //图标管理页面的TITLE
+				intent.putExtra("readonly", false);  //是否为只读模式
+				startActivityForResult(intent, 3000);
+			
+2. 在onActivityResult中加入
+if (requestCode == 3000 && resultCode == RESULT_OK) {
+	String[] array = data.getStringArrayExtra("result");
+	List<String> list= data.getStringArrayListExtra("result_list");  //也可以返回一个ArrayList<String>  
+	
+	Log.v("tag", "photo count is " + array.length);
+}
+
+3.注意：在androidMainfest.xml中配置
+	     <activity
+            android:screenOrientation="portrait" />

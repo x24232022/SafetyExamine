@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:paddingLeft="5dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/view_title"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textColor="#333333"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/view_value"
+        android:paddingLeft="10dp"
+        android:background="?android:attr/editTextBackground"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="3dp"
+        android:textSize="16dp"
+        android:ems="10" >
+    </EditText>
+
+</LinearLayout>

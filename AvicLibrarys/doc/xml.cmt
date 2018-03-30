@@ -1,0 +1,38 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".xml" #>
+<#
+	TableHost host = (TableHost)(Host);
+	host.Fieldlist.Sort(CodeCommon.CompareByintOrder);
+#>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    xmlns:app="http://schemas.android.com/apk/res/com.avicsafety.security">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+  		     
+<# foreach (ColumnInfo c in host.Fieldlist)
+{ #>
+	        <com.avicsafety.lib.CustomView.AvicTextView
+	            android:id="@+id/atv_<#= c.ColumnName.ToString()#>"
+	            android:layout_width="match_parent"
+	            android:layout_height="40dp"
+	            app:lable=""
+	            app:value="" />
+<#}#>
+
+		</LinearLayout>
+    </ScrollView>
+</LinearLayout>

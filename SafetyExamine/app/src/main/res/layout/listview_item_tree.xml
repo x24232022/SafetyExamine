@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ListView tree字段 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center"
+    android:layout_margin="5dip"
+    android:gravity="center"
+    android:minHeight="50dip" >
+
+    <TextView
+        android:id="@+id/tvPadding"
+        android:layout_width="2dip"
+        android:layout_height="50dip"
+        android:gravity="center_vertical|left"
+        android:textColor="#ff000000"
+        android:textSize="16dip" >
+    </TextView>
+
+    <ImageView
+        android:id="@+id/ivExEc"
+        android:layout_width="22dip"
+        android:layout_height="22dip"
+        android:gravity="center_vertical"
+        android:paddingLeft="2dip"
+        android:paddingRight="2dip" >
+    </ImageView>
+
+    <CheckBox
+        android:id="@+id/chbSelect"
+        android:layout_width="30dp"
+        android:layout_height="50dip"
+        android:button="@drawable/radiobtn"
+        android:clickable="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:textColor="#ff000000" >
+    </CheckBox>
+
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="22dip"
+        android:layout_height="22dip"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical|left"
+        android:minHeight="50dip"
+        android:textColor="#ff000000"
+        android:textSize="16sp" >
+    </TextView>
+
+</LinearLayout>

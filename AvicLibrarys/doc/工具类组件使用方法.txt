@@ -1,0 +1,42 @@
+Validate 验证类
+		Validate.isFloat(string) 输入的字符串是否为浮点型
+		Validate.isPhone(code) 是否为座机号码
+		Validate.isMobile(code) 是否为移动电话号码
+		Validate.isIdCardNo(code) 是否为身份证号
+		...................  还有很多 不意义说明 UTF-8编码  有提示
+		
+DateTime 时间日期类
+		DateTime.checkDate(string) 判断当前字符串是否为标准时间类型  包含 yyyy-mm-dd hh-MM-SS 和 yyyy-m-d h-M-S
+		DateTime.checkDate(string, Format.full) 判断当前字符串是否为所制定的时间类型
+		
+		DateTime.getDate() 返回当前时间 日期型;
+		DateTime.getYear() 返回当前年份 数字型 例:2008;
+		DateTime.getStrDate(Format.full) 返回当前时间的字符串格式;
+		..................... 还有很多 不一一列举
+		
+		
+PhoneInfo 手机设备信息类
+	 	PhoneInfo.checkNetworkConnection()  判断当前手机是否有网络
+	 	PhoneInfo.checkNetworkInWIFI()  判断当前手机是否在WIFI中
+	 	PhoneInfo.getSDPath()  获取手机的SDCARD路径
+	 	
+StringUtils 字符串常用类
+		StringUtils.isEmpty(null) = true
+		StringUtils.isEmpty("") = true 判断字符串是否为null 或 ""
+		isNotEmpty 相反;
+		
+		public static boolean isBlank(String str) 
+  		 判断某字符串是否为空或长度为0或由空白符(whitespace) 构成
+   		下面是示例：
+      StringUtils.isBlank(null) = true
+      StringUtils.isBlank("") = true
+      StringUtils.isBlank(" ") = true
+      StringUtils.isBlank("        ") = true
+      StringUtils.isBlank("\t \n \f \r") = true   //对于制表符、换行符、换页符和回车符
+      StringUtils.isBlank()   //均识为空白符
+      StringUtils.isBlank("\b") = false   //"\b"为单词边界符
+      StringUtils.isBlank("bob") = false
+      StringUtils.isBlank(" bob ") = false 
+      
+      ...... 还有很多 自己挖掘   https://www.douban.com/note/263459566/
+      

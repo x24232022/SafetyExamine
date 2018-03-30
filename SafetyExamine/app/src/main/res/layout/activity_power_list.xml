@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        layout="@layout/toolbar"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.avicsafety.ShenYangTowerComService.PowerManager.push.View.AbPullToRefreshView
+            android:id="@+id/mRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <ListView
+                android:id="@+id/list_power"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:listSelector="@android:color/transparent"
+                android:divider="@drawable/viewbg"
+                android:dividerHeight="@dimen/activity_margin"
+                android:scrollbars="none" >
+            </ListView>
+        </com.avicsafety.ShenYangTowerComService.PowerManager.push.View.AbPullToRefreshView>
+        
+        <TextView 
+            android:id="@+id/tv_prompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_data_found"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            />
+        
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        layout="@layout/toolbar"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_width"
+                android:background="@color/line_bg"
+                android:gravity="center_vertical"
+                android:paddingEnd="0dp"
+                android:paddingLeft="@dimen/titleTextSize"
+                android:paddingStart="0dp"
+                android:paddingTop="@dimen/padding"
+                android:text="发电工单"
+                android:textColor="@color/station_name"
+                android:textSize="@dimen/activity_margin" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dividing_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <!--android:drawableRight="@drawable/right_arrow"-->
+            <TextView
+                android:id="@+id/tv_work_wj"
+                android:layout_weight="3"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/operating_height"
+                android:drawableLeft="@drawable/yjgd"
+                android:gravity="center_vertical"
+                android:paddingEnd="0dp"
+                android:paddingLeft="@dimen/titleTextSize"
+                android:paddingRight="@dimen/textSize"
+                android:paddingStart="0dp"
+                android:text="@string/work_missed"
+                android:textColor="@color/station_name"
+                android:textSize="@dimen/textSize" />
+                <TextView
+                    android:id="@+id/tv_work_wj_number"
+                    android:layout_weight="0.2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/red"
+                    android:text=""/>
+            </LinearLayout>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dividing_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_work_yj"
+                android:layout_weight="3"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/operating_height"
+                android:drawableLeft="@drawable/wjgd"
+                android:gravity="center_vertical"
+                android:paddingEnd="0dp"
+                android:paddingLeft="@dimen/titleTextSize"
+                android:paddingRight="@dimen/textSize"
+                android:paddingStart="0dp"
+                android:text="已出发工单"
+                android:textColor="@color/station_name"
+                android:textSize="@dimen/textSize" />
+            <TextView
+                android:id="@+id/tv_work_yj_number"
+                android:layout_weight="0.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:text=""/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dividing_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_work_zf"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/operating_height"
+                android:layout_weight="3"
+                android:drawableLeft="@drawable/zzfd"
+                android:gravity="center_vertical"
+                android:paddingEnd="0dp"
+                android:paddingLeft="@dimen/titleTextSize"
+                android:paddingRight="@dimen/textSize"
+                android:paddingStart="0dp"
+                android:text="已到站工单"
+                android:textColor="@color/station_name"
+                android:textSize="@dimen/textSize"/>
+
+            <TextView
+                android:id="@+id/tv_work_zf_number"
+                android:layout_weight="0.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:text=""/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dividing_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="3"
+                android:id="@+id/tv_work_yw"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/operating_height"
+                android:drawableLeft="@drawable/ywcgd"
+                android:gravity="center_vertical"
+                android:paddingEnd="0dp"
+                android:paddingLeft="@dimen/titleTextSize"
+                android:paddingRight="@dimen/textSize"
+                android:paddingStart="0dp"
+                android:text="已经结束工单"
+                android:textColor="@color/station_name"
+                android:textSize="@dimen/textSize" />
+            <TextView
+                android:id="@+id/tv_work_yw_number"
+                android:layout_weight="0.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:text=""/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/dividing_line" />
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/text_width"-->
+                <!--android:background="@color/line_bg"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:paddingEnd="0dp"-->
+                <!--android:paddingLeft="@dimen/titleTextSize"-->
+                <!--android:paddingStart="0dp"-->
+                <!--android:paddingTop="@dimen/padding"-->
+                <!--android:text="@string/fault_work"-->
+                <!--android:textColor="@color/station_name"-->
+                <!--android:textSize="@dimen/activity_margin" />-->
+            <!--</LinearLayout>-->
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="@color/dividing_line" />-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+            <!--<TextView-->
+                <!--android:layout_weight="3"-->
+                <!--android:id="@+id/tv_fault_wj"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="@dimen/operating_height"-->
+                <!--android:drawableLeft="@drawable/yjgd"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:paddingEnd="0dp"-->
+                <!--android:paddingLeft="@dimen/titleTextSize"-->
+                <!--android:paddingRight="@dimen/textSize"-->
+                <!--android:paddingStart="0dp"-->
+                <!--android:text="@string/work_missed"-->
+                <!--android:textColor="@color/station_name"-->
+                <!--android:textSize="@dimen/textSize" />-->
+            <!--<TextView-->
+                <!--android:id="@+id/tv_fault_wj_number"-->
+                <!--android:layout_weight="0.2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textColor="@color/red"-->
+                <!--android:text=""/>-->
+            <!--</LinearLayout>-->
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:visibility="gone"-->
+                <!--android:background="@color/dividing_line" />-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+            <!--<TextView-->
+                <!--android:id="@+id/tv_fault_yj"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/operating_height"-->
+                <!--android:drawableLeft="@drawable/wjgd"-->
+                <!--android:drawableRight="@drawable/right_arrow"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:paddingEnd="0dp"-->
+                <!--android:paddingLeft="@dimen/titleTextSize"-->
+                <!--android:paddingRight="@dimen/textSize"-->
+                <!--android:paddingStart="0dp"-->
+                <!--android:text="@string/work_picked"-->
+                <!--android:visibility="gone"-->
+                <!--android:textColor="@color/station_name"-->
+                <!--android:textSize="@dimen/textSize" />-->
+
+            <!--</LinearLayout>-->
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:visibility="gone"-->
+                <!--android:background="@color/dividing_line" />-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+            <!--<TextView-->
+                <!--android:id="@+id/tv_fault_zf"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/operating_height"-->
+                <!--android:drawableLeft="@drawable/zzfd"-->
+                <!--android:drawableRight="@drawable/right_arrow"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:paddingEnd="0dp"-->
+                <!--android:paddingLeft="@dimen/titleTextSize"-->
+                <!--android:paddingRight="@dimen/textSize"-->
+                <!--android:paddingStart="0dp"-->
+                <!--android:text="@string/work_ison"-->
+                <!--android:visibility="gone"-->
+                <!--android:textColor="@color/station_name"-->
+                <!--android:textSize="@dimen/textSize" />-->
+
+            <!--</LinearLayout>-->
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:visibility="gone"-->
+                <!--android:background="@color/dividing_line" />-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
+            <!--<TextView-->
+                <!--android:id="@+id/tv_fault_yw"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/operating_height"-->
+                <!--android:drawableLeft="@drawable/ywcgd"-->
+                <!--android:drawableRight="@drawable/right_arrow"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:paddingEnd="0dp"-->
+                <!--android:paddingLeft="@dimen/titleTextSize"-->
+                <!--android:paddingRight="@dimen/textSize"-->
+                <!--android:paddingStart="0dp"-->
+                <!--android:text="@string/work_carry"-->
+                <!--android:visibility="gone"-->
+                <!--android:textColor="@color/station_name"-->
+                <!--android:textSize="@dimen/textSize" />-->
+
+            <!--</LinearLayout>-->
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="@color/dividing_line" />-->
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

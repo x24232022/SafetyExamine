@@ -1,0 +1,36 @@
+AvicSearchButton和SearchViewActivity用法
+
+现在页面加入
+<com.avicsafety.lib.CustomView.AvicSearchButton 
+        android:id="@+id/button_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+        
+activity中加入
+@ViewInject(R.id.button_search)
+private AvicSearchButton button_search;
+
+并且加入button_search的onclick事件
+button_search.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent(oThis, SearchViewActivity.class);//打开搜索页面
+				intent.putExtra("areaDbpath", "trouble_check");// 用于设置数据库的路径（可选）
+				intent.putExtra("activityName","name");//activityName
+				intent.putExtra("creator","creator");//当前登陆人
+				startActivityForResult(intent, 1000);
+			}
+		});
+再加入返回方法
+@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO 自动生成的方法存根
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == 1000 && resultCode == RESULT_OK) {
+			//编写得到搜索key后的操作
+			String key = data.getStringExtra("key");
+		}
+
+	}

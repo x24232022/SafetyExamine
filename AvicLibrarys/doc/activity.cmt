@@ -1,0 +1,182 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".java" #>
+<#
+	TableHost host = (TableHost)(Host);
+	host.Fieldlist.Sort(CodeCommon.CompareByintOrder);
+	string[] keys = CodeCommon.GetInParameter(host.Keys,true).Split(' ');
+	string myname = getStringName(host.GetModelClass(host.TableName).Replace("t_",""));
+    string key_type = keys[0];
+    string key_name = keys[1];
+
+    if(key_type=="string")
+    	key_type = "String";
+    if(key_type=="float"||key_type=="double")
+    	key_type = "double";
+    if(key_type=="bool")
+    	key_type = "int";
+
+    int requestCode = 8000;
+#>
+package com.avicsafety.security;
+
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+import android.view.Menu;
+import android.view.MenuItem;
+
+import com.avicsafety.lib.CustomView.AvicInputActivity;
+import com.avicsafety.lib.CustomView.AvicInputActivity.TYPE;
+import com.avicsafety.lib.CustomView.AvicTextView;
+import com.avicsafety.lib.tools.tools;
+import com.avicsafety.model.M_<#= myname#>;
+
+@ContentView(R.layout.activity_<#=myname#>)
+public class <#=myname#> extends BaseActivity implements OnClickListener {
+
+	private <#=myname#>Manager <#=myname#>Manager;
+	private String <#=key_name#>;
+
+	protected void InitializeComponent(){}
+	protected void InitializeData(){
+		<#=myname#>Manager = new <#=myname#>Manager();
+		guid = getIntent().getStringExtra("guid");
+		setData();
+	}
+	protected void InitializeEvent(){
+<# foreach (ColumnInfo c in host.Fieldlist)
+{ #>
+        atv_<#= c.ColumnName.ToString()#>.setOnClickListener(this);
+<#}#>
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		<# foreach (ColumnInfo c in host.Fieldlist)
+		{ #>
+        	case R.id.atv_<#= c.ColumnName.ToString()#>:
+	        {
+	        	Intent intent = new Intent(this, AvicInputActivity.class);
+	        	Bundle bundle = new Bundle();
+	        	bundle.putString("title", atv_<#= c.ColumnName.ToString()#>.getLable());
+	        	bundle.putString("value", atv_<#= c.ColumnName.ToString()#>.getValue());
+	        	bundle.putInt("type", TYPE.<#= c.TypeName=="text" ? "STRING" : "" #><#= c.TypeName=="integer" ? "INTEGER" : "" #><#= c.TypeName=="real" ? "DOUBLE" : "" #>);
+	        	bundle.putString("help", "");
+	        	bundle.putString("min", "0");
+	        	bundle.putString("max", "0");
+	        	intent.putExtras(bundle);
+	        	startActivityForResult(intent,  <#=requestCode#>);
+	        	break;
+	        }
+	        <#requestCode++;}#>
+		}
+	}
+
+	<# requestCode=8000;#>
+
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+        <# foreach (ColumnInfo c in host.Fieldlist)
+		{ #>
+case <#= requestCode#>:
+	        {
+		        	if(resultCode==RESULT_OK){
+		        		atv_<#= c.ColumnName.ToString()#>.setText(data.getStringExtra("value"));
+		        	}
+		            break;
+	        }
+	        <#requestCode++;}#>
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	protected void setData(){
+		M_<#= myname#> model;
+		if(<#= key_name#>==null||<#= key_name#>.length()==0){
+			model = new M_<#= myname#>();
+		}else{
+			model = M_<#= myname#>Manager.getModel(<#= key_name#>);
+			<# foreach (ColumnInfo c in host.Fieldlist){ #>
+		    atv_<#= c.ColumnName.ToString()#>.setText(model.get<#= c.ColumnName.ToString().Substring(0,1).ToUpper()#><#= c.ColumnName.ToString().Substring(1)#>());
+			<#}#>
+		}
+
+
+		}
+
+	private boolean validate() {
+	<# foreach (ColumnInfo c in host.Fieldlist){#>
+		if(StringUtils.isEmpty(atv_<#= c.ColumnName.ToString()#>.getValue())){
+			Toast.makeText(oThis, atv_<#= c.ColumnName.ToString()#>.getLable()+"必须填写!", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+	<#}#>
+		return true;
+	}
+
+	protected void saveData(){
+		M_<#= myname#> model = new M_<#= myname#>();
+	<# foreach (ColumnInfo c in host.Fieldlist)
+	{ #>
+			<# if(c.TypeName=="text") {#>
+	        model.set<#= c.ColumnName.ToString().Substring(0,1).ToUpper()#><#= c.ColumnName.ToString().Substring(1)#>(atv_<#= c.ColumnName.ToString()#>.getValue());
+	        <#}else{#>
+	        model.set<#= c.ColumnName.ToString().Substring(0,1).ToUpper()#><#= c.ColumnName.ToString().Substring(1)#>(Integer.valueOf(atv_<#= c.ColumnName.ToString()#>.getValue()));
+	        <#}#>
+	<#}#>
+		<#= myname#>Manager.update(model);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.<#=myname#>, menu);
+		return true;
+	}
+
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.action_save:
+    		if(validate()){
+				saveData();
+				Toast.makeText(oThis, "添加成功", Toast.LENGTH_SHORT).show();
+				finish();
+			}
+        	break;
+        }
+        return super.onOptionsItemSelected(item);
+	}
+
+	<# foreach (ColumnInfo c in host.Fieldlist)
+	{ #>
+	@ViewInject(R.id.atv_<#= c.ColumnName.ToString()#>)
+	private AvicTextView atv_<#= c.ColumnName.ToString()#>;
+	<#}#>
+}
+
+<#+
+
+private string getStringName(string str){
+	string str2 = "";
+	for (int i = 0; i < str.Length; i++) {
+        string temp =  str.Substring(i, 1);
+        if (temp == "_") {
+            temp = str.Substring(i+1, 1).ToUpper();
+            i++;
+        }
+        if(i==0){
+        	temp = temp.ToUpper();
+        }
+        str2 += temp;
+   	}
+   	return str2;
+}
+
+#>

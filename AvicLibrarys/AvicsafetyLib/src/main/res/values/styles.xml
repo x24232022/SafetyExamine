@@ -1,0 +1,88 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <style name="StyledIndicators" parent="@android:style/Theme.Light">
+        <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
+    </style>
+
+    <style name="CustomTabPageIndicator" parent="Widget.TabPageIndicator">
+        <item name="android:background">@drawable/tab_indicator</item>
+        <item name="android:textAppearance">@style/CustomTabPageIndicator.Text</item>
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:paddingLeft">8.0dip</item>
+        <item name="android:paddingRight">8.0dip</item>
+        <item name="android:fadingEdge">horizontal</item>
+        <item name="android:fadingEdgeLength">8.0dip</item>
+        <item name="android:minWidth">70.0dip</item>
+    </style>
+    <style name="CustomTabPageIndicator.Text" parent="android:TextAppearance.Medium">
+        <item name="android:typeface">monospace</item>
+        <item name="android:textColor">@drawable/selector_tabtext</item>
+    </style>
+    
+    	<style name="MyActionBarTheme" parent="android:Theme.Holo.Light">
+
+        <!-- API 14 theme customizations can go here. -->
+        <item name="android:actionBarStyle">@style/my_actionbar_style</item> 
+        <item name="android:actionMenuTextColor">#FFFFFF</item>
+        <item name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
+        <item name="android:actionOverflowButtonStyle">@style/MyOverFlow</item> 
+        <item name="android:homeAsUpIndicator">@drawable/ic_action_back</item>
+    </style>
+    
+    	<style name="my_actionbar_style" parent="android:Widget.ActionBar" >  
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:titleTextStyle">@style/MenuTextStyle</item>
+        <item name="android:itemBackground">#06a0e9</item>
+    </style>
+    
+	<style name="MenuTextStyle">
+	    <item name="android:textColor">@android:color/white</item>
+	    <item name="android:textSize">18sp</item>
+	</style>
+	
+	<style name="MyOverFlow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+		<item name="android:src">@drawable/ic_action_more</item>
+	</style>
+
+	<style name="CustomCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">  
+	    <item name="android:button">@drawable/checkbox_selector</item>  
+	</style>
+	
+	<style name="CustomDialog" parent="@android:style/Theme.Holo.Light.Dialog">
+         <item name="android:windowFrame">@null</item>  //Dialog的windowFrame框为无
+         <item name="android:windowIsFloating">true</item>  //是否浮现在activity之上
+         <item name="android:windowIsTranslucent">true</item> //是否半透明
+         <item name="android:windowNoTitle">false</item>  //是否显示title
+         <item name="android:background">@android:color/transparent</item>  //设置dialog的背景
+         <item name="android:windowBackground">@android:color/transparent</item>
+          <item name="android:backgroundDimAmount">0.5</item>  //就是用来控制灰度的值，当为1时，界面除了我们的dialog内容是高亮显示的，dialog以外的区域是黑色的，完全看不到其他内容，系统的默认值是0.5
+         <item name="android:backgroundDimEnabled">true</item>
+     </style>
+    <!--Dialog 的相关属性属性-->
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>

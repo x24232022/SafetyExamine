@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.avicsafety.ShenYangTowerComService">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.tencent.mm.location.permission.SEND_VIEW"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
+    <uses-permission android:name="android.permission.WRITE_APP_BADGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.tencent.mm.location.permission.SEND_VIEW"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
+    <uses-permission android:name="android.permission.WRITE_APP_BADGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- 百度地图API所需权限 -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 访问网络，网络定位需要上网 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- 百度地图API所需权限 -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <!-- 来电消音 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <!-- 摄影机 -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <!-- 【必须】 信鸽SDK所需权限 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- 【常用】 信鸽SDK所需权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <!-- 【可选】 信鸽SDK所需权限 -->
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BATTERY_STATS"/>
+
+    <application
+        android:name=".activity.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ll1"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 【必须】 信鸽receiver广播接收 -->
+        <receiver
+            android:name="com.tencent.android.tpush.XGPushReceiver"
+            android:process=":xg_service_v3">
+            <intent-filter android:priority="0x7fffffff">
+
+                <!-- 【必须】 信鸽SDK的内部广播 -->
+                <action android:name="com.tencent.android.tpush.action.SDK"/>
+                <action android:name="com.tencent.android.tpush.action.INTERNAL_PUSH_MESSAGE"/>
+                <!-- 【必须】 系统广播：开屏和网络切换 -->
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <!-- 【可选】 一些常用的系统广播，增强信鸽service的复活机会，请根据需要选择。当然，你也可以添加APP自定义的一些广播让启动service -->
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED"/>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- 【必须】 提高service的存活率 -->
+        <service
+            android:name="com.tencent.android.tpush.rpc.XGRemoteService"
+            android:exported="true">
+            <intent-filter>
+
+                <!-- 【必须】 请修改为当前APP包名 .PUSH_ACTION, 如demo的包名为：com.qq.xgdemo -->
+                <action android:name="com.avicsafety.safety_examine"/>
+            </intent-filter>
+        </service>
+
+        <!-- 【必须】 【注意】authorities修改为 包名.AUTH_XGPUSH, 如demo的包名为：com.qq.xgdemo -->
+        <provider
+            android:name="com.tencent.android.tpush.XGPushProvider"
+            android:authorities="com.avicsafety.safety_examine.AUTH_XGPUSH"
+            android:exported="true"/>
+
+        <!-- 【必须】 【注意】authorities修改为 包名.TPUSH_PROVIDER, 如demo的包名为：com.qq.xgdemo -->
+        <provider
+            android:name="com.tencent.android.tpush.SettingsContentProvider"
+            android:authorities="com.avicsafety.safety_examine.TPUSH_PROVIDER"
+            android:exported="false"/>
+
+        <!-- 【必须】 【注意】authorities修改为 包名.TENCENT.MID.V3, 如demo的包名为：com.qq.xgdemo -->
+        <provider
+            android:name="com.tencent.mid.api.MidProvider"
+            android:authorities="com.avicsafety.safety_examine.TENCENT.MID.V3"
+            android:exported="true"/>
+
+        <!-- 【必须】 请将YOUR_ACCESS_ID修改为APP的AccessId，“21”开头的10位数字，中间没空格 -->
+        <meta-data
+            android:name="XG_V2_ACCESS_ID"
+            android:value="2100269107"/>
+        <!-- 【必须】 请将YOUR_ACCESS_KEY修改为APP的AccessKey，“A”开头的12位字符串，中间没空格 -->
+        <meta-data
+            android:name="XG_V2_ACCESS_KEY"
+            android:value="ATE1DLZ8933R"/>
+
+        <!-- 【必须】 信鸽service -->
+        <service
+            android:name="com.tencent.android.tpush.service.XGPushServiceV3"
+            android:exported="true"
+            android:persistent="true"
+            android:process=":xg_service_v3"/>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.avicsafety.ShenYangTowerComService"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="fXmvNMHF2V2O91G476Yw2puqfCQrLolX"/>
+        <!-- <meta-data -->
+        <!-- android:name="BaiduMobAd_STAT_ID" -->
+        <!-- android:value="48ae76de3f" /> -->
+
+
+        <!-- &lt;!&ndash; 我的&ndash;&gt; -->
+        <!-- <meta-data -->
+        <!-- android:name="com.baidu.lbsapi.API_KEY" -->
+        <!-- android:value="vs6GCPZwb87ykuGInYTxy9WKTZauVZjA" />       //key:开发者申请的Key -->
+
+        <meta-data
+            android:name="AppUpdateUrl"
+            android:value="http://www.avicsafety.com/app_update.aspx?type=21"/>
+        <meta-data
+            android:name="TencentMapSDK"
+            android:value="*"/>
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:persistent="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- 所有控件库里的Activity START -->
+        <activity
+            android:name="com.avicsafety.lib.CustomView.AvicInputActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.avicsafety.lib.PhotoManager.PhotoDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.avicsafety.lib.ListViewManager.SingleChoosePageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyActionBarTheme"/>
+        <activity
+            android:name="com.avicsafety.lib.ListViewManager.MultiteChoosePageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyActionBarTheme"/>
+        <activity
+            android:name="com.avicsafety.lib.CustomView.AvicInputReadOnlyActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.avicsafety.lib.video.VideoActivity"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name="com.avicsafety.lib.LocManager.LocationActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.avicsafety.lib.areaselector.SelectPageActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 所有控件库里的Activity END -->
+        <activity android:name=".activity.TomorrowActivity"
+                  android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.ChangeOneActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.TowerMainActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.RWList0Activity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.RWList1Activity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.GDShowAndDealWithNoFildActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.StartCodeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.GDDealWithOneFileActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.UserListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.PhotoActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.GDDealWithMultiFildsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".photoUtils.PhotoListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".photoUtils.PhotoDetailActivity"
+            android:screenOrientation="portrait"/>
+        <!-- <activity -->
+        <!-- android:name=".activity.ServerConfigActivity" -->
+        <!-- android:screenOrientation="portrait" /> -->
+
+
+        <!-- 移动 -->
+        <activity
+            android:name=".activity.FileScActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".yd.activity.MainActiitys"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".yd.activity.RWList0Activity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".yd.activity.RWList1Activity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".yd.activity.GDShowAndDealWithNoFildActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".yd.activity.GDDealWithOneFileActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".yd.activity.UserListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".yd.activity.GDDealWithMultiFildsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".yd.activity.ProcessedydActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".yd.activity.GDGTDZActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".yd.activity.PhotoYdActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".yd.activity.PhotoYdClActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 电信 -->
+        <activity
+            android:name=".dx.activity.MainActiity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".dx.activity.ProcessedActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".dx.activity.RWList0Activity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".dx.activity.RWList1Activity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".dx.activity.GDShowAndDealWithNoFildActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".dx.activity.UserListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".dx.activity.GDDealWithOneFileActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".dx.activity.GDDealWithMultiFildsActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 联通 -->
+        <activity
+            android:name=".lt.activity.GDGTDZActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".lt.activity.GDShowAndDealWithNoFildActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".lt.activity.GDDealWithMultiFildsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".lt.activity.GDDealWithOneFileActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".lt.activity.MainActivityss"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".lt.activity.RWList0Activity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".lt.activity.RWList1Activity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".lt.activity.UserListActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 计划发电 -->
+        <activity
+            android:name=".activity.PlanActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.PlanListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.PlanDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.PowerWorkerTransfer"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.PlanFaultListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.BNDemoGuideActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.RouteActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 新发电 -->
+
+        <activity
+            android:name=".xfd.PlanActivityXin"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".xfd.PlanListActivityXin"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".xfd.PlanXqActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".xfd.PhotoActivityXin"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".xfd.PhotoActivityDzXin"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".xfd.InquireActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".xfd.PlanCxActivity"
+            android:screenOrientation="portrait"/>
+
+        <service
+            android:name=".PowerManager.push.service.PositionService"
+            android:enabled="true"
+            android:label="PositionService">
+            <intent-filter>
+                <action android:name="com.avicsafety.ShenYangTowerComService.PowerManager.push.service.PositionService"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".PowerManager.push.NotificationService"
+            android:enabled="true"
+            android:label="NotificationService">
+            <intent-filter>
+                <action android:name="com.avicsafety.ShenYangTowerComService.PowerManager.push.NotificationService"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:permission="android.permission.BAIDU_LOCATION_SERVICE"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.6"/>
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

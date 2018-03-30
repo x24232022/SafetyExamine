@@ -1,0 +1,26 @@
+使用方法
+
+在布局文件直接调用该控件
+********************************************************************************************
+注意  在使用该控件时一定要在setContentView();方法前给控件赋值，赋值调取静态方法setTitleText()方法
+如：
+String [] texst = {"全沈阳","租金"};
+CustomTextView.setTitleText(texst);
+setContentView();
+********************************************************************************************
+点击事件：
+调用该类的静态方法setIntercept，然后在方法里进行相应的事件操作
+
+CustomTextView.setOnClickIntercept(new onClickIntercept() {
+            @Override
+            public void onClickLeft(SelectButton c) {
+                Toast.makeText(MainActivity.this,"0",Toast.LENGTH_SHORT).show();
+                c.setText("000");
+            }
+
+            @Override
+            public void onClickRight(SelectButton c) {
+                Toast.makeText(MainActivity.this,"1",Toast.LENGTH_SHORT).show();
+                c.setText("111");
+            }
+        });

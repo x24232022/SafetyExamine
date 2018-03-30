@@ -1,0 +1,20 @@
+1.		ExpandTree et;
+
+
+
+		et = new ExpandTree(this, this);
+		et.setChooseMode(ChooseMode.SINGLE);
+		et.b(ll_choose_industry_container, "-1", "0", "", "");
+		
+			@Override
+		public List<ITreeCollection> getList(String parent, String leaf,
+			String param, String text) {
+		// TODO Auto-generated method stub
+		IndustryManager manager = new IndustryManager();
+		List<M_industry_type> data = manager.getList(WhereBuilder.b("parentId", "=", parent).and("fltype","=","2"), "sortid");
+		List<ITreeCollection> list = new ArrayList<>();;
+		for(M_industry_type industry : data){
+			list.add(industry);
+		}
+		return list;
+	}
