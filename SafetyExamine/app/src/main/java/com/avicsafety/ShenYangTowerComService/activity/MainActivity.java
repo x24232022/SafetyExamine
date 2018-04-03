@@ -81,6 +81,13 @@ public class MainActivity extends BaseActivity {
 
             permissionList.add(Manifest.permission.ACCESS_NETWORK_STATE);
         }
+        //相机权限
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+
+            permissionList.add(Manifest.permission.CAMERA);
+        }
+
         //获取WIFI权限
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED) {

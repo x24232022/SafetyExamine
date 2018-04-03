@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.avicsafety.ShenYangTowerComService.R;
 import com.avicsafety.ShenYangTowerComService.Utils.MyProgressDialog;
+import com.avicsafety.ShenYangTowerComService.Utils.SpUtils;
 import com.avicsafety.ShenYangTowerComService.activity.BaseActivity;
 import com.avicsafety.ShenYangTowerComService.activity.RouteActivity;
 import com.avicsafety.ShenYangTowerComService.model.MUser;
@@ -33,9 +34,14 @@ import org.xutils.x;
 
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.TreeSet;
 
 /**
  * Created by 刘畅 on 2017/12/27.
+ * 工单详情界面
  */
 @ContentView(R.layout.n_activity_gdxq_xfd)
 public class PlanXqActivity extends BaseActivity implements View.OnClickListener {
@@ -63,6 +69,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
     private MUser userAccoutn;
     private String mUrl;
     private String mBlackoutdate;
+    private Timer mTimer;
 
     public List<Rwlb.ResponseBean> getM() {
         return rwlb;
@@ -489,17 +496,17 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_cf:
+            case R.id.btn_cf://出发状态
                 progressDialog = new MyProgressDialog(oThis, "提交中..");
                 GetXinFdPlanRwslCfData(oThis, userAccoutn.getUserName(), 4, id);
                 break;
-            case R.id.btn_dzfd:
+            case R.id.btn_dzfd://发电状态
                 Intent intent = new Intent(this, PhotoActivityDzXin.class)
                         .putExtra("ticketid", id);
                 startActivity(intent);
                 finish();
                 break;
-            case R.id.btn_fdjs:
+            case R.id.btn_fdjs://结束状态
                 progressDialog = new MyProgressDialog(oThis, "提交中..");
                 GetXinFdPlanRwslFdjsData(oThis, userAccoutn.getUserName(), 6, id);
                 break;
@@ -554,7 +561,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         });
     }
 
-    public void GetXinFdPlanRwslFdjsData(final Context context, final String userid, int type, final String ticketid) {
+    public void GetXinFdPlanRwslFdjsData(final Context context, final String userid, final int type, final String ticketid) {
         RequestParams params = new RequestParams(Constants.BASE_URL);
         params.setConnectTimeout(60000);
         params.addParameter("userid", userid);
@@ -580,6 +587,10 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
                             //MyApplication.getInstance().exit();
                         } else if (res.get("Msg").equals("fail")) {
                             progressDialog.dismiss();
+                            inputDataSQL(userid,ticketid,type);
+                            if(mTimer==null){
+                                timer();
+                            }
                             AlertDialog.Builder builder = new AlertDialog.Builder(context);
                             builder.setTitle("工单状态异常");
                             final String[] re = new String[]{"异常发电", "发电失败"};
@@ -618,6 +629,10 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
                 L.v("发电结束失败log     : ", ex.getMessage().toString());
+                if(mTimer==null){
+                    timer();
+                }
+
 
             }
 
@@ -632,8 +647,16 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
             }
         });
     }
+    //向本地写入上传出错的工单信息
+    private void inputDataSQL(String userid,String ticketid,int type){
+        //将工单数据写入手机
+        SpUtils.getSputils().putStringData(PlanXqActivity.this,"userid",userid);
+        SpUtils.getSputils().putStringData(PlanXqActivity.this,"ticketid",ticketid);
+        SpUtils.getSputils().putStringData(PlanXqActivity.this,"type",String.valueOf(type));
 
-    public void GetXinFdPlanRwslSbData(final Context context, String userid, int type, String ticketid, String status) {
+    }
+
+    private void GetXinFdPlanRwslSbData(final Context context, String userid, int type, String ticketid, String status) {
         RequestParams params = new RequestParams(Constants.BASE_URL);
         params.setConnectTimeout(60000);
         params.addParameter("userid", userid);
@@ -670,6 +693,61 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
             }
         });
     }
+    //定时器开启网络重连
+    private void timer(){
+        mTimer = new Timer();
+        TimerTask task=new TimerTask() {
+            @Override
+            public void run() {
+               String userid= SpUtils.getSputils().getStringData(PlanXqActivity.this,"userid");
+               String ticketid= SpUtils.getSputils().getStringData(PlanXqActivity.this,"ticketid");
+               int type=Integer.getInteger( SpUtils.getSputils().getStringData(PlanXqActivity.this,"type")) ;
+                RequestParams params = new RequestParams(Constants.BASE_URL);
+                params.setConnectTimeout(60000);
+                params.addParameter("userid", userid);
+                params.addParameter("type", type);
+                params.addParameter("ticketid", ticketid);
+                x.http().post(params, new Callback.CommonCallback<String>() {
+                    @Override
+                    public void onSuccess(String result) {
+                        JSONObject res;
+                        try {
+                            res = new JSONObject(result);
+                            if (res.get("Code").equals(200)) {
+                                SpUtils.getSputils().deleteData(PlanXqActivity.this,"userid");
+                                SpUtils.getSputils().deleteData(PlanXqActivity.this,"ticketid");
+                                SpUtils.getSputils().deleteData(PlanXqActivity.this,"type");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable ex, boolean isOnCallback) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(CancelledException cex) {
+
+                    }
+
+                    @Override
+                    public void onFinished() {
+
+                    }
+                });
+
+            }
+        };
+        if(/*是否有数据*/
+                SpUtils.getSputils().getStringSetData(this,"Data")!=null){
+           mTimer.schedule(task,0,60000);
+        }
+
+
+    }
 
 
     @Override
@@ -685,4 +763,13 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mTimer!=null){
+            mTimer.cancel();
+        }
+
+        this.finish();
+    }
 }
