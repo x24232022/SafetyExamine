@@ -1,11 +1,14 @@
 package com.avicsafety.ShenYangTowerComService.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
@@ -36,21 +39,22 @@ import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
+
 /**
  * 登录页面
  */
 
 
 @ContentView(R.layout.activity_login)
-public class LoginActivity extends BaseActivity  implements View.OnClickListener, View.OnFocusChangeListener{
-    private String username;
-    private String password;
-//	private String userNamee = "fufanglin";
+public class LoginActivity extends BaseActivity implements View.OnClickListener, View.OnFocusChangeListener {
+	private String username;
+	private String password;
+	//	private String userNamee = "fufanglin";
 	private String userPwd = "a123456";
 	private TelephonyManager imeid;
 	private String imei;
 
-    private LoginManager loginManager;
+	private LoginManager loginManager;
 
 	protected void init() {
 		InitializeData();
@@ -62,6 +66,16 @@ public class LoginActivity extends BaseActivity  implements View.OnClickListener
 	protected void InitializeData() {
 		super.InitializeData();
 		imeid = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+			// TODO: Consider calling
+			//    ActivityCompat#requestPermissions
+			// here to request the missing permissions, and then overriding
+			//   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+			//                                          int[] grantResults)
+			// to handle the case where the user grants the permission. See the documentation
+			// for ActivityCompat#requestPermissions for more details.
+			return;
+		}
 		imei = imeid.getDeviceId();
 //		imeid = imei;
 		loginManager = new LoginManager();

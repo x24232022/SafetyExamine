@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.avicsafety.ShenYangTowerComService.R;
+import com.avicsafety.ShenYangTowerComService.xfd.PlanActivityXin;
 
 
 public class PhotoDetailActivity extends Activity {
@@ -24,6 +25,7 @@ public class PhotoDetailActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+
 				finish();
 			}});
 		

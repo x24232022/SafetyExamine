@@ -31,9 +31,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//import com.tencent.android.tpush.XGIOperateCallback;
-//import com.tencent.android.tpush.XGPushConfig;
-//import com.tencent.android.tpush.XGPushManager;
 
 /**
  * Created by 刘畅 on 2017/6/21.

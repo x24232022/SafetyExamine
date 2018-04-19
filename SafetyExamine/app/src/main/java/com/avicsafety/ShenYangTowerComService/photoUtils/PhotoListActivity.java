@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.avicsafety.ShenYangTowerComService.R;
 import com.avicsafety.ShenYangTowerComService.activity.BaseActivity;
+import com.avicsafety.ShenYangTowerComService.xfd.PlanActivityXin;
 import com.avicsafety.lib.tools.L;
 import com.baidu.location.Address;
 import com.baidu.location.BDLocation;
@@ -53,6 +54,10 @@ import java.util.List;
 import java.util.Random;
 
 import static android.content.ContentValues.TAG;
+
+/**
+ * 图片管理界面
+ */
 
 @ContentView(R.layout.activity_com_avicsafety_photo_photomanager_photo_list_lc)
 public class PhotoListActivity extends BaseActivity {
@@ -121,6 +126,8 @@ public class PhotoListActivity extends BaseActivity {
 						setResult(RESULT_OK, intent);
 					}
 					Log.v("tag", "getSelectedImage is "+photoAdapter.getSelectedImage().size());
+
+
 					finish();
 				}
 				break;

@@ -86,9 +86,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
     private ItemTouchHelper mItemTouchHelper;
     private EditText etDate;
     private EditText etTime;
-    private Dialog datePickerDialog;
-    private DatePicker datePicker;
-    private TimePicker timePicker;
+
     private int mYear;
     private int mMonth;
     private int mDay;

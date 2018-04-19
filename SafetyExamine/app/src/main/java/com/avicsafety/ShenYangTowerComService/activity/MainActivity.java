@@ -75,12 +75,25 @@ public class MainActivity extends BaseActivity {
             permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         }
+        //获取GPS
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+
+        }
         //获取当前网络状态权限
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
 
             permissionList.add(Manifest.permission.ACCESS_NETWORK_STATE);
         }
+        //相机权限
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+
+            permissionList.add(Manifest.permission.CAMERA);
+        }
+
         //获取WIFI权限
         if (ContextCompat.checkSelfPermission(MainActivity.this,
                 Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED) {
@@ -187,15 +200,17 @@ public class MainActivity extends BaseActivity {
                         Intent intent = new Intent();
                         intent.setClass(oThis, LoginActivity.class);
                         oThis.startActivity(intent);
-                        oThis.finish();
+
+
                     } else {
                         InitializeActionBar();
                         InitializeComponent();
                         InitializeData();
                         InitializeEvent();
                     }
-                    break;
+
                 }
+                break;
                 case 2: {
                     //自动更新代码调整 2017-5-28 shili
                     final UpdateManager manager = new UpdateManager(oThis);
@@ -206,6 +221,7 @@ public class MainActivity extends BaseActivity {
                     manager.checkNewVersion(new OnNetworkAccessToMessageListener() {
                         @Override
                         public void onSuccess(String message) {
+
 //                   //有新版本 是否更新
                             AlertDialog.Builder builder = new AlertDialog.Builder(oThis);
                             builder.setTitle("版本更新");
@@ -227,28 +243,28 @@ public class MainActivity extends BaseActivity {
                             });
                             Dialog noticeDialog = builder.create();
                             noticeDialog.show();
+
                         }
 
                         @Override
                         public void onFail(String error) {
                             ToastUtil.showToast(oThis, error);
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        Thread.sleep(3000);
-                                        myHandler.sendEmptyMessage(1);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            }).start();
+                            try {
+                                Thread.sleep(3000);
+                                myHandler.sendEmptyMessage(1);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
                     });
-                    break;
+
+
                 }
+                break;
+                default:
+                    break;
             }
-            super.handleMessage(msg);
+
         }
     };
 

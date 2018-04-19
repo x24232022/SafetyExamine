@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.avicsafety.ShenYangTowerComService.R;
+import com.avicsafety.ShenYangTowerComService.activity.TowerMainActivity;
 import com.avicsafety.ShenYangTowerComService.xfd.Rwlb;
 
 import java.util.List;
@@ -62,8 +63,11 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
        public LinearLayout ll_item,ll_hidden;
        public MyViewHolder(final View itemView) {
            super(itemView);
-           ll_item= (LinearLayout) itemView.findViewById(R.id.n_gd_list_xfd_item);
-           ll_hidden= (LinearLayout) itemView.findViewById(R.id.ll_hidden);
+           if(context.getClass()!= TowerMainActivity.class){
+               ll_item= (LinearLayout) itemView.findViewById(R.id.n_gd_list_xfd_item);
+               ll_hidden= (LinearLayout) itemView.findViewById(R.id.ll_hidden);
+           }
+
            tv_number= (TextView) itemView.findViewById(R.id.tv_number);
            tv_title= (TextView) itemView.findViewById(R.id.tv_theme1_gd);
 
