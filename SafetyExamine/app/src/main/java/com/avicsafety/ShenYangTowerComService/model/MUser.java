@@ -11,6 +11,25 @@ public class MUser implements Serializable {
 	private String departmentId;
 	private String mobile;
 	private String locationId;
+	private String userName;
+	private String account;
+	private String isPower;
+
+	public String getIsPower() {
+		return isPower;
+	}
+
+	public void setIsPower(String isPower) {
+		this.isPower = isPower;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
+	}
 
 	public String getUserName() {
 		return userName;
@@ -20,7 +39,7 @@ public class MUser implements Serializable {
 		this.userName = userName;
 	}
 
-	private String userName;
+
 
 	public String getDepartment() {
 		return department;

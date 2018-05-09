@@ -4,9 +4,9 @@ package com.avicsafety.ShenYangTowerComService.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
@@ -16,6 +16,7 @@ import com.avicsafety.ShenYangTowerComService.adapter.PlanAdapter;
 import com.avicsafety.ShenYangTowerComService.model.MUser;
 import com.avicsafety.ShenYangTowerComService.view.DividerItemDecoration;
 import com.avicsafety.ShenYangTowerComService.view.SwipeRecyclerView;
+import com.avicsafety.ShenYangTowerComService.xfd.Constants;
 import com.avicsafety.ShenYangTowerComService.xfd.PlanXqActivity;
 import com.avicsafety.ShenYangTowerComService.xfd.Rwlb;
 
@@ -32,7 +33,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Created by Administrator on 2018/3/30.
+ * 未来工单列表预览
  */
 @ContentView(R.layout.activity_tomorrow)
 public class TomorrowActivity extends BaseActivity {
@@ -62,10 +63,10 @@ public class TomorrowActivity extends BaseActivity {
     private void initData() {
         userAccoutn =com.avicsafety.ShenYangTowerComService.yd.activity.ydUtil.Constants.getUserInfo(oThis) ;
         mBlackoutdate = new String(mYear + "-" + mMonth + "-" + (mDay + 1));
-        RequestParams params = new RequestParams("http://192.168.1.121:8080/phoneServices/fd/geographicalPositionReceiveServlet?type=10");
+        RequestParams params = new RequestParams(Constants.BASE_URL);
         params.addParameter("userid", userAccoutn.getUserName());
         params.addParameter("blackoutdate", mBlackoutdate);
-        params.addParameter("type", 3);
+        params.addParameter("type", 10);
         params.addParameter("typeinfo", "wjgd");
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
@@ -132,7 +133,7 @@ public class TomorrowActivity extends BaseActivity {
                         putExtra("taskType", vh.getLayoutPosition()).
                         putExtra("activityId","1").
                         putExtra("blackoutdate",mBlackoutdate).
-                        putExtra("url","http://192.168.1.121:8080/phoneServices/fd/geographicalPositionReceiveServlet?type=10"));
+                        putExtra("url",Constants.BASE_URL));
             }
 
             @Override

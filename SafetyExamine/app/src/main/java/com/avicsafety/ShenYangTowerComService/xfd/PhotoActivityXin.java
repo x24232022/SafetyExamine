@@ -254,4 +254,9 @@ public class PhotoActivityXin extends BaseActivity{
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        PhotoActivityXin.this.finish();
+    }
 }

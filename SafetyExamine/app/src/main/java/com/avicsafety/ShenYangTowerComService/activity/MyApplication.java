@@ -17,13 +17,14 @@ import com.tencent.android.tpush.XGIOperateCallback;
 import com.tencent.android.tpush.XGPushConfig;
 import com.tencent.android.tpush.XGPushManager;
 
+import org.litepal.LitePalApplication;
 import org.xutils.x;
 
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 
 
-public class MyApplication extends Application {
+public class MyApplication extends LitePalApplication {
 
 //	public final static double[] X = new double[660 * 450];
 //	public final static double[] Y = new double[660 * 450];

@@ -21,11 +21,13 @@ import com.avicsafety.ShenYangTowerComService.Utils.SpUtils;
 import com.avicsafety.ShenYangTowerComService.activity.BaseActivity;
 import com.avicsafety.ShenYangTowerComService.activity.RouteActivity;
 import com.avicsafety.ShenYangTowerComService.model.MUser;
+import com.avicsafety.ShenYangTowerComService.model.WorkOrderBean;
 import com.avicsafety.lib.tools.L;
 import com.baidu.mapapi.model.LatLng;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.litepal.crud.DataSupport;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ContentView;
@@ -313,56 +315,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
                     tv_value.setText(mTT.get(0).getInetialtime());
                     ll_content.addView(view);
                     break;
-//                case 28:
-//                    tv_name.setText("取消原因");
-//                    tv_value.setText(mTT.getCancelReason());
-//                    ll_content.addView(view);
-//                    break;
-//                case 29:
-//                    tv_name.setText("备注");
-//                    tv_value.setText(mTT.getRemark());
-//                    ll_content.addView(view);
-//                    break;
-//                case 30:
-//                    tv_name.setText("退回原因");
-//                    tv_value.setText(mTT.getBackReason());
-//                    ll_content.addView(view);
-//                    break;
-//                case 31:
-//                    tv_name.setText("审核是否通过");
-//                    tv_value.setText(mTT.getIsPass());
-//                    ll_content.addView(view);
-//                    break;
-//                case 32:
-//                    tv_name.setText("审核意见");
-//                    tv_value.setText(mTT.getAuditContent());
-//                    ll_content.addView(view);
-//                    break;
-//                case 33:
-//                    tv_name.setText("作废原因");
-//                    tv_value.setText(mTT.getAbolishReason());
-//                    ll_content.addView(view);
-//                    break;
-//                case 34:
-//                    tv_name.setText("是否驳回");
-//                    tv_value.setText(mTT.getIsDoubt());
-//                    ll_content.addView(view);
-//                    break;
-//                case 35:
-//                    tv_name.setText("驳回描述");
-//                    tv_value.setText(mTT.getDoubtDesc());
-//                    ll_content.addView(view);
-//                    break;
-//                case 36:
-//                    tv_name.setText("转派意见列表");
-//                    tv_value.setText(mTT.getTurnOpinion());
-//                    ll_content.addView(view);
-//                    break;
-//                case 37:
-//                    tv_name.setText("取消原因");
-//                    tv_value.setText(mTT.getCancelReason());
-//                    ll_content.addView(view);
-//                    break;
+
                 default:
                     break;
 
@@ -386,49 +339,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         if (buttonKz.equals("已发电")) {
             btn_fdjs.setVisibility(View.VISIBLE);
         }
-//        if (mTT.getStatus().equals("处理中") && TextUtils.isEmpty(mTT.getSignDate())) {
-//            // 签收
-//            btn_qs.setVisibility(View.VISIBLE);
-//        }
-//        if (mTT.getStatus().equals("处理中") && mTT.getSignDate() != null
-//                ) {
-//            // 转派
-//            btn_zp.setVisibility(View.VISIBLE);
-//        }
-//
-//        if (mTT.getStatus().equals("处理中")) {
-//            // 处理，退回，验证，到站
-//            btn_cl.setVisibility(View.GONE);
-//            btn_th.setVisibility(View.VISIBLE);
-//            btn_zp.setVisibility(View.VISIBLE);
-//            btn_ks.setVisibility(View.VISIBLE);
-//        }
-//        if(mTT.getStartCode() != null){
-//            btn_cl.setVisibility(View.VISIBLE);
-//            btn_ks.setVisibility(View.GONE);
-//        }
-//        switch (taskType) {
-//            case 0:
-//                break;
-//            case 1:
-//                break;
-//            case 2:
-//                break;
-//            case 9:
-//                btn_qs.setVisibility(View.GONE);
-//                btn_pf.setVisibility(View.GONE);
-//                btn_cl.setVisibility(View.GONE);
-//                btn_ccl.setVisibility(View.GONE);
-//                btn_bh.setVisibility(View.GONE);
-//                btn_zp.setVisibility(View.GONE);
-//                btn_th.setVisibility(View.GONE);
-//                btn_gb.setVisibility(View.GONE);
-//                btn_yz.setVisibility(View.GONE);
-//                btn_dd.setVisibility(View.GONE);
-//                ll_btns.setVisibility(View.GONE);
-//                btn_ks.setVisibility(View.GONE);
-//                break;
-//        }
+
 
     }
 
@@ -512,7 +423,104 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
                 break;
         }
     }
+    public void GetXinFdPlanRwslFdjsData(final Context context, final String userid, final int type, final String ticketid) {
+        RequestParams params = new RequestParams(Constants.BASE_URL);
+        params.setConnectTimeout(60000);
+        params.addParameter("userid", userid);
+        params.addParameter("type", type);
+        params.addParameter("ticketid", ticketid);
+        x.http().post(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                JSONObject res;
+                String jMsg = null;
+                try {
+                    res = new JSONObject(result);
+                    if ((res.get("Code").equals(200))&&(res.get("Msg").equals("Success"))) {
 
+                            // GDShowAndDealWithNoFildActivity
+                            Toast.makeText(context, "操作成功", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                            Intent intent = new Intent(oThis, PhotoActivityXin.class);
+                            intent.putExtra("ticketid", id);
+                            intent.putExtra("status", "成功");
+                            startActivity(intent);
+                            finish();
+
+                    } else {
+                        Toast.makeText(context, "工单异常", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        builder.setTitle("工单状态异常");
+                        final String[] re = new String[]{"异常发电", "发电失败"};
+                        builder.setItems(re, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (re[which].equals("异常发电")) {
+                                    Intent intent = new Intent(oThis, PhotoActivityXin.class);
+                                    intent.putExtra("ticketid", id);
+                                    intent.putExtra("status", "异常");
+                                    context.startActivity(intent);
+                                    finish();
+                                } else {
+                                    Intent intent = new Intent(oThis, PhotoActivityXin.class);
+                                    intent.putExtra("ticketid", id);
+                                    intent.putExtra("status", "失败");
+                                    context.startActivity(intent);
+                                }
+                            }
+                        });
+                        builder.show();
+
+                        inputData(userid,ticketid,type);
+                        if(mTimer==null){
+                            timer();
+                        }
+                        ((PlanXqActivity) context).progressDialog
+                                .dismiss();
+                    }
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                L.v("发电结束失败log     : ", ex.getMessage().toString());
+              //  inputDataSQL(userid,ticketid,type);
+
+                inputData(userid,ticketid,type);
+                if(mTimer==null){
+                    timer();
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
+    //向数据库写入数据
+    private void inputData(String userid,String ticketid,int type){
+        WorkOrderBean bean=new WorkOrderBean();
+        bean.setUserid(userid);
+        bean.setTicketid(ticketid);
+        bean.setType(type);
+        if(bean.save()){
+            Toast.makeText(oThis,"存储成功",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(oThis,"存储失败",Toast.LENGTH_SHORT).show();
+        }
+    }
     public void GetXinFdPlanRwslCfData(final Context context, final String userid, int type, final String ticketid) {
         RequestParams params = new RequestParams(Constants.BASE_URL);
         params.setConnectTimeout(60000);
@@ -561,100 +569,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         });
     }
 
-    public void GetXinFdPlanRwslFdjsData(final Context context, final String userid, final int type, final String ticketid) {
-        RequestParams params = new RequestParams(Constants.BASE_URL);
-        params.setConnectTimeout(60000);
-        params.addParameter("userid", userid);
-        params.addParameter("type", type);
-        params.addParameter("ticketid", ticketid);
-        x.http().post(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
-                JSONObject res;
-                String jMsg = null;
-                try {
-                    res = new JSONObject(result);
-                    if (res.get("Code").equals(200)) {
-                        if (res.get("Msg").equals("Success")) {
-                            // GDShowAndDealWithNoFildActivity
-//                            Toast.makeText(context, "操作成功", Toast.LENGTH_SHORT).show();
-                            progressDialog.dismiss();
-                            Intent intent = new Intent(oThis, PhotoActivityXin.class);
-                            intent.putExtra("ticketid", id);
-                            intent.putExtra("status", "成功");
-                            context.startActivity(intent);
-                            finish();
-                            //MyApplication.getInstance().exit();
-                        } else if (res.get("Msg").equals("fail")) {
-                            progressDialog.dismiss();
-                            inputDataSQL(userid,ticketid,type);
-                            if(mTimer==null){
-                                timer();
-                            }
-                            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                            builder.setTitle("工单状态异常");
-                            final String[] re = new String[]{"异常发电", "发电失败"};
-                            builder.setItems(re, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    if (re[which].equals("异常发电")) {
-                                        Intent intent = new Intent(oThis, PhotoActivityXin.class);
-                                        intent.putExtra("ticketid", id);
-                                        intent.putExtra("status", "异常");
-                                        context.startActivity(intent);
-                                        finish();
-                                    } else {
-                                        Intent intent = new Intent(oThis, PhotoActivityXin.class);
-                                        intent.putExtra("ticketid", id);
-                                        intent.putExtra("status", "失败");
-                                        context.startActivity(intent);
-                                    }
-                                }
-                            });
-                            builder.show();
 
-
-                        }
-                    } else {
-                        Toast.makeText(context, "操作失败", Toast.LENGTH_SHORT).show();
-                        ((PlanXqActivity) context).progressDialog
-                                .dismiss();
-                    }
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-                L.v("发电结束失败log     : ", ex.getMessage().toString());
-                if(mTimer==null){
-                    timer();
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-
-            }
-        });
-    }
-    //向本地写入上传出错的工单信息
-    private void inputDataSQL(String userid,String ticketid,int type){
-        //将工单数据写入手机
-        SpUtils.getSputils().putStringData(PlanXqActivity.this,"userid",userid);
-        SpUtils.getSputils().putStringData(PlanXqActivity.this,"ticketid",ticketid);
-        SpUtils.getSputils().putStringData(PlanXqActivity.this,"type",String.valueOf(type));
-
-    }
 
     private void GetXinFdPlanRwslSbData(final Context context, String userid, int type, String ticketid, String status) {
         RequestParams params = new RequestParams(Constants.BASE_URL);
@@ -695,18 +610,17 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
     }
     //定时器开启网络重连
     private void timer(){
-        mTimer = new Timer();
-        TimerTask task=new TimerTask() {
+
+        mTimer=new Timer();
+        mTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-               String userid= SpUtils.getSputils().getStringData(PlanXqActivity.this,"userid");
-               String ticketid= SpUtils.getSputils().getStringData(PlanXqActivity.this,"ticketid");
-               int type=Integer.getInteger( SpUtils.getSputils().getStringData(PlanXqActivity.this,"type")) ;
+                final WorkOrderBean bean= DataSupport.findFirst(WorkOrderBean.class);
                 RequestParams params = new RequestParams(Constants.BASE_URL);
                 params.setConnectTimeout(60000);
-                params.addParameter("userid", userid);
-                params.addParameter("type", type);
-                params.addParameter("ticketid", ticketid);
+                params.addParameter("userid", bean.getUserid());
+                params.addParameter("type", bean.getType());
+                params.addParameter("ticketid", bean.getTicketid());
                 x.http().post(params, new Callback.CommonCallback<String>() {
                     @Override
                     public void onSuccess(String result) {
@@ -714,9 +628,12 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
                         try {
                             res = new JSONObject(result);
                             if (res.get("Code").equals(200)) {
-                                SpUtils.getSputils().deleteData(PlanXqActivity.this,"userid");
-                                SpUtils.getSputils().deleteData(PlanXqActivity.this,"ticketid");
-                                SpUtils.getSputils().deleteData(PlanXqActivity.this,"type");
+                                if(bean.isSaved()){
+                                    bean.delete();
+                                }
+                                if(mTimer!=null){
+                                    mTimer.cancel();
+                                }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -740,11 +657,8 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
                 });
 
             }
-        };
-        if(/*是否有数据*/
-                SpUtils.getSputils().getStringSetData(this,"Data")!=null){
-           mTimer.schedule(task,0,60000);
-        }
+        },0,1000);
+
 
 
     }
@@ -766,10 +680,6 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mTimer!=null){
-            mTimer.cancel();
-        }
 
-        this.finish();
     }
 }

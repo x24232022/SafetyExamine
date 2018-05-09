@@ -628,4 +628,10 @@ public class PlanCxActivity extends BaseActivity implements View.OnClickListener
     private Button btn_dzfd;
     @ViewInject(R.id.btn_fdjs)
     private Button btn_fdjs;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        PlanCxActivity.this.finish();
+    }
 }

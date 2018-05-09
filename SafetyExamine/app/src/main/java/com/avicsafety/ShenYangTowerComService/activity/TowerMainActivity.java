@@ -75,7 +75,6 @@ public class TowerMainActivity extends BaseActivity{
 
         for (int i = 0; i < 1; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
-//            Map<String, Object> map1 = new HashMap<String, Object>();
             map.put("iv_btnImg", iv_btnImg[i]);
             map.put("tv_btnName", tv_btnName[i]);
 
@@ -83,8 +82,7 @@ public class TowerMainActivity extends BaseActivity{
                 map.put("tv_count", m.getTotal());
             } else {
                 map.put("tv_code",code);
-//                map.put("tv_count", "");
-//                map.put("tv_code","");
+
             }
             listItems.add(map);
         }
@@ -109,9 +107,9 @@ public class TowerMainActivity extends BaseActivity{
                         startActivity(new Intent(oThis,RWList0Activity.class));
                         break;
 
-//                    case 1:
-//                        startActivity(new Intent(oThis, PlanActivity.class));
-//                        break;
+                    case 1:
+
+                        break;
 
                     default:
                         break;

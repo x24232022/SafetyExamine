@@ -1,6 +1,5 @@
 package com.avicsafety.ShenYangTowerComService.xfd;
 
-import android.app.Dialog;
 import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,17 +23,16 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.avicsafety.ShenYangTowerComService.R;
 import com.avicsafety.ShenYangTowerComService.Utils.MyProgressDialog;
 import com.avicsafety.ShenYangTowerComService.Utils.OnRecyclerItemClickListener;
 import com.avicsafety.ShenYangTowerComService.activity.BaseActivity;
 import com.avicsafety.ShenYangTowerComService.adapter.PlanAdapter;
 import com.avicsafety.ShenYangTowerComService.model.MUser;
+import com.avicsafety.ShenYangTowerComService.view.DateTimePickerDialog;
 import com.avicsafety.ShenYangTowerComService.view.DividerItemDecoration;
 import com.avicsafety.ShenYangTowerComService.view.SwipeRecyclerView;
 import com.avicsafety.lib.tools.L;
-import com.bigkoo.pickerview.TimePickerView;
 
 
 import org.json.JSONException;
@@ -45,18 +43,16 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
+
 
 /**
  * Created by 刘畅 on 2017/12/26.
  */
 @ContentView(R.layout.n_activity_rwlb1)
-public class PlanListActivityXin extends BaseActivity implements View.OnClickListener, DatePicker.OnDateChangedListener {
+public class PlanListActivityXin extends BaseActivity implements View.OnClickListener {
 
     @ViewInject(R.id.rcv_gdlb)
     private SwipeRecyclerView rcy_gdlb;
@@ -66,46 +62,40 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
     private TextView btn_pro;
     @ViewInject(R.id.btn_next)
     private TextView btn_next;
-
-    @ViewInject(R.id.btn_queding)
-    private Button btn_queding;
-    @ViewInject(R.id.btn_qingchusuoyou)
-    private Button btn_qingchusuoyou;
-
     public MyProgressDialog progressDialog;
     private List<Rwlb.ResponseBean> listItems;
-    private int taskType;
-
     private int nowStart = 0, nextStart;
     private int totalC = 0;// 总条数
-    private String userid = "boot";
     private int listtype = 0;
     private PlanAdapter mAdapter;
     public static MUser userAccoutn;
-    private String gdid;
     private ItemTouchHelper mItemTouchHelper;
     private EditText etDate;
     private EditText etTime;
-
     private int mYear;
     private int mMonth;
     private int mDay;
     private int mHour;
     private int mMinute;
-    private StringBuffer date, time;
-    private DatePicker dp;
+    private String timeMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        listtype = getIntent().getIntExtra("listtype", 0);
 
     }
 
     //设置菜单
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.towermain1, menu);
+        if (listtype == 0) {
+            getMenuInflater().inflate(R.menu.towermain1, menu);
+        } else {
+            getMenuInflater().inflate(R.menu.towermain, menu);
+        }
+
         return true;
     }
 
@@ -140,13 +130,45 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
         etDate = (EditText) view.findViewById(R.id.et_setdate);
         etTime = (EditText) view.findViewById(R.id.et_settime);
 
-
         etDate.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                initTimeDialog();
+                DatePicker.OnDateChangedListener onDateChangedListener = new DatePicker.OnDateChangedListener() {
+                    @Override
+                    public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        mYear = year;
+                        mMonth = monthOfYear;
+                        mDay = dayOfMonth;
+                    }
+                };
+                TimePicker.OnTimeChangedListener onTimeChangedListener = new TimePicker.OnTimeChangedListener() {
+                    @Override
+                    public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                        mHour = hourOfDay;
+                        mMinute = minute;
+                    }
+                };
+                DialogInterface.OnClickListener yesListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String time = showTimeMsg(mYear, mMonth, mDay, mHour, mMinute);
+                        etDate.setText(time);
+                    }
+                };
+                DialogInterface.OnClickListener noListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                };
+                DateTimePickerDialog dialog = new DateTimePickerDialog(oThis, onDateChangedListener, onTimeChangedListener, yesListener, noListener, true);
+
             }
+
+
         });
+
 
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
@@ -173,69 +195,38 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
 
     }
 
-    //设置datePicker点击事件
-    @Override
-    public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        setTitle(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+    private String showTimeMsg(int year, int month, int day, int hour, int minute) {
+        StringBuffer dateTime = new StringBuffer();
+        dateTime.append(year);
+        dateTime.append("-");
+        if (month < 10) {
+            dateTime.append("0" + (month + 1));
+        } else {
+            dateTime.append((month + 1));
+        }
+
+        dateTime.append("-");
+        if (day < 10) {
+            dateTime.append("0" + day);
+        } else {
+            dateTime.append(day);
+        }
+
+        dateTime.append(" ");
+        if (hour < 10) {
+            dateTime.append("0" + hour);
+        } else {
+            dateTime.append(hour);
+        }
+        dateTime.append(":");
+        if (minute < 10) {
+            dateTime.append("0" + minute);
+        } else {
+            dateTime.append(minute);
+        }
+        timeMsg = String.valueOf(dateTime);
+        return timeMsg;
     }
-
-    //初始化时间
-    private void initTimeDialog() {
-        // dp = (DatePicker) findViewById(R.id.date_picker);
-        Calendar calendar = Calendar.getInstance();
-        mYear = calendar.get(Calendar.YEAR);
-        mMonth = calendar.get(Calendar.MONTH) + 1;
-        mDay = calendar.get(Calendar.DAY_OF_MONTH);
-        mHour = calendar.get(Calendar.HOUR);
-        mMinute = calendar.get(Calendar.MINUTE);
-        calendar.set(mYear, mMonth, mDay);
-        // setTitle(mYear+ "-" +mMonth+ "-" +mDay+ "-" +mHour+ "-" +mMinute);
-        //初始化日期监听事件
-        // datePicker.init(mYear, mMonth - 1, mDay, PlanListActivityXin.this);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy,MM,dd");
-        String format = simpleDateFormat.format(System.currentTimeMillis());
-
-        Calendar selectedDate = Calendar.getInstance();
-        Calendar startDate = Calendar.getInstance();
-        String[] split = format.split(",");
-        startDate.set(Integer.parseInt(split[0]), Integer.parseInt(split[1]) - 1, Integer.parseInt(split[2]));//设置起始年份
-        Calendar endDate = Calendar.getInstance();
-        endDate.set(2088, 1, 1);//设置结束年份
-        TimePickerView.Builder pvTime = new TimePickerView.Builder(PlanListActivityXin.this, new TimePickerView.OnTimeSelectListener() {
-            @Override
-            public void onTimeSelect(Date date, View view) {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String format = simpleDateFormat.format(date);
-                String time = format.substring(0, 16);
-                etDate.setText(time);
-            }
-        });
-
-
-        pvTime.setCancelText("取消")//取消按钮文字
-                .setSubmitText("确定")//确认按钮文字
-                .setContentSize(24)//滚轮文字大小
-
-                .setTitleSize(20)//标题文字大小
-                .setTitleText("选择时间")//标题文字
-                .setOutSideCancelable(true)//点击屏幕，点在控件外部范围时，是否取消显示
-                .isCyclic(true)//是否循环滚动
-                .setTitleColor(Color.BLACK)//标题文字颜色
-                .setSubmitColor(Color.YELLOW)//确定按钮文字颜色
-                .setCancelColor(Color.YELLOW)//取消按钮文字颜色
-                .setTitleBgColor(0xFF3299CC)//标题背景颜色 Night mode
-                .setBgColor(0xFFD9D9F3)//滚轮背景颜色 Night mode
-
-                //.setDate(selectedDate)// 如果不设置的话，默认是系统时间*/
-                .setRangDate(startDate, endDate)//起始终止年月日设定
-                .setLabel("年", "月", "日", "时", "分", "秒")
-                .isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
-                .isDialog(true)//是否显示为对话框样式
-                .build().show();
-
-
-    }
-
     private void initData(int start) {
         nowStart = start;
         nextStart = start + 15;
@@ -251,7 +242,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
         super.InitializeComponent();
         setTitle("任务列表");
         userAccoutn = com.avicsafety.ShenYangTowerComService.yd.activity.ydUtil.Constants.getUserInfo(oThis);
-        listtype = getIntent().getIntExtra("listtype", 0);
+
     }
 
     //网络请求工单数据
@@ -401,7 +392,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
                         putExtra("taskType", vh.getLayoutPosition()).
                         putExtra("activityId","0").
                         putExtra("blackoutdate","").
-                        putExtra("url",com.avicsafety.ShenYangTowerComService.xfd.Constants.BASE_URL));
+                        putExtra("url", Constants.BASE_URL));
 
                 // Toast.makeText(mContext, datas.get(vh.getLayoutPosition()).getTitle(), Toast.LENGTH_SHORT).show();
             }
@@ -526,8 +517,9 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
         }
         String jsonString = JSON.toJSONString(list);
         Log.i("_________msg__________", jsonString);
-        RequestParams params = new RequestParams(/*Constants.BASE_URL*/"http://192.168.1.121:8080/phoneServices/fd/geographicalPositionReceiveServlet?type=9\n");
-        params.addBodyParameter("jsonBean", jsonString);
+        RequestParams params = new RequestParams(Constants.BASE_URL/*?type=9\n"*/);//"http://192.168.1.121:8080/phoneServices/fd/geographicalPositionReceiveServlet?type=9\n"
+        params.addParameter("type",9);
+        params.addParameter("jsonBean", jsonString);
         params.setConnectTimeout(60000);
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
@@ -563,9 +555,14 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
     //设置返回按钮点击事件
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this, PlanActivityXin.class));
-        this.finish();
+
+        PlanListActivityXin.this.finish();
     }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PlanListActivityXin.this.finish();
+    }
 }

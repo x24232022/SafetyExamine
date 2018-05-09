@@ -267,4 +267,10 @@ public class PlanListActivityXinCx extends BaseActivity implements View.OnClickL
         super.onResume();
         listItems.clear();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        PlanListActivityXinCx.this.finish();
+    }
 }

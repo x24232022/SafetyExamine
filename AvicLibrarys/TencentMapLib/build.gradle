@@ -31,8 +31,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    testCompile 'junit:junit:4.12'
-    compile files('libs/TencentLocationSDK_v4.7.5.jar')
-    compile files('libs/TencentMapSDK_Vector_v3.0.3.jar')
+    implementation 'com.android.support:appcompat-v7:23.3.0'
+    androidTestImplementation 'junit:junit:4.12'
+    implementation files('libs/TencentLocationSDK_v4.7.5.jar')
+    implementation files('libs/TencentMapSDK_Vector_v3.0.3.jar')
 }

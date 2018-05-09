@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+
+    <dbname value="demo" ></dbname>
+
+    <version value="6" ></version>
+
+    <list>
+        <!--这里是类映射-->
+        <mapping class="com.avicsafety.ShenYangTowerComService.model.WorkOrderBean"></mapping>
+
+    </list>
+
+</litepal>

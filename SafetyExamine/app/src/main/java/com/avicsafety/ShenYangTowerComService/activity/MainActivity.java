@@ -249,12 +249,17 @@ public class MainActivity extends BaseActivity {
                         @Override
                         public void onFail(String error) {
                             ToastUtil.showToast(oThis, error);
-                            try {
-                                Thread.sleep(3000);
-                                myHandler.sendEmptyMessage(1);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+                           new Thread(new Runnable() {
+                               @Override
+                               public void run() {
+                                   try {
+                                       Thread.sleep(3000);
+                                       myHandler.sendEmptyMessage(1);
+                                   } catch (InterruptedException e) {
+                                       e.printStackTrace();
+                                   }
+                               }
+                           }).start();
                         }
                     });
 

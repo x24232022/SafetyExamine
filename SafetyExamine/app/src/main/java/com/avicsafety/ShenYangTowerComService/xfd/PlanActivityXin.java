@@ -88,11 +88,7 @@ public class PlanActivityXin extends BaseActivity implements View.OnClickListene
 
 
 
-    @Override
-    public void onBackPressed() {
-        startActivity(new Intent(this, ChangeOneActivity.class));
-        this.finish();
-    }
+
 
     @ViewInject(R.id.tv_xin_work_wj)
     private TextView tv_xin_work_wj;
@@ -112,4 +108,16 @@ public class PlanActivityXin extends BaseActivity implements View.OnClickListene
     public TextView tv_xin_work_ydz_number;
     @ViewInject(R.id.tv_xin_work_yjs_number)
     public TextView tv_xin_work_yjs_number;
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, ChangeOneActivity.class));
+        this.finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        PlanActivityXin.this.finish();
+    }
 }

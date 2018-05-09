@@ -227,7 +227,7 @@ public interface ResultHandler {
     }
 
     private void initView() {
-        datePicker = (DatePicker) datePickerDialog.findViewById(R.id.datepicker);
+        datePicker = (DatePicker) datePickerDialog.findViewById(R.id.date_picker);
         timePicker= (TimePicker) datePickerDialog.findViewById(R.id.time_picker);
 
         datePickerDialog.show();
