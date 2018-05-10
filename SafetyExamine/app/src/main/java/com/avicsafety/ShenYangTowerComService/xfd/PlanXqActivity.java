@@ -101,7 +101,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         mBlackoutdate = getIntent().getStringExtra("blackoutdate");
         loadDate(mUrl, mBlackoutdate);
     }
-
+    //获取工单详情信息
     public void loadDate(String url,String blackoutdate) {
 
         RequestParams params = new RequestParams(url);
@@ -157,7 +157,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
             }
         });
     }
-
+    //显示工单详情
     public void ShowGDInfo(List<Rwlb.ResponseBean> mTT) {
         // TODO 自动生成的方法存根
 
@@ -324,8 +324,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
-
-    // 显示按钮的控制
+    // 显示按钮的控制状态
     private void initBtns() {
         // TODO 自动生成的方法存根
 
@@ -342,8 +341,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
 
 
     }
-
-
+    //隐藏按钮
     private void reSetAllBtns() {
         // TODO 自动生成的方法存根
 
@@ -352,7 +350,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         btn_fdjs.setVisibility(View.GONE);
 
     }
-
+    //创建菜单
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if(activityId.equals("0")){
@@ -362,7 +360,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         }
         return false;
     }
-
+    //设置菜单按钮点击事件
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -383,7 +381,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         }
         return super.onOptionsItemSelected(item);
     }
-
+    //按钮状态点击事件
     @Override
     protected void InitializeEvent() {
         super.InitializeEvent();
@@ -436,46 +434,53 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
                 String jMsg = null;
                 try {
                     res = new JSONObject(result);
-                    if ((res.get("Code").equals(200))&&(res.get("Msg").equals("Success"))) {
-
+                    if (res.get("Code").equals(200)) {
+                        if(res.get("Msg").equals("Success")){
                             // GDShowAndDealWithNoFildActivity
-                            Toast.makeText(context, "操作成功", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(context, "操作成功", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
-                            Intent intent = new Intent(oThis, PhotoActivityXin.class);
-                            intent.putExtra("ticketid", id);
-                            intent.putExtra("status", "成功");
-                            startActivity(intent);
+                            Intent intent = new Intent(oThis,PhotoActivityXin.class);
+                            intent.putExtra("ticketid",id);
+                            intent.putExtra("status","成功");
+                            context.startActivity(intent);
                             finish();
-
-                    } else {
-                        Toast.makeText(context, "工单异常", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
-                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                        builder.setTitle("工单状态异常");
-                        final String[] re = new String[]{"异常发电", "发电失败"};
-                        builder.setItems(re, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                if (re[which].equals("异常发电")) {
+                            //MyApplication.getInstance().exit();
+                        }else{
+                            progressDialog.dismiss();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                            builder.setIcon(R.drawable.warning);
+                            builder.setTitle("异常状态");
+                            builder.setMessage("工单状态异常,请选择发电状态");
+                            builder.setPositiveButton("异常发电", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
                                     Intent intent = new Intent(oThis, PhotoActivityXin.class);
                                     intent.putExtra("ticketid", id);
                                     intent.putExtra("status", "异常");
                                     context.startActivity(intent);
-                                    finish();
-                                } else {
+
+                                    inputData(userid,ticketid,type);
+                                    if(mTimer==null){
+                                        timer();
+                                    }
+                                    ((PlanXqActivity) context).progressDialog
+                                            .dismiss();
+                                }
+                            });
+                            builder.setNegativeButton("发电失败", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
                                     Intent intent = new Intent(oThis, PhotoActivityXin.class);
                                     intent.putExtra("ticketid", id);
                                     intent.putExtra("status", "失败");
                                     context.startActivity(intent);
                                 }
-                            }
-                        });
-                        builder.show();
+                            });
+                            builder.show();
 
-                        inputData(userid,ticketid,type);
-                        if(mTimer==null){
-                            timer();
                         }
+                    } else {
+                        Toast.makeText(context, "服务器异常", Toast.LENGTH_SHORT).show();
                         ((PlanXqActivity) context).progressDialog
                                 .dismiss();
                     }

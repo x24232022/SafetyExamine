@@ -76,7 +76,7 @@ public class PlanListActivityXinCx extends BaseActivity implements View.OnClickL
         }
         return super.onOptionsItemSelected(item);
     }
-
+    //初始化数据
     private void initData(int start) {
         nowStart = start;
         nextStart = start + 15;
@@ -89,9 +89,7 @@ public class PlanListActivityXinCx extends BaseActivity implements View.OnClickL
 
     }
 
-
-
-
+    //获取用户信息
     @Override
     protected void InitializeComponent() {
         super.InitializeComponent();
@@ -100,10 +98,7 @@ public class PlanListActivityXinCx extends BaseActivity implements View.OnClickL
         listtype = getIntent().getIntExtra("listtype", 0);
 
     }
-
-
-
-
+    //获取数据
     public void loadDate() {
 
         RequestParams params = new RequestParams(Constants.BASE_URL);
@@ -168,8 +163,7 @@ public class PlanListActivityXinCx extends BaseActivity implements View.OnClickL
             }
         });
     }
-
-
+    //翻页按钮点击事件
     @Override
     protected void InitializeEvent() {
         super.InitializeEvent();
@@ -195,6 +189,7 @@ public class PlanListActivityXinCx extends BaseActivity implements View.OnClickL
             }
         });
     }
+
     public void initList2(final List<Rwlb.ResponseBean> mList, int count) {
         // TODO 自动生成的方法存根
 

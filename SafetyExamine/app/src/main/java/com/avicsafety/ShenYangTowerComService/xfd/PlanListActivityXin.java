@@ -122,7 +122,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
         return super.onOptionsItemSelected(item);
     }
 
-    //初始化提示框
+    //初始化定时器控件提示框
     public void showDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(PlanListActivityXin.this);
@@ -194,7 +194,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
 
 
     }
-
+    //将定时器信息转化成字符串
     private String showTimeMsg(int year, int month, int day, int hour, int minute) {
         StringBuffer dateTime = new StringBuffer();
         dateTime.append(year);
@@ -227,6 +227,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
         timeMsg = String.valueOf(dateTime);
         return timeMsg;
     }
+    //初始化数据
     private void initData(int start) {
         nowStart = start;
         nextStart = start + 15;
@@ -236,7 +237,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
         loadDate();
 
     }
-
+    //获取登录用户信息
     @Override
     protected void InitializeComponent() {
         super.InitializeComponent();
@@ -309,14 +310,14 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
             }
         });
     }
-
+    //下一页按钮点击
     @Override
     protected void InitializeEvent() {
         super.InitializeEvent();
         btn_next.setOnClickListener(this);
         btn_pro.setOnClickListener(this);
     }
-
+    //按钮点击时间
     @Override
     public void onClick(View view) {
 

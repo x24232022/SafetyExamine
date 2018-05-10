@@ -21,6 +21,7 @@ import java.util.Map;
 
 /**
  * Created by 刘畅 on 2017/12/26.
+ * 网络请求类
  */
 
 public class XinFDMethod {
@@ -118,7 +119,7 @@ public class XinFDMethod {
             }
         });
     }
-
+    //异常，失败，成功请求的方法
     public void dealSCTP(final Context context, String id, String data,int type,String status,String userid,int types){
 
         RequestParams params = new RequestParams(Constants.BASE_URL);
