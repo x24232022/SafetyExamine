@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AreaSelector/AreaSelector.iml" filepath="$PROJECT_DIR$/AreaSelector/AreaSelector.iml" />
       <module fileurl="file://$PROJECT_DIR$/AvicLibrarys.iml" filepath="$PROJECT_DIR$/AvicLibrarys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AvicsafetyLib/AvicsafetyLib.iml" filepath="$PROJECT_DIR$/AvicsafetyLib/AvicsafetyLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TencentMapLib/TencentMapLib.iml" filepath="$PROJECT_DIR$/TencentMapLib/TencentMapLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Zxing/Zxing.iml" filepath="$PROJECT_DIR$/Zxing/Zxing.iml" />
     </modules>
   </component>
 </project>

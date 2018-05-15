@@ -74,7 +74,7 @@ public class AvicCircularRing extends View {
 
     public void startAnim() {
         stopAnim();
-        startViewAnim(0f, 1f, 500);
+        startViewAnim(0f, 1f, 1000);
     }
 
     public void stopAnim() {
