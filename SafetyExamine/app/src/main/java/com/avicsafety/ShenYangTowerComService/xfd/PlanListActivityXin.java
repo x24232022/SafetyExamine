@@ -392,8 +392,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
                         putExtra("id", listItems.get(vh.getLayoutPosition()).getTicketid()).
                         putExtra("taskType", vh.getLayoutPosition()).
                         putExtra("activityId","0").
-                        putExtra("blackoutdate","").
-                        putExtra("url", Constants.BASE_URL));
+                        putExtra("blackoutdate",""));
 
                 // Toast.makeText(mContext, datas.get(vh.getLayoutPosition()).getTitle(), Toast.LENGTH_SHORT).show();
             }
@@ -495,7 +494,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
             }
         });
         mItemTouchHelper.attachToRecyclerView(rcy_gdlb);
-        mAdapter = new PlanAdapter(this, listItems);
+        mAdapter = new PlanAdapter(this, listItems,listtype);
         rcy_gdlb.setAdapter(mAdapter);
         //设置侧滑删除时间
         rcy_gdlb.setRightClickListener(new SwipeRecyclerView.OnRightClickListener() {

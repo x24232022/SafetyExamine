@@ -56,6 +56,9 @@ public class ChangeOneActivity extends BaseActivity{
         this.rwsl = rwsl;
     }
 
+    private void  setPreviewWork(Rwsl rwsl) {
+
+    }
     private Rwsl rwsl;
     private List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
 
@@ -230,7 +233,7 @@ protected void init(){
 //                        manager.checkUpdate();
                         break;
                     case 5:
-                        startActivity(new Intent(oThis,TomorrowActivity.class));
+                        startActivity(new Intent(oThis,TomorrowTitleListActivity.class));
                         break;
                     default:
                         break;

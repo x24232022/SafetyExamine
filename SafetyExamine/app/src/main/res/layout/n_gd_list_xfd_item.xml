@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
@@ -8,7 +9,7 @@
 
     <LinearLayout
         android:id="@+id/ll_lll"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="61dp"
         android:minHeight="80dp"
         android:orientation="vertical"
@@ -17,40 +18,62 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:orientation="vertical"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-
+            android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
 
-            <TextView
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
 
-                android:layout_margin="10dp"
-                android:id="@+id/tv_number"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text="GZ20160121-176"
-                android:textSize="30px"
-                android:textColor="@color/color_AMB_gray"
-                android:layout_alignBottom="@+id/tv_theme1_gd"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-
-
-
-                />
 
             <TextView
                 android:id="@+id/tv_theme1_gd"
                 android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:text=" 中兴动环-沈阳-移动网/移动网沈河区沈阳市沈河区广谊电工站Z01-直流系统输出电压;下限告警 "
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:text=" 中兴动环 "
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
-                android:layout_alignParentTop="true"
-                 />
+                tools:ignore="RtlCompat"/>
+
+            <TextView
+                android:id="@+id/tv_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@+id/tv_theme1_gd"
+                android:layout_marginEnd="17dp"
+                android:text="发电状态"
+                android:visibility="gone"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="17dp"/>
+
+            <TextView
+
+                android:id="@+id/tv_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="25dp"
+                android:text="GZ20160121-176"
+                android:textColor="@color/color_AMB_gray"
+                android:textSize="30px"
+                tools:ignore="RtlCompat"/>
+
+            <TextView
+                android:id="@+id/tv_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_theme1_gd"
+                android:layout_alignTop="@+id/tv_number"
+                android:layout_below="@+id/tv_theme1_gd"
+                android:text="某某发电"
+                />
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout
@@ -59,6 +82,7 @@
         android:layout_height="match_parent"
         android:background="#ff0000"
         android:gravity="center"
+        android:visibility="gone"
         >
 
         <TextView
@@ -68,6 +92,7 @@
             android:text="删除"
             android:textColor="#ffffff"
             android:textSize="16sp"
+            android:visibility="gone"
             />
     </LinearLayout>
 </LinearLayout>

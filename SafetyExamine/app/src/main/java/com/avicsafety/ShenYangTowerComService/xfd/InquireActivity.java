@@ -157,7 +157,9 @@ public class InquireActivity extends BaseActivity {
                     // TODO 自动生成的方法存根
                     startActivity(new Intent(oThis, PlanCxActivity.class)
                             .putExtra("id",gdid)
-                            .putExtra("taskType", position));
+                            .putExtra("taskType", position)
+                            .putExtra("activityId","1")
+                    );
                 }
             });
         }

@@ -18,6 +18,7 @@ import org.xutils.x;
 
 import java.util.List;
 import java.util.Map;
+import java.util.TimerTask;
 
 /**
  * Created by 刘畅 on 2017/12/26.
@@ -25,7 +26,7 @@ import java.util.Map;
  */
 
 public class XinFDMethod {
-
+    //发送数量
     public void GetXinFdRWSL(final Context context, String userid, int type) {
         RequestParams params = new RequestParams(Constants.BASE_URL);
         params.addParameter("userid", userid);
@@ -194,8 +195,8 @@ public class XinFDMethod {
 
 
     }
-
-    public void GetXinFsJwd(final Context context, String userid, int type,double lon,double lat) {
+    //发送位置信息
+    public void GetXinFsJwd(final Context context, String userid, int type, double lon, double lat) {
         RequestParams params = new RequestParams(Constants.BASE_URL);
         params.addParameter("userid", userid);
         params.addParameter("type", type);
@@ -227,5 +228,7 @@ public class XinFDMethod {
             }
         });
     }
+
+
 
 }

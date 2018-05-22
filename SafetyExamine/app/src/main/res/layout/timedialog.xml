@@ -14,12 +14,16 @@
             android:id="@+id/datepicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:calendarViewShown="false" />
+            android:calendarViewShown="false"
+            android:headerBackground="@color/lan"
+             />
 
         <TimePicker
             android:id="@+id/timepicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:headerBackground="@color/lan"
+            android:yearListSelectorColor="@color/lan"
             />
 
     </LinearLayout>

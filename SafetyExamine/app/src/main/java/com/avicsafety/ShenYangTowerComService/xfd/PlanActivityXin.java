@@ -37,7 +37,7 @@ public class PlanActivityXin extends BaseActivity implements View.OnClickListene
         tv_xin_work_ydz.setOnClickListener(this);
         tv_xin_work_yjs.setOnClickListener(this);
         tv_xin_work_ycf.setOnClickListener(this);
-        tv_xin_work_cx.setOnClickListener(this);
+
 
     }
 
@@ -77,8 +77,8 @@ public class PlanActivityXin extends BaseActivity implements View.OnClickListene
                 intent.putExtra("listtype",3);
                 startActivity(intent);
                 break;
-            case R.id.tv_xin_work_cx:
-                startActivity(intent1);
+
+            default:
                 break;
         }
 
@@ -98,8 +98,7 @@ public class PlanActivityXin extends BaseActivity implements View.OnClickListene
     private TextView tv_xin_work_ydz;
     @ViewInject(R.id.tv_xin_work_yjs)
     private TextView tv_xin_work_yjs;
-    @ViewInject(R.id.tv_xin_work_cx)
-    private TextView tv_xin_work_cx;
+
     @ViewInject(R.id.tv_xin_work_wj_number)
     public TextView tv_xin_work_wj_number;
     @ViewInject(R.id.tv_xin_work_ycf_number)

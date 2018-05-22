@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/list_item_tomorrow_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="14dp"
+            android:text=" 日期 "
+            android:textColor="@android:color/black"
+            android:textSize="30dp"
+            tools:ignore="RtlCompat"/>
+
+        <TextView
+
+            android:id="@+id/list_item_tomorrow_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="25dp"
+            android:layout_alignTop="@+id/list_item_tomorrow_week"
+            android:text="星期"
+            android:textColor="@color/color_AMB_gray"
+            android:textSize="20dp"
+            android:layout_marginRight="10dp"
+            tools:ignore="RtlCompat"/>
+
+
+    </RelativeLayout>
+</LinearLayout>

@@ -159,6 +159,10 @@ public class SwipeRecyclerView extends RecyclerView{
                         newScrollX = mHiddenWidth - mMoveWidth;
                     }
                     //左滑，每次滑动手指移动的距离
+                    //firstPosition = ((LinearLayoutManager)getLayoutManager()).findFirstVisibleItemPosition();
+                    //item = getChildAt(curSelectPosition - firstPosition);
+                    //PlanAdapter.MyViewHolder viewHolder = (PlanAdapter.MyViewHolder) getChildViewHolder(item);
+                    //mCurItemLayout = viewHolder.ll_item;
                     scrollLeft(mCurItemLayout, newScrollX);
                     //对移动的距离叠加
                     mMoveWidth = mMoveWidth + newScrollX;

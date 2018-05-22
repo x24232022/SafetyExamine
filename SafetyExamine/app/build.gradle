@@ -50,6 +50,10 @@ android {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
     }
+    lintOptions{
+        checkReleaseBuilds false
+        abortOnError false
+    }
 
 //    configurations {
 //        all*.exclude group: 'com.android.support', module: 'support-v4'

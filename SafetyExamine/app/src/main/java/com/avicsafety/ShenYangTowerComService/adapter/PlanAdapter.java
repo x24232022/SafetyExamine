@@ -22,7 +22,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
 
     private Context context;
     private List<Rwlb.ResponseBean> datas ;
-
+    private int listType;
 
 
     public List<Rwlb.ResponseBean> getDatas(){
@@ -30,12 +30,11 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
     }
 
 
-
-    public PlanAdapter(Context context,List<Rwlb.ResponseBean> datas){
+    public PlanAdapter(Context context, List<Rwlb.ResponseBean> datas, int listType) {
         this.context = context;
         this.datas = datas;
+        this.listType = listType;
     }
-
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -48,6 +47,11 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.tv_title.setText(datas.get(position).getSitename());
         holder.tv_number.setText(datas.get(position).getExpectedstationtime());
+        holder.tv_sign.setText(datas.get(position).getOutagetype());
+        if(listType==3){
+            holder.tv_state.setVisibility(View.VISIBLE);
+            holder.tv_state.setText(datas.get(position).getState());
+        }
     }
 
     @Override
@@ -58,8 +62,12 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
 
 
    public class MyViewHolder extends RecyclerView.ViewHolder {
+
+
         TextView tv_number;
         TextView tv_title;
+        TextView tv_sign;
+        TextView tv_state;
        public LinearLayout ll_item,ll_hidden;
        public MyViewHolder(final View itemView) {
            super(itemView);
@@ -68,9 +76,12 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
                ll_hidden= (LinearLayout) itemView.findViewById(R.id.ll_hidden);
            }
 
+           if(listType==3){
+                tv_state= (TextView) itemView.findViewById(R.id.tv_state);
+           }
            tv_number= (TextView) itemView.findViewById(R.id.tv_number);
            tv_title= (TextView) itemView.findViewById(R.id.tv_theme1_gd);
-
+           tv_sign= (TextView) itemView.findViewById(R.id.tv_sign);
 
 
        }

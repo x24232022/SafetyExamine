@@ -26,29 +26,95 @@
         android:id="@+id/ll_btns1"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="#3399ff"
+        android:background="#3388bb"
         android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/btn_redeploy_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_cf"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:text="出发"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:layout_margin="2dp"
+                android:visibility="gone"/>
+
+            <!--<Button-->
+                <!--android:id="@+id/btn_redeploy"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/btn_bg"-->
+                <!--android:text="转派"-->
+                <!--android:layout_margin="2dp"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:textSize="16sp"-->
+                <!--android:visibility="gone"/>-->
+
+            <Button
+                android:id="@+id/btn_abolish"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:text="取消"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/btn_fd_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_dzfd"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:text="发电"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btn_abolish_1"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:text="取消"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
 
         <Button
-            android:id="@+id/btn_cf"
+            android:id="@+id/btn_abolish_tomorrow_activity"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="2dp"
             android:layout_weight="1"
             android:background="@drawable/btn_bg"
-            android:text="出发"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:visibility="gone"/>
-
-        <Button
-            android:id="@+id/btn_dzfd"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:layout_weight="1"
-            android:background="@drawable/btn_bg"
-            android:text="发电"
+            android:text="取消"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:visibility="gone"/>

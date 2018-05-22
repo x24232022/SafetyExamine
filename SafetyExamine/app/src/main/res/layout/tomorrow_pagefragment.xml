@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <!--
+    <com.avicsafety.ShenYangTowerComService.view.SwipeRecyclerView
+        android:id="@+id/rcv_gdlb_activity_Tomorrow"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp" >
+    </com.avicsafety.ShenYangTowerComService.view.SwipeRecyclerView>
+    //-->
+
+    <LinearLayout
+        android:id="@+id/tomorrow_visibility_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="invisible">
+    <TextView
+        android:id="@+id/lv_gdlb_activity_Tomorrow_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:text="20dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e1e1e1"
+        />
+    <ListView
+        android:id="@+id/lv_gdlb_activity_Tomorrow"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    </LinearLayout>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:background="#000"
+        />
+</RelativeLayout>

@@ -3,8 +3,11 @@ package com.avicsafety.ShenYangTowerComService.PowerManager.push.service;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.provider.ContactsContract;
@@ -27,6 +30,11 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 public class PositionService extends Service implements MyCallback {
+    Context mContext;
+
+    public PositionService(Context context) {
+        mContext = context;
+    }
 
     private LocationAddressUtils utils;
     private BaseModule.SubPositon subs;
@@ -85,7 +93,14 @@ public class PositionService extends Service implements MyCallback {
         Date date = new Date();
         date.getMinutes();
         if (i == 0 || date.getMinutes() % 300 == 0) {
-            new XinFDMethod().GetXinFsJwd(this, userAccount, 0, longitude, latitude);
+//            Timer timer = new Timer();
+//            timer.schedule(new TimerTask() {
+//                public void run() {
+                    new XinFDMethod().GetXinFsJwd(mContext, userAccount, 0, longitude, latitude);
+               // }
+//            }, 300000);// 设定指定的时间time,此处为5分钟
+
+
             L.v("发送经纬度：              ~");
             i = 1;
         }

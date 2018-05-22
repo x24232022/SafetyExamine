@@ -55,7 +55,7 @@ public class MyApplication extends LitePalApplication {
 //		XGPushConfig.enableDebug(this, true);
 		x.Ext.setDebug(Configuration.DEBUG);
 		L.isDebug = Configuration.DEBUG;
-		SDKInitializer.initialize(getApplicationContext());
+		//SDKInitializer.initialize(getApplicationContext());
 //		crashHandler=CrashHandler.getInstance();
 //		crashHandler.init(this);
 //		initDB();

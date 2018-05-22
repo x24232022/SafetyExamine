@@ -12,5 +12,6 @@
         android:layout_height="wrap_content"
         android:calendarViewShown="false"
         android:endYear="2027"
-        android:startYear="2007" />
+        android:startYear="2007"
+        android:headerBackground="@color/lan" />
 </LinearLayout>
