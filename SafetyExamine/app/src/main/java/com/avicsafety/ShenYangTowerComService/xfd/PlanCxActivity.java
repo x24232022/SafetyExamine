@@ -265,58 +265,7 @@ public class PlanCxActivity extends BaseActivity implements View.OnClickListener
         // TODO 自动生成的方法存根
 
         reSetAllBtns();// 重置按钮状态
-//        if(buttonKz.equals("未接收")){
-//            btn_cf.setVisibility(View.VISIBLE);
-//        }
-//        if(buttonKz.equals("已出发")){
-//            btn_dzfd.setVisibility(View.VISIBLE);
-//        }
-//        if(buttonKz.equals("已发电")){
-//            btn_fdjs.setVisibility(View.VISIBLE);
-//        }
-//        if (mTT.getStatus().equals("处理中") && TextUtils.isEmpty(mTT.getSignDate())) {
-//            // 签收
-//            btn_qs.setVisibility(View.VISIBLE);
-//        }
-//        if (mTT.getStatus().equals("处理中") && mTT.getSignDate() != null
-//                ) {
-//            // 转派
-//            btn_zp.setVisibility(View.VISIBLE);
-//        }
-//
-//        if (mTT.getStatus().equals("处理中")) {
-//            // 处理，退回，验证，到站
-//            btn_cl.setVisibility(View.GONE);
-//            btn_th.setVisibility(View.VISIBLE);
-//            btn_zp.setVisibility(View.VISIBLE);
-//            btn_ks.setVisibility(View.VISIBLE);
-//        }
-//        if(mTT.getStartCode() != null){
-//            btn_cl.setVisibility(View.VISIBLE);
-//            btn_ks.setVisibility(View.GONE);
-//        }
-//        switch (taskType) {
-//            case 0:
-//                break;
-//            case 1:
-//                break;
-//            case 2:
-//                break;
-//            case 9:
-//                btn_qs.setVisibility(View.GONE);
-//                btn_pf.setVisibility(View.GONE);
-//                btn_cl.setVisibility(View.GONE);
-//                btn_ccl.setVisibility(View.GONE);
-//                btn_bh.setVisibility(View.GONE);
-//                btn_zp.setVisibility(View.GONE);
-//                btn_th.setVisibility(View.GONE);
-//                btn_gb.setVisibility(View.GONE);
-//                btn_yz.setVisibility(View.GONE);
-//                btn_dd.setVisibility(View.GONE);
-//                ll_btns.setVisibility(View.GONE);
-//                btn_ks.setVisibility(View.GONE);
-//                break;
-//        }
+
 
     }
 
@@ -355,10 +304,10 @@ public class PlanCxActivity extends BaseActivity implements View.OnClickListener
         progressDialog = new MyProgressDialog(oThis, "获取中..");
 
     }
-
+    //type1
     public void loadDate() {
 
-        RequestParams params = new RequestParams(Constants.BASE_URL);
+        RequestParams params = new RequestParams(Constants.TEST_URL);
         params.setConnectTimeout(60000);
         params.addParameter("userid", userAccoutn.getUserName());
         params.addParameter("type", 1);

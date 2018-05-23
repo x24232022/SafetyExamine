@@ -155,18 +155,18 @@ public class InquireActivity extends BaseActivity {
 
                     gdid = mList.get(position).getTicketid();
                     // TODO 自动生成的方法存根
-                    startActivity(new Intent(oThis, PlanCxActivity.class)
+                    startActivity(new Intent(oThis, PlanXqActivity.class)
                             .putExtra("id",gdid)
                             .putExtra("taskType", position)
-                            .putExtra("activityId","1")
+
                     );
                 }
             });
         }
     }
-
+    //type8
     private void loadData(String date){
-        RequestParams params = new RequestParams(Constants.BASE_URL);
+        RequestParams params = new RequestParams(Constants.TEST_URL);
         params.setConnectTimeout(60000);
         params.addParameter("userid",userAccoutn.getUserName());
         params.addParameter("type",8);

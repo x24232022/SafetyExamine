@@ -87,7 +87,7 @@
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_bg"
-                android:text="发电"
+                android:text="发电完毕"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:visibility="gone"/>
@@ -126,7 +126,7 @@
             android:layout_margin="2dp"
             android:layout_weight="1"
             android:background="@drawable/btn_bg"
-            android:text="发电结束"
+            android:text="发电结束，回收油机"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:visibility="gone"/>

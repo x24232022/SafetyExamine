@@ -54,7 +54,7 @@ public class PhotoActivityDzXin extends BaseActivity{
             }if(apl_company_detail_photo3.getData() != null){
                 SctpType4();
             }
-
+            startActivity(new Intent(oThis,PlanActivityXin.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

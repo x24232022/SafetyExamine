@@ -57,7 +57,7 @@ public class PhotoActivityXin extends BaseActivity{
                         SctpType33();
                     }
                 }
-
+                startActivity(new Intent(oThis,PlanActivityXin.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

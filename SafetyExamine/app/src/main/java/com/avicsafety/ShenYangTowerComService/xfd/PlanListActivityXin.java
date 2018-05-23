@@ -246,9 +246,9 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
 
     }
 
-    //网络请求工单数据
+    //网络请求工单数据type3
     public void loadDate() {
-        RequestParams params = new RequestParams(Constants.BASE_URL);
+        RequestParams params = new RequestParams(Constants.TEST_URL);
         params.setConnectTimeout(60000);
         params.addParameter("userid", userAccoutn.getUserName());
         params.addBodyParameter("blackoutdate","2018-03-30");
@@ -507,7 +507,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
         rcy_gdlb.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
     }
 
-    //上传工单列表位置信息
+    //上传工单列表位置信息type9
     private void uploadLocation() {
         //获取当前数据上传
         List<Rwlb.ResponseBean> list = new ArrayList<>();
@@ -517,7 +517,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
         }
         String jsonString = JSON.toJSONString(list);
         Log.i("_________msg__________", jsonString);
-        RequestParams params = new RequestParams(Constants.BASE_URL/*?type=9\n"*/);//"http://192.168.1.121:8080/phoneServices/fd/geographicalPositionReceiveServlet?type=9\n"
+        RequestParams params = new RequestParams(Constants.TEST_URL/*?type=9\n"*/);//"http://192.168.1.121:8080/phoneServices/fd/geographicalPositionReceiveServlet?type=9\n"
         params.addParameter("type",9);
         params.addParameter("jsonBean", jsonString);
         params.setConnectTimeout(60000);

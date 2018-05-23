@@ -104,7 +104,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityId = getIntent().getStringExtra("activityId");
-        if (activityId.equals("1")) {
+        if(activityId.equals("1")){
             ll_btns.setVisibility(View.GONE);
         }
         initData();
@@ -120,10 +120,10 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         loadDate(mBlackoutdate);
     }
 
-    //获取工单详情信息
+    //获取工单详情信息 type1
     public void loadDate(String blackoutdate) {
 
-        RequestParams params = new RequestParams(Constants.BASE_URL);
+        RequestParams params = new RequestParams(Constants.TEST_URL);
         params.setConnectTimeout(60000);
         params.addParameter("userid", userAccoutn.getUserName());
         params.addParameter("type", 1);
@@ -349,20 +349,23 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         // TODO 自动生成的方法存根
 
         reSetAllBtns();// 重置按钮状态
-        if (buttonKz.equals(/*"未接单"*/"未接收")) {
+        if (buttonKz.equals("未接单")||buttonKz.equals("未接收")) {
             ll_redeploy.setVisibility(View.VISIBLE);
             btn_cf.setVisibility(View.VISIBLE);
             //btn_redeploy.setVisibility(View.VISIBLE);
             btn_abolish.setVisibility(View.VISIBLE);
 
         }
-        if (buttonKz.equals(/*"已接单"*/"已出发")) {
+        if (buttonKz.equals("已接单")||buttonKz.equals("已出发")) {
             btn_fd_ll.setVisibility(View.VISIBLE);
             btn_dzfd.setVisibility(View.VISIBLE);
             btn_abolish_1.setVisibility(View.VISIBLE);
         }
-        if (buttonKz.equals(/*"发电中"*/"已发电")) {
+        if (buttonKz.equals("发电中")||buttonKz.equals("已发电")) {
             btn_fdjs.setVisibility(View.VISIBLE);
+        }
+        if(buttonKz.equals("已完成")){
+            ll_btns.setVisibility(View.GONE);
         }
 
 
@@ -383,7 +386,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (activityId.equals("0")) {
-            getMenuInflater().inflate(R.menu.towermain2, menu);
+            getMenuInflater().inflate(R.menu.towermain, menu);
 
             return true;
         }
@@ -442,6 +445,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
             case R.id.btn_cf://出发状态
                 progressDialog = new MyProgressDialog(oThis, "提交中..");
                 GetXinFdPlanRwslCfData(oThis, userAccoutn.getUserName(), 4, id);
+                startActivity(new Intent(oThis,PlanActivityXin.class));
                 break;
             //转派状态
 //            case R.id.btn_redeploy:
@@ -451,31 +455,18 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
 //                break;
             //消除状态
             case R.id.btn_abolish:
-
-
                 Intent intent1 = new Intent(this, PlanActivityXin.class);
                 showClearReasonDialog(intent1);
-
-
                 break;
-
             //发电前工单消除按钮
             case R.id.btn_abolish_1:
-
-
                 Intent intent2 = new Intent(this, PlanActivityXin.class);
                 showClearReasonDialog(intent2);
-
-
                 break;
             //工单预览界面消除按钮
             case R.id.btn_abolish_tomorrow_activity:
-
-
                 Intent intent3 = new Intent(this, TomorrowActivity.class);
                 showClearReasonDialog(intent3);
-
-
                 break;
             case R.id.btn_dzfd://发电状态
                 Intent intent = new Intent(this, PhotoActivityDzXin.class)
@@ -486,6 +477,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
             case R.id.btn_fdjs://结束状态
                 progressDialog = new MyProgressDialog(oThis, "提交中..");
                 GetXinFdPlanRwslFdjsData(oThis, userAccoutn.getUserName(), 6, id);
+
                 break;
         }
     }
@@ -528,9 +520,9 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-    //发送取消工单请求
+    //发送取消工单请求type11
     private void abolishWorkOrder(String userid, String type, String ticketid, String clearReason) {
-        RequestParams params = new RequestParams(Constants.BASE_URL );
+        RequestParams params = new RequestParams(Constants.TEST_URL );
         params.setConnectTimeout(60000);
         params.addParameter("userid", userid);
         params.addParameter("type", type);
@@ -558,9 +550,9 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
             }
         });
     }
-
+    //type6
     public void GetXinFdPlanRwslFdjsData(final Context context, final String userid, final int type, final String ticketid) {
-        RequestParams params = new RequestParams(Constants.BASE_URL);
+        RequestParams params = new RequestParams(Constants.TEST_URL);
         params.setConnectTimeout(60000);
         params.addParameter("userid", userid);
         params.addParameter("type", type);
@@ -665,9 +657,9 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
             Toast.makeText(oThis, "存储失败", Toast.LENGTH_SHORT).show();
         }
     }
-
+    //type4
     public void GetXinFdPlanRwslCfData(final Context context, final String userid, int type, final String ticketid) {
-        RequestParams params = new RequestParams(Constants.BASE_URL);
+        RequestParams params = new RequestParams(Constants.TEST_URL);
         params.setConnectTimeout(60000);
         params.addParameter("userid", userid);
         params.addParameter("type", type);
@@ -818,6 +810,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
     public void onBackPressed() {
 
         PlanXqActivity.this.finish();
+
     }
 
 

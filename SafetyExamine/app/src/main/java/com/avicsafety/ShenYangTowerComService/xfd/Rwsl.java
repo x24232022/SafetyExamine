@@ -24,6 +24,15 @@ public class Rwsl {
     private String yjsgd;
     private String Msg;
 
+    public String getYlgd() {
+        return ylgd;
+    }
+
+    public void setYlgd(String ylgd) {
+        this.ylgd = ylgd;
+    }
+
+    private String ylgd;
 
     public String getPreviewWork() {
         return PreviewWork;

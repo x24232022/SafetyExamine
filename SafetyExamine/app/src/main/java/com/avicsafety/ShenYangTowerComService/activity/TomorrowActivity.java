@@ -51,7 +51,7 @@ public class TomorrowActivity extends BaseActivity{
         mDate = getIntent().getStringExtra("blackoutdate");
         initData();
     }
-
+    //type10
     private void initData() {
         userAccoutn =com.avicsafety.ShenYangTowerComService.yd.activity.ydUtil.Constants.getUserInfo(oThis) ;
         RequestParams params = new RequestParams(Constants.TEST_URL);

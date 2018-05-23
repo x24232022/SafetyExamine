@@ -56,9 +56,6 @@ public class ChangeOneActivity extends BaseActivity{
         this.rwsl = rwsl;
     }
 
-    private void  setPreviewWork(Rwsl rwsl) {
-
-    }
     private Rwsl rwsl;
     private List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
 
@@ -186,7 +183,7 @@ protected void init(){
                     map.put("tv_count", rwsl.getSygd());
                     break;
                 case 5:
-                    map.put("tv_count",rwsl.getPreviewWork());
+                    map.put("tv_count",rwsl.getYlgd());
             }
 
             listItems.add(map);

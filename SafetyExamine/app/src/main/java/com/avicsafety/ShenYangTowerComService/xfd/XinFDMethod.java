@@ -26,9 +26,43 @@ import java.util.TimerTask;
  */
 
 public class XinFDMethod {
-    //发送数量
+
+    //发送位置信息type0
+    public void GetXinFsJwd(final Context context, String userid, int type, double lon, double lat) {
+        RequestParams params = new RequestParams(Constants.TEST_URL);
+        params.addParameter("userid", userid);
+        params.addParameter("type", type);
+        params.addParameter("lon",lon);
+        params.addParameter("lat",lat);
+        params.setConnectTimeout(60000);
+        x.http().post(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Rwsl rwsl = JSON.parseObject(result, Rwsl.class);
+                ((ChangeOneActivity) context).setRwsl(rwsl);
+
+
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
+    //发送数量type2
     public void GetXinFdRWSL(final Context context, String userid, int type) {
-        RequestParams params = new RequestParams(Constants.BASE_URL);
+        RequestParams params = new RequestParams(Constants.TEST_URL);
         params.addParameter("userid", userid);
         params.setConnectTimeout(60000);
         params.addParameter("type", type);
@@ -58,39 +92,9 @@ public class XinFDMethod {
         });
     }
 
-    public void GetXinFdGDPX(final Context context, List<Map<String,Object>> list, int type,String userid) {
-        RequestParams params = new RequestParams(Constants.BASE_URL);
-        params.addParameter("userid", userid);
-        params.setConnectTimeout(60000);
-        params.addParameter("type", type);
-        x.http().post(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
-                Rwsl rwsl = JSON.parseObject(result, Rwsl.class);
-                ((ChangeOneActivity) context).setRwsl(rwsl);
-
-
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-
-            }
-        });
-    }
-
+    //新发电工单数量type2
     public void GetXinFdPlanRWSL(final Context context, String userid, int type) {
-        RequestParams params = new RequestParams(Constants.BASE_URL);
+        RequestParams params = new RequestParams(Constants.TEST_URL);
         params.addParameter("userid", userid);
         params.addParameter("type", type);
         params.setConnectTimeout(60000);
@@ -120,10 +124,48 @@ public class XinFDMethod {
             }
         });
     }
-    //异常，失败，成功请求的方法
+
+    //type5发照片
+    public void dealdzSCTP(final Context context, String id, String data,int type,String userid,int types){
+
+        RequestParams params = new RequestParams(Constants.TEST_URL);
+        params.addParameter("ticketid",id);
+        params.addParameter("files",data);
+        params.addParameter("type",type);
+        params.addParameter("userid",userid);
+        params.addParameter("types",types);
+        params.setConnectTimeout(60000);
+
+        x.http().post(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Toast.makeText(context,"成功,页面自动关闭..", Toast.LENGTH_LONG).show();
+                ((PhotoActivityDzXin) context).progressDialog.dismiss();
+                ((PhotoActivityDzXin)context).finish();
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+
+
+    }
+    //异常，失败，成功请求的方法type7
     public void dealSCTP(final Context context, String id, String data,int type,String status,String userid,int types){
 
-        RequestParams params = new RequestParams(Constants.BASE_URL);
+        RequestParams params = new RequestParams(Constants.TEST_URL);
         params.addParameter("ticketid",id);
         params.addParameter("files",data);
         params.addParameter("type",type);
@@ -159,75 +201,7 @@ public class XinFDMethod {
 
     }
 
-    public void dealdzSCTP(final Context context, String id, String data,int type,String userid,int types){
 
-        RequestParams params = new RequestParams(Constants.BASE_URL);
-        params.addParameter("ticketid",id);
-        params.addParameter("files",data);
-        params.addParameter("type",type);
-        params.addParameter("userid",userid);
-        params.addParameter("types",types);
-        params.setConnectTimeout(60000);
-
-        x.http().post(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
-                Toast.makeText(context,"成功,页面自动关闭..", Toast.LENGTH_LONG).show();
-                ((PhotoActivityDzXin) context).progressDialog.dismiss();
-                ((PhotoActivityDzXin)context).finish();
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-
-            }
-        });
-
-
-    }
-    //发送位置信息
-    public void GetXinFsJwd(final Context context, String userid, int type, double lon, double lat) {
-        RequestParams params = new RequestParams(Constants.BASE_URL);
-        params.addParameter("userid", userid);
-        params.addParameter("type", type);
-        params.addParameter("lon",lon);
-        params.addParameter("lat",lat);
-        params.setConnectTimeout(60000);
-        x.http().post(params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
-                Rwsl rwsl = JSON.parseObject(result, Rwsl.class);
-                ((ChangeOneActivity) context).setRwsl(rwsl);
-
-
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-
-            }
-        });
-    }
 
 
 
