@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.avicsafety.ShenYangTowerComService.R;
@@ -53,7 +54,7 @@ public class TomorrowAdapter extends BaseAdapter{
         }
         holder.tv_name.setText(mList.get(position).getSitename());
         holder.tv_date.setText(mList.get(position).getExpectedstationtime());
-        holder.tv_sign.setText(mList.get(position).getOutagetype());
+        holder.tv_sign.setVisibility(View.GONE);
         return view;
     }
     public class MyViewHolder{

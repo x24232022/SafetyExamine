@@ -69,7 +69,7 @@ public class LocationAddressUtils{
 		option.setLocationNotify(true);
 		option.setIgnoreKillProcess(false);
 		option.setIsNeedAddress(true);
-		option.setScanSpan(100000);     //多少秒一次请求
+		option.setScanSpan(300000);     //多少秒一次请求
 		mLocationClient.setLocOption(option);   //加载option  
 	}
     public final static double[] X = new double[660 * 450];

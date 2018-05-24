@@ -90,7 +90,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
     private RadioButton mClean_rb3;
     private RadioButton mClean_rb4;
 
-    private String mClearReason;
+    private String mClearReason=null;
 
     public List<Rwlb.ResponseBean> getM() {
         return rwlb;
@@ -499,12 +499,14 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
-                abolishWorkOrder(userAccoutn.getUserName(), "11", id, mClearReason);
-                dialog.dismiss();
                 if(mClearReason!=null) {
+                    abolishWorkOrder(userAccoutn.getUserName(), "11", id, mClearReason);
                     startActivity(intent);
                 }
+
+
+                dialog.dismiss();
+
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -823,17 +825,27 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
         switch (buttonView.getId()) {
             case R.id.rb_clean_plabxq_1:
                 mClearReason = (String) mClean_rb1.getText();
+                mClean_rb1.setChecked(isChecked);
+
                 break;
             case R.id.rb_clean_plabxq_2:
                 mClearReason = (String) mClean_rb2.getText();
+                mClean_rb2.setChecked(isChecked);
+
+
                 break;
             case R.id.rb_clean_plabxq_3:
                 mClearReason = (String) mClean_rb3.getText();
+                mClean_rb3.setChecked(isChecked);
+
                 break;
             case R.id.rb_clean_plabxq_4:
+                mClean_rb4.setChecked(isChecked);
+
                 mClearReason = (String) mClean_rb4.getText();
                 break;
         }

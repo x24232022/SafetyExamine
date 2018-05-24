@@ -28,7 +28,7 @@ import java.util.TimerTask;
 public class XinFDMethod {
 
     //发送位置信息type0
-    public void GetXinFsJwd(final Context context, String userid, int type, double lon, double lat) {
+    public void GetXinFsJwd(String userid, int type, double lon, double lat) {
         RequestParams params = new RequestParams(Constants.TEST_URL);
         params.addParameter("userid", userid);
         params.addParameter("type", type);
@@ -38,8 +38,7 @@ public class XinFDMethod {
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Rwsl rwsl = JSON.parseObject(result, Rwsl.class);
-                ((ChangeOneActivity) context).setRwsl(rwsl);
+
 
 
             }

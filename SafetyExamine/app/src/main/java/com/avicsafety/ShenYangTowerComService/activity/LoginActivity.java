@@ -261,7 +261,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 			}
 		});
 		//开启人员位置服务
-		Intent intent=new Intent(getApplicationContext(), PositionService.class);
+		Intent intent=new Intent(LoginActivity.this, PositionService.class);
 		startService(intent);
 	}
 

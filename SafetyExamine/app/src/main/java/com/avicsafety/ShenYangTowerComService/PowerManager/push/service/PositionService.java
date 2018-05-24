@@ -1,5 +1,6 @@
 package com.avicsafety.ShenYangTowerComService.PowerManager.push.service;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,8 +8,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.IBinder;
 import android.provider.ContactsContract;
 
@@ -30,11 +31,6 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 public class PositionService extends Service implements MyCallback {
-    Context mContext;
-
-    public PositionService(Context context) {
-        mContext = context;
-    }
 
     private LocationAddressUtils utils;
     private BaseModule.SubPositon subs;
@@ -54,7 +50,8 @@ public class PositionService extends Service implements MyCallback {
     private String userid = "boot";
     //	private PowerApplication application;
 //	private PositionBeanDao dao;
-    int i = 0;
+    private int i = 0;
+
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -90,20 +87,28 @@ public class PositionService extends Service implements MyCallback {
         blatitude = mLocation.getLatitude();
         blongitude = mLocation.getLongitude();
 
-        Date date = new Date();
-        date.getMinutes();
-        if (i == 0 || date.getMinutes() % 300 == 0) {
-//            Timer timer = new Timer();
-//            timer.schedule(new TimerTask() {
-//                public void run() {
-                    new XinFDMethod().GetXinFsJwd(mContext, userAccount, 0, longitude, latitude);
-               // }
-//            }, 300000);// 设定指定的时间time,此处为5分钟
 
 
-            L.v("发送经纬度：              ~");
-            i = 1;
-        }
+
+       AsyncTask task= new AsyncTask(){
+
+           @Override
+           protected Object doInBackground(Object[] objects) {
+               new XinFDMethod().GetXinFsJwd(userAccount, 0, longitude, latitude);
+               L.v("发送经纬度：              ~");
+
+               try {
+                   //设置发送时间间隔
+                   Thread.sleep(1000 * 60*5);
+               } catch (InterruptedException e) {
+                   e.printStackTrace();
+               }
+               return null;
+           }
+       };
+        task.execute();
+
+
 //        Date d = new Date();
 //        int n = d.getMinutes() * 60;
 //        int n1 = d.getSeconds();

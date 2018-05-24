@@ -152,6 +152,15 @@ public class Rwlb {
         private String latitude;
         private String outagetype;
         private String executorid;
+        private String alarmInformation;
+
+        public String getAlarmInformation() {
+            return alarmInformation;
+        }
+
+        public void setAlarmInformation(String alarmInformation) {
+            this.alarmInformation = alarmInformation;
+        }
 
         public String getSelecttime() {
             return selecttime;

@@ -16,23 +16,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="停电计划取消"
-            android:checked="true"/>
+            android:checked="false"/>
 
         <RadioButton
             android:id="@+id/rb_clean_plabxq_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="供电自行恢复"/>
+            android:text="供电自行恢复"
+            android:checked="false"/>
         <RadioButton
             android:id="@+id/rb_clean_plabxq_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="客户取消发电"/>
+            android:text="客户取消发电"
+            android:checked="false"/>
         <RadioButton
             android:id="@+id/rb_clean_plabxq_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="其他原因"/>
+            android:text="其他原因"
+            android:checked="false"/>
     </RadioGroup>
 
 </LinearLayout>

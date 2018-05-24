@@ -83,7 +83,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        listtype = getIntent().getIntExtra("listtype", 0);
+        listtype = getIntent().getIntExtra("listtype",0);
 
     }
 
@@ -517,7 +517,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
         }
         String jsonString = JSON.toJSONString(list);
         Log.i("_________msg__________", jsonString);
-        RequestParams params = new RequestParams(Constants.TEST_URL/*?type=9\n"*/);//"http://192.168.1.121:8080/phoneServices/fd/geographicalPositionReceiveServlet?type=9\n"
+        RequestParams params = new RequestParams(Constants.TEST_URL);
         params.addParameter("type",9);
         params.addParameter("jsonBean", jsonString);
         params.setConnectTimeout(60000);
