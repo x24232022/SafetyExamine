@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@null">
 
-    <com.avicsafety.ShenYangTowerComService.view.TabIconView
+    <com.avicsafety.NewShenYangTowerComService.view.TabIconView
         android:id="@+id/iv_tab_icon"
         android:layout_marginTop="3dp"
         android:layout_width="@dimen/tab_icon_width"

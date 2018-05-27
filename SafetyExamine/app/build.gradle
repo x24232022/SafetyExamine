@@ -11,7 +11,8 @@ android {
     }
     defaultConfig {
         multiDexEnabled true
-        applicationId "com.avicsafety.safety_examine"
+
+        applicationId "com.avicsafety.NewShenYangTowerComService"
         minSdkVersion 16
         targetSdkVersion 24
         versionCode 3
@@ -30,6 +31,8 @@ android {
 //                XG_ACCESS_KEY : "ATE1DLZ8933R",
 //        ]
     }
+
+
     defaultConfig {
         multiDexEnabled true
     }

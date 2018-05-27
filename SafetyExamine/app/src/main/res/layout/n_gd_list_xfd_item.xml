@@ -65,24 +65,22 @@
                 android:textSize="30px"
                 tools:ignore="RtlCompat"/>
 
-            <!--<ImageView-->
-                <!--android:id="@+id/tv_sign"-->
-                <!--android:layout_width="30dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--android:layout_alignLeft="@+id/tv_theme1_gd"-->
-
-                <!--android:layout_below="@+id/tv_theme1_gd"-->
-                <!--android:background="@drawable/wjgd"-->
-
-                <!--/>-->
-            <TextView
+            <ImageView
+                android:id="@+id/iv_sign"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignLeft="@+id/tv_theme1_gd"
+                android:layout_below="@+id/tv_theme1_gd"
+                android:background="@drawable/jh_w_wgj"
+                />
+            <!--<TextView
                 android:id="@+id/tv_sign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/tv_theme1_gd"
                 android:text="计划发电"
                 android:layout_alignTop="@+id/tv_number"
-                android:layout_below="@+id/tv_theme1_gd"
+                android:layout_below="@+id/tv_theme1_gd"-->
 
 
                 />

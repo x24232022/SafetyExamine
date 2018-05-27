@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.avicsafety.ShenYangTowerComService">
+          package="com.avicsafety.NewShenYangTowerComService">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
@@ -193,22 +193,21 @@
         </service>
 
         <!-- 【必须】 【注意】authorities修改为 包名.AUTH_XGPUSH, 如demo的包名为：com.qq.xgdemo -->
-        <provider
-            android:name="com.tencent.android.tpush.XGPushProvider"
-            android:authorities="com.avicsafety.safety_examine.AUTH_XGPUSH"
-            android:exported="true"/>
+        <!--<provider-->
+            <!--android:name="com.tencent.android.tpush.XGPushProvider"-->
+            <!--android:authorities="com.avicsafety.safety_examine.AUTH_XGPUSH"-->
+            <!--android:exported="true"/>-->
+        <!--&lt;!&ndash; 【必须】 【注意】authorities修改为 包名.TPUSH_PROVIDER, 如demo的包名为：com.qq.xgdemo &ndash;&gt;-->
+        <!--<provider-->
+            <!--android:name="com.tencent.android.tpush.SettingsContentProvider"-->
+            <!--android:authorities="com.avicsafety.safety_examine.TPUSH_PROVIDER"-->
+            <!--android:exported="false"/>-->
 
-        <!-- 【必须】 【注意】authorities修改为 包名.TPUSH_PROVIDER, 如demo的包名为：com.qq.xgdemo -->
-        <provider
-            android:name="com.tencent.android.tpush.SettingsContentProvider"
-            android:authorities="com.avicsafety.safety_examine.TPUSH_PROVIDER"
-            android:exported="false"/>
-
-        <!-- 【必须】 【注意】authorities修改为 包名.TENCENT.MID.V3, 如demo的包名为：com.qq.xgdemo -->
-        <provider
-            android:name="com.tencent.mid.api.MidProvider"
-            android:authorities="com.avicsafety.safety_examine.TENCENT.MID.V3"
-            android:exported="true"/>
+        <!--&lt;!&ndash; 【必须】 【注意】authorities修改为 包名.TENCENT.MID.V3, 如demo的包名为：com.qq.xgdemo &ndash;&gt;-->
+        <!--<provider-->
+            <!--android:name="com.tencent.mid.api.MidProvider"-->
+            <!--android:authorities="com.avicsafety.safety_examine.TENCENT.MID.V3"-->
+            <!--android:exported="true"/>-->
 
         <!-- 【必须】 请将YOUR_ACCESS_ID修改为APP的AccessId，“21”开头的10位数字，中间没空格 -->
         <meta-data
@@ -226,15 +225,15 @@
             android:persistent="true"
             android:process=":xg_service_v3"/>
 
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.avicsafety.ShenYangTowerComService"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
-        </provider>
+        <!--<provider-->
+            <!--android:name="android.support.v4.content.FileProvider"-->
+            <!--android:authorities="com.avicsafety.NewShenYangTowerComService"-->
+            <!--android:exported="false"-->
+            <!--android:grantUriPermissions="true">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+                <!--android:resource="@xml/file_paths"/>-->
+        <!--</provider>-->
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
@@ -300,6 +299,7 @@
         <!-- 所有控件库里的Activity END -->
         <activity
             android:name=".activity.TomorrowActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.LoginActivity"
@@ -437,7 +437,7 @@
             android:screenOrientation="portrait"/>
 
         <!-- 计划发电 -->
-        <activity
+        <!--<activity
             android:name=".activity.PlanActivity"
             android:screenOrientation="portrait"/>
         <activity
@@ -451,7 +451,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.PlanFaultListActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"/>-->
         <activity
             android:name=".activity.BNDemoGuideActivity"
             android:screenOrientation="portrait"/>
@@ -471,6 +471,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".xfd.PlanXqActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".xfd.PhotoActivityXin"
@@ -480,9 +481,11 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".xfd.InquireActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".xfd.PlanCxActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
         <service

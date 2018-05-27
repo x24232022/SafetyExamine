@@ -7,7 +7,7 @@
 
     <list>
         <!--这里是类映射-->
-        <mapping class="com.avicsafety.ShenYangTowerComService.model.WorkOrderBean"></mapping>
+        <mapping class="com.avicsafety.NewShenYangTowerComService.model.WorkOrderBean"></mapping>
 
     </list>
 
