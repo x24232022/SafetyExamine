@@ -69,6 +69,17 @@
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:visibility="gone"/>
+            <Button
+                android:id="@+id/btn_warning_cf"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:text="告警查询"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
@@ -103,11 +114,22 @@
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:visibility="gone"/>
+            <Button
+                android:id="@+id/btn_warning_fd"
+                android:layout_margin="2dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:text="告警查询"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
 
-        <Button
+       <!-- <Button
             android:id="@+id/btn_abolish_tomorrow_activity"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -117,8 +139,14 @@
             android:text="取消"
             android:textColor="@android:color/white"
             android:textSize="16sp"
-            android:visibility="gone"/>
+            android:visibility="gone"/>-->
 
+        <LinearLayout
+            android:id="@+id/btn_fdjs_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:orientation="horizontal">
         <Button
             android:id="@+id/btn_fdjs"
             android:layout_width="0dp"
@@ -130,7 +158,30 @@
             android:textColor="@android:color/white"
             android:textSize="16sp"
             android:visibility="gone"/>
+            <Button
+                android:id="@+id/btn_warning_fdjs"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:text="告警信息"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+        </LinearLayout>
 
+        <Button
+            android:id="@+id/btn_warning_ywc"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg"
+            android:text="告警信息"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:visibility="gone"/>
     </LinearLayout>
 
 </LinearLayout>

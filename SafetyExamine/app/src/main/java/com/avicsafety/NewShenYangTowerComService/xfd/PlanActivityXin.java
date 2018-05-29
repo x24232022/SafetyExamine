@@ -1,5 +1,6 @@
 package com.avicsafety.NewShenYangTowerComService.xfd;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
@@ -26,6 +27,11 @@ public class PlanActivityXin extends BaseActivity implements View.OnClickListene
     private String userid = "boot";
 
 
+    public static void startPlanActivityXin(Activity activity,String tickid){
+        Intent intent = new Intent(activity, PlanActivityXin.class);
+        intent.putExtra("ticketid", tickid);
+        activity.startActivity(intent);
+    }
     @Override
     protected void InitializeComponent() {
         super.InitializeComponent();

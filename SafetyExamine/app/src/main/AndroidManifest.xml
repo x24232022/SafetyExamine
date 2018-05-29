@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.avicsafety.NewShenYangTowerComService">
 
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -160,8 +167,20 @@
         android:icon="@drawable/ll1"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
 
+        >
+
+
+        <meta-data
+            android:name="com.taobao.android.hotfix.IDSECRET"
+            android:value="24910876" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.APPSECRET"
+            android:value="759b428b411e542fecf0fc8c90bb37ae" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.RSASECRET"
+            android:value="MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCuf+vv2XWBGJi7tf/4dOT/pjajENHnt67oLOHHuLHJ12iXYm2P2qBXsfHqFPV7XLuy7Fg/2ZccEf9u0v9gbGHIuFyJCOibVQKuCneYbNzMEFLf+GzQ2LqoTQX5FhL58VO8X1xg674oSf5O8/2PvUwmEenu3QjBNNT8c2OnhRBp9pGH++niuvcfDZ2X3BiV2B4K9EEZAkNCdOpAclN062l8X+JHeyualUIxra0R8NiIceuw9qse/sPjqTr66v/KZJRGKKvP0bj+BV3C3xO+QvMb396u7H61j5H1llrq5BssJQxqmBTQdyjsYsmWyDApNKR/LL+WZMLE/0TB56wpUCD9AgMBAAECggEADtlx8Xo25qJ6NNcbDkCcUCkL0zqWMjrOVpGjMQTFlGCRVPiaTDiVloDdDkd0UGgmzOYR6HUSx9+8NekctE7kz1jo/vxUFwvX64mWfdEdxPvKoaaZU/htge70CCtZuA1SS+Btkw3co78QNhXLSRUZys+RcbM7kH13dng3TcUkDXA69f3xOGUExgVzIdRoKrtC3JQ0mQvC0xbJ/tX0UtiieA8Lo39CC3ITMvhlKiaWrjoH94MMriTm4Wj1BpcAVOvTpHBsuoXPCq94niSxJl+LXjB6aqHxQTavICntqLyMuY8pd1VSSac9+Fl4LTK5C0EXQpXgs8urTaJE+auSEnmrvQKBgQDoV8PiuDDCY/LczJEn1i7XTjQZNpLQuua801ukQJj8Zp5fydw6GnW1xeMor3478W5ML6bPhoqatxneUqN2vyHptbOLR6YCN/aEHGBM4HugCzV9lsexHY/IYUuFVypkUQgRYFCW/R1btjf0qeIgYqQ5KPuVh8/RfwOBfVCyYp9wVwKBgQDARGuorsZgeXQG67il93WbwbR9Bc9YJGxMGz8GkQwuKpJ5JcSDTSpl3FFIFs+qGAOo+2mld5tE1tItKzFp7OlQQuDx8Wa4FQiAbtjHXkZNtOmyhVSAVQefCMqLRplgpTp+tmywr+O2AOZd0qWaW3d4bxCm4be7dhv1ZYXdorbUywKBgQDbiZphDtObyl8/vNfngV0vOgjGTie5rPC7OScdc6Ba1ggN0KoUCM5ynHJBDlnEACPNPzVqX+F1wU9jIEiuunkr4PGuyFuXOxPmzv07ht2pYw3/BkrYE2u51h1K+ArpURvDd3OOx8pGz03eE+vD2BD+pbfbGcIHXPGOGD/43nFy7wKBgHRrOZErOv2BrSrforAEFheZA/PMB8/ERjsTKGeOfoSZzJVEtCgZGnoRHLp87YN+BQFWMpM5yC+3sA4foE0WYfPyewik9mCyg7JY7DRUNlepGvS43QDT+8hlZ1dMCWVGxxOg3FFkP4qeIt9exF2h0sZ+4eNau4jsLGO79IHOm8xfAoGAZiWBIq2GfBljhPikDFowvGBLV9xRSf2XB3A5B57AINIuhqzWP+j6id8LCiiTV5KKsGUmzKN6pfMBqu7Jx1leAx7w3L7d1Sy6dDFDHequrdfeJHDR1zznSAqk2tuBM16DRno6z14P8VUWgoEs+ceNOBJA8EjqwpQ8YWuRNvrRy1g=" />
         <!-- 【必须】 信鸽receiver广播接收 -->
         <receiver
             android:name="com.tencent.android.tpush.XGPushReceiver"
@@ -193,21 +212,23 @@
         </service>
 
         <!-- 【必须】 【注意】authorities修改为 包名.AUTH_XGPUSH, 如demo的包名为：com.qq.xgdemo -->
-        <!--<provider-->
-            <!--android:name="com.tencent.android.tpush.XGPushProvider"-->
-            <!--android:authorities="com.avicsafety.safety_examine.AUTH_XGPUSH"-->
-            <!--android:exported="true"/>-->
-        <!--&lt;!&ndash; 【必须】 【注意】authorities修改为 包名.TPUSH_PROVIDER, 如demo的包名为：com.qq.xgdemo &ndash;&gt;-->
-        <!--<provider-->
-            <!--android:name="com.tencent.android.tpush.SettingsContentProvider"-->
-            <!--android:authorities="com.avicsafety.safety_examine.TPUSH_PROVIDER"-->
-            <!--android:exported="false"/>-->
+        <!-- <provider -->
+        <!-- android:name="com.tencent.android.tpush.XGPushProvider" -->
+        <!-- android:authorities="com.avicsafety.safety_examine.AUTH_XGPUSH" -->
+        <!-- android:exported="true"/> -->
+        <!-- &lt;!&ndash; 【必须】 【注意】authorities修改为 包名.TPUSH_PROVIDER, 如demo的包名为：com.qq.xgdemo &ndash;&gt; -->
+        <!-- <provider -->
+        <!-- android:name="com.tencent.android.tpush.SettingsContentProvider" -->
+        <!-- android:authorities="com.avicsafety.safety_examine.TPUSH_PROVIDER" -->
+        <!-- android:exported="false"/> -->
 
-        <!--&lt;!&ndash; 【必须】 【注意】authorities修改为 包名.TENCENT.MID.V3, 如demo的包名为：com.qq.xgdemo &ndash;&gt;-->
-        <!--<provider-->
-            <!--android:name="com.tencent.mid.api.MidProvider"-->
-            <!--android:authorities="com.avicsafety.safety_examine.TENCENT.MID.V3"-->
-            <!--android:exported="true"/>-->
+
+        <!-- &lt;!&ndash; 【必须】 【注意】authorities修改为 包名.TENCENT.MID.V3, 如demo的包名为：com.qq.xgdemo &ndash;&gt; -->
+        <!-- <provider -->
+        <!-- android:name="com.tencent.mid.api.MidProvider" -->
+        <!-- android:authorities="com.avicsafety.safety_examine.TENCENT.MID.V3" -->
+        <!-- android:exported="true"/> -->
+
 
         <!-- 【必须】 请将YOUR_ACCESS_ID修改为APP的AccessId，“21”开头的10位数字，中间没空格 -->
         <meta-data
@@ -225,15 +246,15 @@
             android:persistent="true"
             android:process=":xg_service_v3"/>
 
-        <!--<provider-->
-            <!--android:name="android.support.v4.content.FileProvider"-->
-            <!--android:authorities="com.avicsafety.NewShenYangTowerComService"-->
-            <!--android:exported="false"-->
-            <!--android:grantUriPermissions="true">-->
-            <!--<meta-data-->
-                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
-                <!--android:resource="@xml/file_paths"/>-->
-        <!--</provider>-->
+        <!-- <provider -->
+        <!-- android:name="android.support.v4.content.FileProvider" -->
+        <!-- android:authorities="com.avicsafety.NewShenYangTowerComService" -->
+        <!-- android:exported="false" -->
+        <!-- android:grantUriPermissions="true"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
+        <!-- android:resource="@xml/file_paths"/> -->
+        <!-- </provider> -->
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
@@ -437,7 +458,8 @@
             android:screenOrientation="portrait"/>
 
         <!-- 计划发电 -->
-        <!--<activity
+        <!--
+        <activity
             android:name=".activity.PlanActivity"
             android:screenOrientation="portrait"/>
         <activity
@@ -451,7 +473,8 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.PlanFaultListActivity"
-            android:screenOrientation="portrait"/>-->
+            android:screenOrientation="portrait"/>
+        -->
         <activity
             android:name=".activity.BNDemoGuideActivity"
             android:screenOrientation="portrait"/>
@@ -517,6 +540,10 @@
         <activity android:name=".xfd.PersonActivity">
         </activity>
         <activity android:name=".activity.TomorrowTitleListActivity">
+        </activity>
+        <activity android:name=".xfd.WarninDetailsActivity">
+        </activity>
+        <activity android:name=".xfd.WarningListActivity">
         </activity>
     </application>
 

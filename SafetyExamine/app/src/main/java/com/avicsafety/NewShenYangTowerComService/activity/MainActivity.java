@@ -24,6 +24,7 @@ import com.avicsafety.lib.AutoUpdateManager.UpdateManager;
 import com.avicsafety.lib.interfaces.OnNetworkAccessToMessageListener;
 import com.avicsafety.lib.tools.SPUtils;
 import com.avicsafety.lib.tools.ToastUtil;
+import com.taobao.sophix.SophixManager;
 
 import org.xutils.view.annotation.ContentView;
 
@@ -115,6 +116,8 @@ public class MainActivity extends BaseActivity {
             String[] pewmissions = permissionList.toArray(new String[permissionList.size()]);
             ActivityCompat.requestPermissions(MainActivity.this, pewmissions, 2222);
         }else{
+
+            SophixManager.getInstance().queryAndLoadNewPatch();
             wel();
         }
 

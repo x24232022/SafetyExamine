@@ -23,6 +23,7 @@ import com.avicsafety.NewShenYangTowerComService.Utils.MyProgressDialog;
 import com.avicsafety.NewShenYangTowerComService.activity.BaseActivity;
 import com.avicsafety.NewShenYangTowerComService.activity.RouteActivity;
 import com.avicsafety.NewShenYangTowerComService.activity.TomorrowActivity;
+import com.avicsafety.NewShenYangTowerComService.adapter.WarningListAdapter;
 import com.avicsafety.NewShenYangTowerComService.model.MUser;
 import com.avicsafety.NewShenYangTowerComService.model.WorkOrderBean;
 import com.avicsafety.lib.tools.L;
@@ -64,14 +65,22 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
 //    private Button btn_redeploy;
     @ViewInject(R.id.btn_abolish)
     private Button btn_abolish;
-    @ViewInject(R.id.btn_abolish_tomorrow_activity)
-    private Button btn_abolish_tomorrow;
+    @ViewInject(R.id.btn_fdjs_ll)
+    private LinearLayout btn_fdjs_ll;
+    @ViewInject(R.id.btn_warning_fdjs)
+    private Button btn_warning_fdjs;
     @ViewInject(R.id.btn_cf)
     private Button btn_cf;
     @ViewInject(R.id.btn_dzfd)
     private Button btn_dzfd;
     @ViewInject(R.id.btn_fdjs)
     private Button btn_fdjs;
+    @ViewInject(R.id.btn_warning_cf)
+    private Button btn_warning_cf;
+    @ViewInject(R.id.btn_warning_fd)
+    private Button btn_warning_fd;
+    @ViewInject(R.id.btn_warning_ywc)
+    private Button btn_warning_ywc;
     public MyProgressDialog progressDialog;
     private String id;
     private String activityId;
@@ -90,6 +99,8 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
     private RadioButton mClean_rb3;
     private RadioButton mClean_rb4;
     private String mClearReason=null;
+    private List<Rwlb.ResponseBean> mMList;
+    private String alarmInformation;
 
     public List<Rwlb.ResponseBean> getM() {
         return rwlb;
@@ -104,6 +115,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         activityId = getIntent().getStringExtra("activityId");
         listtype = getIntent().getIntExtra("listtype",0);
+        alarmInformation=getIntent().getStringExtra("alarmInformation");
         if(activityId.equals("1")){
             ll_btns.setVisibility(View.GONE);
         }
@@ -141,10 +153,10 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
                         String datas = res.getString("Response").toString();
                         // 登录成功保存用户信息
 
-                        List<Rwlb.ResponseBean> mList = JSON.parseArray(datas,
+                        mMList = JSON.parseArray(datas,
                                 Rwlb.ResponseBean.class);
 
-                        ShowGDInfo(mList);
+                        ShowGDInfo(mMList);
 
                         progressDialog.dismiss();
 
@@ -335,11 +347,26 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
                     tv_value.setText(mTT.get(0).getInetialtime());
                     ll_content.addView(view);
                     break;
-
+                case 30:
+                    tv_name.setText("告警类型");
+                    tv_value.setText(mTT.get(0).getAlarmInformation());
+                    ll_content.addView(view);
+                    break;
+                case 31:
+                    tv_name.setText("停电类型");
+                    tv_value.setText(mTT.get(0).getOutagetype());
+                    ll_content.addView(view);
+                    break;
+                case 32:
+                    tv_name.setText("工单状态");
+                    tv_value.setText(mTT.get(0).getStatepowerstation());
+                    ll_content.addView(view);
+                    break;
                 default:
                     break;
 
             }
+
             initBtns();
         }
     }
@@ -349,23 +376,28 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         // TODO 自动生成的方法存根
 
         reSetAllBtns();// 重置按钮状态
-        if (buttonKz.equals("未接单")||buttonKz.equals("未接收")) {
+        if (listtype==0||buttonKz.equals("未接单")||buttonKz.equals("未派发")) {
             ll_redeploy.setVisibility(View.VISIBLE);
             btn_cf.setVisibility(View.VISIBLE);
             //btn_redeploy.setVisibility(View.VISIBLE);
             btn_abolish.setVisibility(View.VISIBLE);
+            btn_warning_cf.setVisibility(View.VISIBLE);
 
         }
-        if (buttonKz.equals("已接单")||buttonKz.equals("已出发")) {
+        if (listtype==1||buttonKz.equals("已接单")||buttonKz.equals("已出发")) {
             btn_fd_ll.setVisibility(View.VISIBLE);
             btn_dzfd.setVisibility(View.VISIBLE);
             btn_abolish_1.setVisibility(View.VISIBLE);
+            btn_warning_fd.setVisibility(View.VISIBLE);
         }
-        if (buttonKz.equals("发电中")||buttonKz.equals("已发电")) {
+        if (listtype==2||buttonKz.equals("发电中")||buttonKz.equals("已发电")) {
+            btn_fdjs_ll.setVisibility(View.VISIBLE);
             btn_fdjs.setVisibility(View.VISIBLE);
+            btn_warning_fdjs.setVisibility(View.VISIBLE);
         }
-        if(buttonKz.equals("已完成")){
+        if (listtype==3||buttonKz.equals("已完成")){
             ll_btns.setVisibility(View.GONE);
+           // btn_warning_ywc.setVisibility(View.VISIBLE);
         }
 
 
@@ -424,8 +456,12 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
         btn_cf.setOnClickListener(this);
         btn_dzfd.setOnClickListener(this);
         btn_fdjs.setOnClickListener(this);
-        btn_abolish_tomorrow.setOnClickListener(this);
+
         btn_abolish_1.setOnClickListener(this);
+        btn_warning_cf.setOnClickListener(this);
+        btn_warning_fd.setOnClickListener(this);
+        btn_warning_fdjs.setOnClickListener(this);
+        btn_warning_ywc.setOnClickListener(this);
 
     }
 
@@ -445,7 +481,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
             case R.id.btn_cf://出发状态
                 progressDialog = new MyProgressDialog(oThis, "提交中..");
                 GetXinFdPlanRwslCfData(oThis, userAccoutn.getUserName(), 4, id);
-                startActivity(new Intent(oThis,PlanActivityXin.class));
+                PlanActivityXin.startPlanActivityXin(oThis,id);
                 break;
             //转派状态
 //            case R.id.btn_redeploy:
@@ -455,35 +491,45 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
 //                break;
             //消除状态
             case R.id.btn_abolish:
-                Intent intent1 = new Intent(this, PlanActivityXin.class);
-                showClearReasonDialog(intent1);
+                showClearReasonDialog();
+                break;
+            //未接工单告警查询
+            case R.id.btn_warning_cf:
+                WarningListActivity.startWarningActivity(id,oThis,alarmInformation);
                 break;
             //发电前工单消除按钮
             case R.id.btn_abolish_1:
-                Intent intent2 = new Intent(this, PlanActivityXin.class);
-                showClearReasonDialog(intent2);
+                showClearReasonDialog();
                 break;
-            //工单预览界面消除按钮
-            case R.id.btn_abolish_tomorrow_activity:
-                Intent intent3 = new Intent(this, TomorrowActivity.class);
-                showClearReasonDialog(intent3);
-                break;
+
             case R.id.btn_dzfd://发电状态
-                Intent intent = new Intent(this, PhotoActivityDzXin.class)
-                        .putExtra("ticketid", id);
-                startActivity(intent);
+                Intent intent4 = new Intent(this, PhotoActivityDzXin.class);
+                intent4.putExtra("ticketid", id);
+                startActivity(intent4);
                 PlanXqActivity.this.finish();
+                break;
+            case R.id.btn_warning_fd:
+                WarningListActivity.startWarningActivity(id,oThis,alarmInformation);
                 break;
             case R.id.btn_fdjs://结束状态
                 progressDialog = new MyProgressDialog(oThis, "提交中..");
                 GetXinFdPlanRwslFdjsData(oThis, userAccoutn.getUserName(), 6, id);
 
                 break;
+            case R.id.btn_warning_fdjs:
+                WarningListActivity.startWarningActivity(id,oThis,alarmInformation);
+                break;
+            case R.id.btn_warning_ywc:
+                WarningListActivity.startWarningActivity(id,oThis,alarmInformation);
+                break;
+            default:
+                break;
         }
     }
 
+
     //显示取消原因
-    public void showClearReasonDialog(final Intent intent) {
+    public void showClearReasonDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(oThis);
         View view = View.inflate(oThis, R.layout.cleanreason_dialog_planxq_activity, null);
@@ -501,7 +547,7 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
             public void onClick(DialogInterface dialog, int which) {
                 if(mClearReason!=null) {
                     abolishWorkOrder(userAccoutn.getUserName(), "11", id, mClearReason);
-                    startActivity(intent);
+                    PlanActivityXin.startPlanActivityXin(oThis,id);
                 }
 
 

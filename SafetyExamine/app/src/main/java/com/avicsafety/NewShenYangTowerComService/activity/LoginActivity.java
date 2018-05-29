@@ -222,7 +222,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
 						((LoginActivity)context).goToMain(); //这里销毁了页面 下面还做了一些操作
 						context.startActivity(new Intent(context, ChangeOneActivity.class));
-						((LoginActivity)context).startServer(); //是不是重复调用了 开启服务的方法
+
 
 
 					}else{

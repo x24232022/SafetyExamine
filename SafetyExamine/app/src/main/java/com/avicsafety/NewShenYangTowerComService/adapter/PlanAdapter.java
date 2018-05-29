@@ -88,7 +88,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
                         case "无告警":
                             mImgid =img_plan_unreceived[0];
                             break;
-                        case "退服告警":
+                        case "站址退服":
                             mImgid =img_plan_unreceived[1];
                             break;
                         case "交流告警":
@@ -121,7 +121,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
                         case "无告警":
                             mImgid =img_plan_accepted[0];
                             break;
-                        case "退服告警":
+                        case "站址退服":
                             mImgid =img_plan_accepted[1];
                             break;
                         case "交流告警":
@@ -139,7 +139,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
                         case "无告警":
                             mImgid =img_plan_HavePower[0];
                             break;
-                        case "退服告警":
+                        case "站址退服":
                             mImgid =img_plan_HavePower[1];
                             break;
                         case "交流告警":
@@ -168,7 +168,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
                         case "无告警":
                             mImgid =img_fault_unreceived[0];
                             break;
-                        case "退服告警":
+                        case "站址退服":
                             mImgid =img_fault_unreceived[1];
                             break;
                         case "交流告警":
@@ -186,7 +186,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
                         case "无告警":
                             mImgid =img_fault_accepted[0];
                             break;
-                        case "退服告警":
+                        case "站址退服":
                             mImgid =img_fault_accepted[1];
                             break;
                         case "交流告警":
@@ -204,7 +204,7 @@ public class PlanAdapter extends RecyclerView.Adapter<PlanAdapter.MyViewHolder> 
                         case "无告警":
                             mImgid =img_fault_HavePower[0];
                             break;
-                        case "退服告警":
+                        case "站址退服":
                             mImgid =img_fault_HavePower[1];
                             break;
                         case "交流告警":

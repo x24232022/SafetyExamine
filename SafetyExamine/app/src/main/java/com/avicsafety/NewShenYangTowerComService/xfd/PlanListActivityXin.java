@@ -392,7 +392,8 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
                         putExtra("taskType", vh.getLayoutPosition()).
                         putExtra("activityId","0").
                         putExtra("blackoutdate","").
-                        putExtra("listtype",listtype)
+                        putExtra("listtype",listtype).putExtra("alarmInformation",listItems.get(vh.getLayoutPosition()).getAlarmInformation())
+
                 );
                 oThis.finish();
 
