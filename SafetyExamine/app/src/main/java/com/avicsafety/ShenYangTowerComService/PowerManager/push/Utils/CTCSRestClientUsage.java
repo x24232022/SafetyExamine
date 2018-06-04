@@ -3,23 +3,14 @@ package com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
 //import com.avicsafety.ShenYangTowerComService.activity.PlanActivity;
 //import com.avicsafety.ShenYangTowerComService.activity.PlanDetailsActivity;
 //import com.avicsafety.ShenYangTowerComService.activity.PlanListActivity;
-import com.avicsafety.ShenYangTowerComService.model.PowerWork;
-import com.avicsafety.ShenYangTowerComService.model.PowerWorkBean;
-import com.avicsafety.ShenYangTowerComService.model.PowerWorkBeanMyImpl;
 import com.avicsafety.lib.tools.L;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
-
-import java.util.List;
 
 /**
  * Created by 刘畅 on 2017/8/21.

@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.avicsafety.ShenYangTowerComService.R;
 import com.avicsafety.ShenYangTowerComService.Utils.MyProgressDialog;
 import com.avicsafety.ShenYangTowerComService.activity.BaseActivity;
-import com.avicsafety.ShenYangTowerComService.activity.PhotoActivity;
 import com.avicsafety.ShenYangTowerComService.datedialog.DateTimePickerDialog;
 import com.avicsafety.ShenYangTowerComService.yd.activity.ydUtil.CTCSRestClientUsage;
 

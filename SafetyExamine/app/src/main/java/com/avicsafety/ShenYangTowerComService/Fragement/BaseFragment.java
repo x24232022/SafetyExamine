@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.avicsafety.lib.CustomView.AvicLoadingDialog;
 import com.avicsafety.lib.tools.L;
-import com.avicsafety.ShenYangTowerComService.R;
 
 import org.xutils.x;
 

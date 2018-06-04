@@ -3,9 +3,7 @@ package com.avicsafety.ShenYangTowerComService.xfd;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.Utils;
 import com.avicsafety.ShenYangTowerComService.R;
 import com.avicsafety.ShenYangTowerComService.Utils.MyProgressDialog;
 import com.avicsafety.ShenYangTowerComService.activity.BaseActivity;

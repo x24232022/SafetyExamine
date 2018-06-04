@@ -16,7 +16,6 @@ import com.avicsafety.ShenYangTowerComService.dx.activity.UserListActivity;
 import com.avicsafety.ShenYangTowerComService.model.MUsers;
 import com.avicsafety.ShenYangTowerComService.model.Mdept;
 import com.avicsafety.ShenYangTowerComService.model.Mgdxq;
-import com.avicsafety.ShenYangTowerComService.model.MgdxqN;
 import com.avicsafety.ShenYangTowerComService.model.Mgroup;
 import com.avicsafety.ShenYangTowerComService.model.Mrwlb;
 import com.avicsafety.ShenYangTowerComService.model.Mrwsl;

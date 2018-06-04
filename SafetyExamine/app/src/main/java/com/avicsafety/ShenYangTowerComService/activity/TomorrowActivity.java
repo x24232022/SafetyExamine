@@ -129,5 +129,9 @@ public class TomorrowActivity extends BaseActivity{
     }
 
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mActivity.finish();
+    }
 }

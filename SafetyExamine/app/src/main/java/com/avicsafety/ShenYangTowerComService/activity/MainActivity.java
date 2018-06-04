@@ -24,6 +24,7 @@ import com.avicsafety.lib.AutoUpdateManager.UpdateManager;
 import com.avicsafety.lib.interfaces.OnNetworkAccessToMessageListener;
 import com.avicsafety.lib.tools.SPUtils;
 import com.avicsafety.lib.tools.ToastUtil;
+import com.taobao.sophix.SophixManager;
 
 import org.xutils.view.annotation.ContentView;
 
@@ -63,7 +64,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void init() {
         permissionGain();
-        wel();
+
     }
 
     //软件运行权限动态获取
@@ -113,8 +114,11 @@ public class MainActivity extends BaseActivity {
         }
         if (!permissionList.isEmpty()) {
             String[] pewmissions = permissionList.toArray(new String[permissionList.size()]);
-            ActivityCompat.requestPermissions(MainActivity.this, pewmissions, 1);
+            ActivityCompat.requestPermissions(MainActivity.this, pewmissions, 2222);
+        }else{
 
+            SophixManager.getInstance().queryAndLoadNewPatch();
+            wel();
         }
 
 
@@ -129,7 +133,7 @@ public class MainActivity extends BaseActivity {
         Bundle bundle = oThis.getIntent().getExtras();
         if (bundle == null || bundle.getString("param") == null
                 || !bundle.getString("param").equals("login")) {
-            myHandler.sendEmptyMessage(2);
+            myHandler.sendEmptyMessage(2); //这段代码估计无法执行到
         } else {
             myHandler.sendEmptyMessage(1);
         }
@@ -180,13 +184,21 @@ public class MainActivity extends BaseActivity {
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
         switch (requestCode) {
-            case 1: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    wel();
-                } else {
-                    finish();
+            case 2222: {
+                boolean b = true;
+                for(int i=0;i<grantResults.length;i++){
+                    if(grantResults[i]==PackageManager.PERMISSION_DENIED){
+                        b = false;
+                        break;
+                    }
                 }
-                return;
+                if(b){
+                    wel();
+                }else{
+                    permissionGain();
+                }
+
+                break;
             }
         }
     }
@@ -200,13 +212,15 @@ public class MainActivity extends BaseActivity {
                         Intent intent = new Intent();
                         intent.setClass(oThis, LoginActivity.class);
                         oThis.startActivity(intent);
-
+                        //跳转到登录页面 本页面还存在
+                        finish();
 
                     } else {
                         InitializeActionBar();
                         InitializeComponent();
                         InitializeData();
                         InitializeEvent();
+
                     }
 
                 }
@@ -253,7 +267,7 @@ public class MainActivity extends BaseActivity {
                                @Override
                                public void run() {
                                    try {
-                                       Thread.sleep(3000);
+                                       Thread.sleep(2000);
                                        myHandler.sendEmptyMessage(1);
                                    } catch (InterruptedException e) {
                                        e.printStackTrace();

@@ -3,9 +3,7 @@ package com.avicsafety.ShenYangTowerComService.yd.activity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
 
 import com.avicsafety.lib.tools.L;
 

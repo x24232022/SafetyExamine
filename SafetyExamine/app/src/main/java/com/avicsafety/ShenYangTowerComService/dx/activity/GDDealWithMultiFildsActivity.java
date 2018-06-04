@@ -18,7 +18,6 @@ import com.avicsafety.ShenYangTowerComService.activity.BaseActivity;
 import com.avicsafety.ShenYangTowerComService.dx.activity.dxUtil.CTCSRestClientUsage;
 import com.avicsafety.ShenYangTowerComService.dx.activity.dxUtil.Constants;
 
-import org.json.JSONException;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 

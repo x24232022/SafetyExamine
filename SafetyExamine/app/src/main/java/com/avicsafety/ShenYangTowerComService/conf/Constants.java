@@ -106,6 +106,11 @@ public class Constants {
 		}
 	}
 
+	/**
+	 * 存储用户信息到本地
+	 * @param oThis
+	 * @param userInfoStr
+	 */
     public static void setUserInfo(Context oThis, String userInfoStr) {
         // TODO 自动生成的方法存根
 

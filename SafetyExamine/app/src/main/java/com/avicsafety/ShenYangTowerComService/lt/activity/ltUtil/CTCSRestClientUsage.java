@@ -1,7 +1,6 @@
 package com.avicsafety.ShenYangTowerComService.lt.activity.ltUtil;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;

@@ -1,6 +1,7 @@
 package com.avicsafety.ShenYangTowerComService.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,8 +47,18 @@ public class TowerMainActivity extends BaseActivity{
     }
 
     private String code;
-    private List<Map<String, Object>> listItems = new ArrayList<>();
+    private List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setTitle("运维保障平台");
+
+        mMUser = com.avicsafety.ShenYangTowerComService.yd.activity.ydUtil.Constants.getUserInfo(TowerMainActivity.this);
+
+        userAccoutn = mMUser.getUserName();
+        tv_tips.setText(mMUser.getLocation() + "-" + mMUser.getDepartment() + " " + mMUser.getName() + "您好！");
+    }
 
     @Override
     protected void onResume() {
@@ -75,6 +86,7 @@ public class TowerMainActivity extends BaseActivity{
 
         for (int i = 0; i < 1; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
+//            Map<String, Object> map1 = new HashMap<String, Object>();
             map.put("iv_btnImg", iv_btnImg[i]);
             map.put("tv_btnName", tv_btnName[i]);
 
@@ -82,7 +94,8 @@ public class TowerMainActivity extends BaseActivity{
                 map.put("tv_count", m.getTotal());
             } else {
                 map.put("tv_code",code);
-
+//                map.put("tv_count", "");
+//                map.put("tv_code","");
             }
             listItems.add(map);
         }
@@ -107,9 +120,9 @@ public class TowerMainActivity extends BaseActivity{
                         startActivity(new Intent(oThis,RWList0Activity.class));
                         break;
 
-                    case 1:
-
-                        break;
+//                    case 1:
+//                        startActivity(new Intent(oThis, PlanActivity.class));
+//                        break;
 
                     default:
                         break;
@@ -142,25 +155,7 @@ public class TowerMainActivity extends BaseActivity{
         }
     }
 
-    @Override
-    protected void InitializeComponent() {
-        super.InitializeComponent();
-        setTitle("运维保障平台");
-        userAccoutn = Utils.readOAuth(this).getUserName();
-        mMUser = Constants.getUserInfo(oThis);
-    }
 
-    @Override
-    protected void InitializeData() {
-        super.InitializeData();
-        tv_tips.setText(mMUser.getLocation() + "-" + mMUser.getDepartment() + " " + mMUser.getName() + "您好！");
-    }
-
-    @Override
-    protected void InitializeEvent() {
-        super.InitializeEvent();
-
-    }
 
 
 

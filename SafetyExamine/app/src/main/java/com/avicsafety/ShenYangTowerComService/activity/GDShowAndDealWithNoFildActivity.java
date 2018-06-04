@@ -1,6 +1,7 @@
 package com.avicsafety.ShenYangTowerComService.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -39,6 +40,17 @@ public class GDShowAndDealWithNoFildActivity extends BaseActivity implements Vie
     }
     public void setM(MgdxqTT mTT) {
         this.mTT = mTT;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setTitle("工单详情");
+        id = getIntent().getStringExtra("id");
+        taskType = getIntent().getIntExtra("taskType", 0);
+        mu = Constants.getUserInfo(oThis);
+
+        taskType = getIntent().getIntExtra("taskType",0);
     }
 
     public void ShowGDInfo(MgdxqTT mTT) {
@@ -375,12 +387,7 @@ public class GDShowAndDealWithNoFildActivity extends BaseActivity implements Vie
     @Override
     protected void InitializeComponent() {
         super.InitializeComponent();
-        setTitle("工单详情");
-        id = getIntent().getStringExtra("id");
-        taskType = getIntent().getIntExtra("taskType", 0);
-        mu = Constants.getUserInfo(oThis);
 
-        taskType = getIntent().getIntExtra("taskType",0);
     }
 
 

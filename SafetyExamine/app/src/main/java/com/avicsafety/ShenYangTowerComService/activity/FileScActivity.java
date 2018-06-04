@@ -11,11 +11,9 @@ import android.widget.Toast;
 import com.avicsafety.ShenYangTowerComService.R;
 import com.avicsafety.ShenYangTowerComService.Utils.MyProgressDialog;
 import com.avicsafety.ShenYangTowerComService.adapter.MyFileAdapter;
-import com.avicsafety.ShenYangTowerComService.conf.Constants;
 import com.avicsafety.ShenYangTowerComService.yd.activity.ydUtil.CTCSRestClientUsage;
 import com.leon.lfilepickerlibrary.LFilePicker;
 
-import org.apache.commons.lang3.StringUtils;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 

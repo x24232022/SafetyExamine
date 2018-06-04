@@ -2,7 +2,6 @@ package com.avicsafety.ShenYangTowerComService.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -49,7 +48,7 @@ public class TomorrowTitleListActivity extends BaseActivity {
                 Intent intent=new Intent(TomorrowTitleListActivity.this,TomorrowActivity.class);
                 intent.putExtra("blackoutdate",mList.get(position).getData());
                 startActivity(intent);
-
+                mActivity.finish();
             }
         });
         lv_title_tomorrow.setAdapter(mAdapter);

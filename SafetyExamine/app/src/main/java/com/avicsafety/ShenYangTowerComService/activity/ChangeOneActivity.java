@@ -165,25 +165,32 @@ protected void init(){
 //                    map.put("tv_count", getMdx().getTotal());
 //                    map.put("tv_count", getMfd().getTotal());
                     map.put("tv_count",zCode);
+
                     break;
                 // 移动
                 case 1:
                     map.put("tv_count", getMyd().getTotal());
+
                     break;
 
                 // 电信
                 case 2:
                     map.put("tv_count", getMdx().getTotal());
+
                     break;
                 //联通
                 case 3:
                     map.put("tv_count", getMlt().getTotal());
+
                     break;
                 case 4:
                     map.put("tv_count", rwsl.getSygd());
+
                     break;
                 case 5:
                     map.put("tv_count",rwsl.getYlgd());
+                    break;
+
             }
 
             listItems.add(map);
@@ -207,8 +214,9 @@ protected void init(){
 
                     // 发电
                     case 0:
-//                        startActivity(new Intent(oThis, MainActiity.class));
+ //                       startActivity(new Intent(oThis, MainActiity.class));
                         startActivity(new Intent(oThis, TowerMainActivity.class));
+
                         break;
                     // 移动
                     case 1:
@@ -229,6 +237,7 @@ protected void init(){
 //                        UpdateManager manager = new UpdateManager(oThis);
 //                        manager.checkUpdate();
                         break;
+
                     case 5:
                         startActivity(new Intent(oThis,TomorrowTitleListActivity.class));
                         break;
@@ -278,7 +287,11 @@ protected void init(){
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
+    }
 
     @Override
     protected void onResume() {

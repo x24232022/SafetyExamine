@@ -1,14 +1,12 @@
 package com.avicsafety.ShenYangTowerComService.activity;
 
-import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
@@ -18,15 +16,25 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.avicsafety.ShenYangTowerComService.PowerManager.push.Constants;
+import com.avicsafety.ShenYangTowerComService.PowerManager.push.ServiceManager;
+import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.MD5Encrypt;
 import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.SharedUtils;
+import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.Utils;
+import com.avicsafety.ShenYangTowerComService.PowerManager.push.entity.UserBean;
 import com.avicsafety.ShenYangTowerComService.PowerManager.push.service.PositionService;
 import com.avicsafety.ShenYangTowerComService.R;
+import com.avicsafety.ShenYangTowerComService.model.MUser;
 import com.avicsafety.ShenYangTowerComService.model.M_LoginInfo;
 import com.avicsafety.ShenYangTowerComService.service.LoginManager;
 import com.avicsafety.lib.interfaces.OnNetworkAccessToModelListener;
 import com.avicsafety.lib.tools.AppInfo;
 import com.avicsafety.lib.tools.L;
 import com.avicsafety.lib.tools.NetUtils;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.tencent.android.tpush.XGIOperateCallback;
 import com.tencent.android.tpush.XGPushConfig;
 import com.tencent.android.tpush.XGPushManager;
@@ -40,13 +48,8 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-/**
- * 登录页面
- */
-
-
 @ContentView(R.layout.activity_login)
-public class LoginActivity extends BaseActivity implements View.OnClickListener, View.OnFocusChangeListener {
+public class LoginActivity extends BaseActivity  implements View.OnClickListener, View.OnFocusChangeListener{
 	private String username;
 	private String password;
 	//	private String userNamee = "fufanglin";
@@ -66,16 +69,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 	protected void InitializeData() {
 		super.InitializeData();
 		imeid = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-			// TODO: Consider calling
-			//    ActivityCompat#requestPermissions
-			// here to request the missing permissions, and then overriding
-			//   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-			//                                          int[] grantResults)
-			// to handle the case where the user grants the permission. See the documentation
-			// for ActivityCompat#requestPermissions for more details.
-			return;
-		}
 		imei = imeid.getDeviceId();
 //		imeid = imei;
 		loginManager = new LoginManager();
@@ -145,41 +138,40 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 		}
 	}
 
-	 protected Handler handler = new Handler(){
-		 @Override
-		 public void handleMessage(Message msg) {
-       // TODO Auto-generated method stub
-		      super.handleMessage(msg);
-		      if(msg.what == 0){
-		    	    L.v("STEP 1");
+	protected Handler handler = new Handler(){
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.handleMessage(msg);
+			if(msg.what == 0){
+				L.v("STEP 1");
 //				    startServer();
-				  // 登录
-					login(oThis, username,password,imei,new OnNetworkAccessToModelListener<M_LoginInfo>(){
-						@Override
-						public void onSuccess(M_LoginInfo model) {
-							Toast.makeText(oThis, model.getName()+"已经成功登录!", Toast.LENGTH_SHORT).show();
-						}
+				login(oThis, username,password,imei,new OnNetworkAccessToModelListener<M_LoginInfo>(){
+					@Override
+					public void onSuccess(M_LoginInfo model) {
+						Toast.makeText(oThis, model.getName()+"已经成功登录!", Toast.LENGTH_SHORT).show();
+					}
 
-						@Override
-						public void onFail(String error) {
+					@Override
+					public void onFail(String error) {
 //							loadingDialog.close();
-							Toast.makeText(oThis, error, Toast.LENGTH_SHORT).show();
-						}
-					});
+						Toast.makeText(oThis, error, Toast.LENGTH_SHORT).show();
+					}
+				});
 //				  userPwd = MD5Encrypt.getInstance().md5(userPwd, 32);
 //				  loginManager.loginDD(oThis,username,userPwd);
-			  }else if(msg.what == 1){
-				  	L.v("STEP 2");
-				  	loadingDialog.close();
-			    	Bundle bundle = new Bundle();
-					bundle.putString("param", "login");
-					Intent i = new Intent();
-					i.setClass(oThis, MainActivity.class);
-					i.putExtras(bundle);
-					oThis.startActivity(i);
-					oThis.finish();
-			  }
-		 }
+			}else if(msg.what == 1){
+				L.v("STEP 2");
+				loadingDialog.close();
+				Bundle bundle = new Bundle();
+				bundle.putString("param", "login");
+				Intent i = new Intent();
+				i.setClass(oThis, MainActivity.class);
+				i.putExtras(bundle);
+				oThis.startActivity(i);
+				oThis.finish();
+			}
+		}
 	};
 
 	public void login(final Context context, final String username, final String password, final String imei, final OnNetworkAccessToModelListener listener) {
@@ -205,7 +197,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
 			@Override
 			public void onSuccess(String result) {
-
+//				Utils.hideProgress((LoginActivity)context);
+//				Gson g=new Gson();
+//				com.google.gson.JsonParser jp=new com.google.gson.JsonParser();
+//				JsonElement je=jp.parse(result);
+//				JsonObject jo=je.getAsJsonObject();
+//				MUser user=g.fromJson(jo, new TypeToken<MUser>(){}.getType());
+////				int flag=user.getCode();
+//				Utils.saveOAuth(user,context);
 				JSONObject res;
 				try {
 					res = new JSONObject(result);
@@ -214,7 +213,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 						String datas = res.get("Response").toString();
 						com.avicsafety.ShenYangTowerComService.conf.Constants.setUserInfo(context, datas);
 						com.avicsafety.ShenYangTowerComService.conf.Constants.setSubmitUser(username, context);
-;
+//						userPwd = MD5Encrypt.getInstance().md5(userPwd, 32);
+//						loginManager.loginDD(oThis,username,userPwd);
 						((LoginActivity)context).goToMain();
 						context.startActivity(new Intent(context, ChangeOneActivity.class));
 						((LoginActivity)context).startServer();
@@ -240,28 +240,43 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 		SharedUtils.putShared(oThis, "userpwd", password);
 		//是否首次登录
 		SharedUtils.putShared(oThis, "isFirst", true);
-
+//		Intent intent=new Intent(oThis, ChangeOneActivity.class);
+//		startActivity(intent);
 		finish();
 	}
 
 	public void startServer() {
 //		//开启推送服务
+//		ServiceManager serviceManager = Constants.serviceManager;
+//		if (serviceManager == null) {
+//			serviceManager = new ServiceManager(this);
+//			Constants.serviceManager = serviceManager;
+//		}
+//		serviceManager.setNotificationIcon(R.drawable.fadiandelogo);
+//		serviceManager.restartService();
+
 		XGPushConfig.enableDebug(this, true);
 		XGPushManager.registerPush(this,username, new XGIOperateCallback() {
+
 			@Override
+
 			public void onSuccess(Object data, int flag) {
+
 				Log.d("TPush", "注册成功，设备token为：" + data);
 
 			}
+
 			@Override
+
 			public void onFail(Object data, int errCode, String msg) {
 
 				Log.d("TPush", "注册失败，错误码：" + errCode + ",错误信息：" + msg);
 
 			}
 		});
+
 		//开启人员位置服务
-		Intent intent=new Intent(LoginActivity.this, PositionService.class);
+		Intent intent=new Intent(getApplicationContext(), PositionService.class);
 		startService(intent);
 	}
 
@@ -269,12 +284,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 	public void onFocusChange(View v, boolean hasFocus) {
 		// TODO Auto-generated method stub
 		switch(v.getId()){
-		case R.id.et_login_account:
-			iv_login_clean_account.setVisibility(hasFocus?View.VISIBLE:View.GONE);
-			break;
-		case R.id.et_login_pw:
-			iv_login_clean_pwd.setVisibility(hasFocus?View.VISIBLE:View.GONE);
-			break;
+			case R.id.et_login_account:
+				iv_login_clean_account.setVisibility(hasFocus?View.VISIBLE:View.GONE);
+				break;
+			case R.id.et_login_pw:
+				iv_login_clean_pwd.setVisibility(hasFocus?View.VISIBLE:View.GONE);
+				break;
 		}
 	}
 

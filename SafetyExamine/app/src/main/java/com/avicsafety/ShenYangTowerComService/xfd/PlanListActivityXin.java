@@ -29,7 +29,7 @@ import com.avicsafety.ShenYangTowerComService.Utils.OnRecyclerItemClickListener;
 import com.avicsafety.ShenYangTowerComService.activity.BaseActivity;
 import com.avicsafety.ShenYangTowerComService.adapter.PlanAdapter;
 import com.avicsafety.ShenYangTowerComService.model.MUser;
-import com.avicsafety.ShenYangTowerComService.view.DateTimePickerDialog;
+import com.avicsafety.ShenYangTowerComService.view.TimeDatePickerDialog;
 import com.avicsafety.ShenYangTowerComService.view.DividerItemDecoration;
 import com.avicsafety.ShenYangTowerComService.view.SwipeRecyclerView;
 import com.avicsafety.lib.tools.L;
@@ -162,7 +162,7 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
                         dialog.dismiss();
                     }
                 };
-                DateTimePickerDialog dialog = new DateTimePickerDialog(oThis, onDateChangedListener, onTimeChangedListener, yesListener, noListener, true);
+                TimeDatePickerDialog dialog = new TimeDatePickerDialog(oThis, onDateChangedListener, onTimeChangedListener, yesListener, noListener, true);
 
             }
 
@@ -386,13 +386,17 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
             @Override
             public void onItemClick(RecyclerView.ViewHolder vh) {
 
-
                 startActivity(new Intent(oThis,
                         PlanXqActivity.class).
                         putExtra("id", listItems.get(vh.getLayoutPosition()).getTicketid()).
                         putExtra("taskType", vh.getLayoutPosition()).
                         putExtra("activityId","0").
-                        putExtra("blackoutdate",""));
+                        putExtra("blackoutdate","").
+                        putExtra("listtype",listtype).putExtra("alarmInformation",listItems.get(vh.getLayoutPosition()).getAlarmInformation())
+
+                );
+                oThis.finish();
+
 
                 // Toast.makeText(mContext, datas.get(vh.getLayoutPosition()).getTitle(), Toast.LENGTH_SHORT).show();
             }
@@ -552,10 +556,11 @@ public class PlanListActivityXin extends BaseActivity implements View.OnClickLis
         initData(nowStart);
     }
 
-    //设置返回按钮点击事件
+    //设置返回按钮点击事件1=】
+
     @Override
     public void onBackPressed() {
-
+        startActivity(new Intent(PlanListActivityXin.this,PlanActivityXin.class));
         PlanListActivityXin.this.finish();
     }
 

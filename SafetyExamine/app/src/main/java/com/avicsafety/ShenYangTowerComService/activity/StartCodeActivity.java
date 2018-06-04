@@ -1,8 +1,6 @@
 package com.avicsafety.ShenYangTowerComService.activity;
 
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.avicsafety.ShenYangTowerComService.R;
 import com.avicsafety.ShenYangTowerComService.Utils.CTCSRestClientUsage;

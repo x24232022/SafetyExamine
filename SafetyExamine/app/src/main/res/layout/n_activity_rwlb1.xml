@@ -10,12 +10,12 @@
         android:layout_height="45dp"
         layout="@layout/toolbar" />
 
-    <com.avicsafety.NewShenYangTowerComService.view.SwipeRecyclerView
+    <com.avicsafety.ShenYangTowerComService.view.SwipeRecyclerView
         android:id="@+id/rcv_gdlb"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="0dp" >
-    </com.avicsafety.NewShenYangTowerComService.view.SwipeRecyclerView>
+    </com.avicsafety.ShenYangTowerComService.view.SwipeRecyclerView>
 
     <LinearLayout
         android:id="@+id/ll_btn"

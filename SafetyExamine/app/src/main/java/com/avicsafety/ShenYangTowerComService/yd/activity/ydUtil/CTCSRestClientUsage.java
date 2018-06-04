@@ -1,7 +1,6 @@
 package com.avicsafety.ShenYangTowerComService.yd.activity.ydUtil;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
@@ -34,7 +33,6 @@ import org.xutils.x;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.net.Socket;
 import java.net.URLEncoder;
 import java.util.List;
 

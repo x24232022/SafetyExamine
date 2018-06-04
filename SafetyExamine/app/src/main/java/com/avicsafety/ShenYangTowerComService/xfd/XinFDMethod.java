@@ -1,24 +1,14 @@
 package com.avicsafety.ShenYangTowerComService.xfd;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.avicsafety.ShenYangTowerComService.activity.ChangeOneActivity;
-import com.avicsafety.lib.tools.L;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
-
-import java.util.List;
-import java.util.Map;
-import java.util.TimerTask;
 
 /**
  * Created by 刘畅 on 2017/12/26.

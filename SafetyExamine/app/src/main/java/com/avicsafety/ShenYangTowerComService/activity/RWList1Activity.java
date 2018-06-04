@@ -204,9 +204,9 @@ public class RWList1Activity extends BaseActivity implements View.OnClickListene
                                         int position, long id) {
                     // TODO 自动生成的方法存根
                     startActivity(new Intent(oThis,
-                            GDShowAndDealWithNoFildActivity.class).putExtra("id",
-                            mList.get(position).getTicketId()).putExtra("taskType",
-                            taskType));
+                            GDShowAndDealWithNoFildActivity.class)
+                            .putExtra("id", mList.get(position).getTicketId())
+                            .putExtra("taskType", taskType));
                 }
             });
         }

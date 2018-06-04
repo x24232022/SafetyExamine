@@ -2,6 +2,7 @@ package com.avicsafety.ShenYangTowerComService.datedialog;
 
 import android.content.Context;
 import android.text.format.DateFormat;
+
 import android.widget.FrameLayout;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
@@ -26,7 +27,7 @@ public class DateTimePicker extends FrameLayout {
 
 	private OnDateTimeChangedListener mOnDateTimeChangedListener;
 
-	private NumberPicker.OnValueChangeListener mOnDateChangedListener = new OnValueChangeListener() {
+	private OnValueChangeListener mOnDateChangedListener = new OnValueChangeListener() {
 		@Override
 		public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 			mDate.add(Calendar.DAY_OF_MONTH, newVal - oldVal);
@@ -35,7 +36,7 @@ public class DateTimePicker extends FrameLayout {
 		}
 	};
 
-	private NumberPicker.OnValueChangeListener mOnHourChangedListener = new OnValueChangeListener() {
+	private OnValueChangeListener mOnHourChangedListener = new OnValueChangeListener() {
 		@Override
 		public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 			mHour = mHourSpinner.getValue();
@@ -43,7 +44,7 @@ public class DateTimePicker extends FrameLayout {
 		}
 	};
 
-	private NumberPicker.OnValueChangeListener mOnMinuteChangedListener = new OnValueChangeListener() {
+	private OnValueChangeListener mOnMinuteChangedListener = new OnValueChangeListener() {
 		@Override
 		public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 			mMinute = mMinuteSpinner.getValue();
@@ -58,7 +59,7 @@ public class DateTimePicker extends FrameLayout {
 		mHour = mDate.get(Calendar.HOUR_OF_DAY);
 		mMinute = mDate.get(Calendar.MINUTE);
 
-		inflate(context, R.layout.datedialog, this);
+		inflate(context, R.layout.old_dialog, this);
 
 		mDateSpinner = (NumberPicker) this.findViewById(R.id.np_date);
 		mDateSpinner.setMinValue(0);

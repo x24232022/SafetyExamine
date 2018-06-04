@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.avicsafety.ShenYangTowerComService.R;
-import com.avicsafety.ShenYangTowerComService.xfd.PlanActivityXin;
 
 
 public class PhotoDetailActivity extends Activity {

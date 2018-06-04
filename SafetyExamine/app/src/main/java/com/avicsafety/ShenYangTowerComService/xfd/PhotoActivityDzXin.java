@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.Utils;
+
 import com.avicsafety.ShenYangTowerComService.R;
 import com.avicsafety.ShenYangTowerComService.Utils.MyProgressDialog;
 import com.avicsafety.ShenYangTowerComService.activity.BaseActivity;
@@ -21,7 +21,6 @@ import java.util.List;
 
 /**
  * Created by 刘畅 on 2017/12/28.
- * 添加图片界面
  */
 @ContentView(R.layout.xfd_dzfd_photo_activity)
 public class PhotoActivityDzXin extends BaseActivity{
@@ -31,7 +30,7 @@ public class PhotoActivityDzXin extends BaseActivity{
     public MyProgressDialog progressDialog;
     private MUser userAccoutn;
     private AvicPhotoList apl_company_detail_photo,apl_company_detail_photo1,apl_company_detail_photo2
-            ,apl_company_detail_photo3;
+    ,apl_company_detail_photo3;
 
 
 
@@ -44,17 +43,16 @@ public class PhotoActivityDzXin extends BaseActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_submit:
-
                 if(apl_company_detail_photo.getData() != null){
                     SctpType1();
                 }if(apl_company_detail_photo1.getData() != null){
-                SctpType2();
-            }if(apl_company_detail_photo2.getData() != null){
-                SctpType3();
-            }if(apl_company_detail_photo3.getData() != null){
-                SctpType4();
-            }
-            startActivity(new Intent(oThis,PlanActivityXin.class));
+                    SctpType2();
+                }if(apl_company_detail_photo2.getData() != null){
+                    SctpType3();
+                }if(apl_company_detail_photo3.getData() != null){
+                    SctpType4();
+                }
+                startActivity(new Intent(this,PlanActivityXin.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -258,4 +256,9 @@ public class PhotoActivityDzXin extends BaseActivity{
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        this.finish();
+    }
 }

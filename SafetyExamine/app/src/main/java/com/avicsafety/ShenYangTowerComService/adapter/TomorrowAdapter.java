@@ -46,7 +46,7 @@ public class TomorrowAdapter extends BaseAdapter{
             holder=new MyViewHolder();
             holder.tv_name= (TextView) view.findViewById(R.id.tv_theme1_gd);
             holder.tv_date= (TextView) view.findViewById(R.id.tv_number);
-            holder.tv_sign= (TextView) view.findViewById(R.id.tv_sign);
+            holder.iv_sign= (ImageView) view.findViewById(R.id.iv_sign);
             view.setTag(holder);
         }else {
            view=convertView;
@@ -54,12 +54,13 @@ public class TomorrowAdapter extends BaseAdapter{
         }
         holder.tv_name.setText(mList.get(position).getSitename());
         holder.tv_date.setText(mList.get(position).getExpectedstationtime());
-        holder.tv_sign.setVisibility(View.GONE);
+        holder.iv_sign.setVisibility(View.GONE);
         return view;
     }
     public class MyViewHolder{
         TextView tv_name;
         TextView tv_date;
-        TextView tv_sign;
+//        TextView tv_sign;
+        ImageView iv_sign;
     }
 }

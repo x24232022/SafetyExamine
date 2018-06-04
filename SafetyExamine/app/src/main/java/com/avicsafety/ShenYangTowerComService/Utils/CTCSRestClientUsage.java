@@ -8,7 +8,6 @@ import com.avicsafety.ShenYangTowerComService.activity.ChangeOneActivity;
 import com.avicsafety.ShenYangTowerComService.activity.GDDealWithMultiFildsActivity;
 import com.avicsafety.ShenYangTowerComService.activity.GDDealWithOneFileActivity;
 import com.avicsafety.ShenYangTowerComService.activity.GDShowAndDealWithNoFildActivity;
-import com.avicsafety.ShenYangTowerComService.activity.MyApplication;
 import com.avicsafety.ShenYangTowerComService.activity.PhotoActivity;
 import com.avicsafety.ShenYangTowerComService.activity.RWList0Activity;
 import com.avicsafety.ShenYangTowerComService.activity.RWList1Activity;

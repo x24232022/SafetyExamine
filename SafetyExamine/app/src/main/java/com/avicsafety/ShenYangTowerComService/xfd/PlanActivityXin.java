@@ -1,5 +1,6 @@
 package com.avicsafety.ShenYangTowerComService.xfd;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
@@ -26,6 +27,11 @@ public class PlanActivityXin extends BaseActivity implements View.OnClickListene
     private String userid = "boot";
 
 
+    public static void startPlanActivityXin(Activity activity,String tickid){
+        Intent intent = new Intent(activity, PlanActivityXin.class);
+        intent.putExtra("ticketid", tickid);
+        activity.startActivity(intent);
+    }
     @Override
     protected void InitializeComponent() {
         super.InitializeComponent();
@@ -64,18 +70,22 @@ public class PlanActivityXin extends BaseActivity implements View.OnClickListene
             case R.id.tv_xin_work_wj:
                 intent.putExtra("listtype",0);
                 startActivity(intent);
+                oThis.finish();
                 break;
             case R.id.tv_xin_work_ycf:
                 intent.putExtra("listtype",1);
                 startActivity(intent);
+                oThis.finish();
                 break;
             case R.id.tv_xin_work_ydz:
                 intent.putExtra("listtype",2);
                 startActivity(intent);
+                oThis.finish();
                 break;
             case R.id.tv_xin_work_yjs:
                 intent.putExtra("listtype",3);
                 startActivity(intent);
+                oThis.finish();
                 break;
 
             default:

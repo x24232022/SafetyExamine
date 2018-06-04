@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.avicsafety.NewShenYangTowerComService">
+          package="com.avicsafety.ShenYangTowerComService">
 
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -162,7 +162,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH"/>
 
     <application
-        android:name=".activity.MyApplication"
+        android:name="com.avicsafety.ShenYangTowerComService.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ll1"
         android:label="@string/app_name"
@@ -211,23 +211,23 @@
             </intent-filter>
         </service>
 
-        <!-- 【必须】 【注意】authorities修改为 包名.AUTH_XGPUSH, 如demo的包名为：com.qq.xgdemo -->
-        <!-- <provider -->
-        <!-- android:name="com.tencent.android.tpush.XGPushProvider" -->
-        <!-- android:authorities="com.avicsafety.safety_examine.AUTH_XGPUSH" -->
-        <!-- android:exported="true"/> -->
-        <!-- &lt;!&ndash; 【必须】 【注意】authorities修改为 包名.TPUSH_PROVIDER, 如demo的包名为：com.qq.xgdemo &ndash;&gt; -->
-        <!-- <provider -->
-        <!-- android:name="com.tencent.android.tpush.SettingsContentProvider" -->
-        <!-- android:authorities="com.avicsafety.safety_examine.TPUSH_PROVIDER" -->
-        <!-- android:exported="false"/> -->
+         【必须】 【注意】authorities修改为 包名.AUTH_XGPUSH, 如demo的包名为：com.qq.xgdemo
+         <provider
+         android:name="com.tencent.android.tpush.XGPushProvider"
+         android:authorities="com.avicsafety.safety_examine.AUTH_XGPUSH"
+         android:exported="true"/>
+         <!-- 【必须】 【注意】authorities修改为 包名.TPUSH_PROVIDER, 如demo的包名为：com.qq.xgdemo -->
+         <provider
+         android:name="com.tencent.android.tpush.SettingsContentProvider"
+         android:authorities="com.avicsafety.safety_examine.TPUSH_PROVIDER"
+         android:exported="false"/>
 
 
-        <!-- &lt;!&ndash; 【必须】 【注意】authorities修改为 包名.TENCENT.MID.V3, 如demo的包名为：com.qq.xgdemo &ndash;&gt; -->
-        <!-- <provider -->
-        <!-- android:name="com.tencent.mid.api.MidProvider" -->
-        <!-- android:authorities="com.avicsafety.safety_examine.TENCENT.MID.V3" -->
-        <!-- android:exported="true"/> -->
+         <!-- 【必须】 【注意】authorities修改为 包名.TENCENT.MID.V3, 如demo的包名为：com.qq.xgdemo -->
+         <provider
+         android:name="com.tencent.mid.api.MidProvider"
+         android:authorities="com.avicsafety.safety_examine.TENCENT.MID.V3"
+         android:exported="true"/>
 
 
         <!-- 【必须】 请将YOUR_ACCESS_ID修改为APP的AccessId，“21”开头的10位数字，中间没空格 -->
@@ -246,28 +246,28 @@
             android:persistent="true"
             android:process=":xg_service_v3"/>
 
-        <!-- <provider -->
-        <!-- android:name="android.support.v4.content.FileProvider" -->
-        <!-- android:authorities="com.avicsafety.NewShenYangTowerComService" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/file_paths"/> -->
-        <!-- </provider> -->
+         <provider
+         android:name="android.support.v4.content.FileProvider"
+         android:authorities="com.avicsafety.ShenYangTowerComService"
+         android:exported="false"
+         android:grantUriPermissions="true">
+         <meta-data
+         android:name="android.support.FILE_PROVIDER_PATHS"
+         android:resource="@xml/file_paths"/>
+         </provider>
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="fXmvNMHF2V2O91G476Yw2puqfCQrLolX"/>
-        <!-- <meta-data -->
-        <!-- android:name="BaiduMobAd_STAT_ID" -->
-        <!-- android:value="48ae76de3f" /> -->
+         <meta-data
+         android:name="BaiduMobAd_STAT_ID"
+         android:value="48ae76de3f" />
 
 
-        <!-- &lt;!&ndash; 我的&ndash;&gt; -->
-        <!-- <meta-data -->
-        <!-- android:name="com.baidu.lbsapi.API_KEY" -->
-        <!-- android:value="vs6GCPZwb87ykuGInYTxy9WKTZauVZjA" />       //key:开发者申请的Key -->
+         <!--&lt;!&ndash; 我的&ndash;&gt;-->
+         <!--<meta-data-->
+         <!--android:name="com.baidu.lbsapi.API_KEY"-->
+         <!--android:value="vs6GCPZwb87ykuGInYTxy9WKTZauVZjA" />       //key:开发者申请的Key-->
 
         <meta-data
             android:name="AppUpdateUrl"
@@ -277,7 +277,7 @@
             android:value="*"/>
 
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.MainActivity"
             android:label="@string/app_name"
             android:launchMode="singleInstance"
             android:persistent="true"
@@ -319,200 +319,181 @@
 
         <!-- 所有控件库里的Activity END -->
         <activity
-            android:name=".activity.TomorrowActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.TomorrowActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.LoginActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.LoginActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.ChangeOneActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.ChangeOneActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.TowerMainActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.TowerMainActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.RWList0Activity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.RWList0Activity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.RWList1Activity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.RWList1Activity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.GDShowAndDealWithNoFildActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.GDShowAndDealWithNoFildActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.StartCodeActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.StartCodeActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.GDDealWithOneFileActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.GDDealWithOneFileActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.UserListActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.UserListActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.PhotoActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.PhotoActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.GDDealWithMultiFildsActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.GDDealWithMultiFildsActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".photoUtils.PhotoListActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.photoUtils.PhotoListActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".photoUtils.PhotoDetailActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.photoUtils.PhotoDetailActivity"
             android:screenOrientation="portrait"/>
-        <!-- <activity -->
-        <!-- android:name=".activity.ServerConfigActivity" -->
-        <!-- android:screenOrientation="portrait" /> -->
 
 
         <!-- 移动 -->
         <activity
-            android:name=".activity.FileScActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.FileScActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".yd.activity.MainActiitys"
+            android:name="com.avicsafety.ShenYangTowerComService.yd.activity.MainActiitys"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".yd.activity.RWList0Activity"
+            android:name="com.avicsafety.ShenYangTowerComService.yd.activity.RWList0Activity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".yd.activity.RWList1Activity"
+            android:name="com.avicsafety.ShenYangTowerComService.yd.activity.RWList1Activity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".yd.activity.GDShowAndDealWithNoFildActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.yd.activity.GDShowAndDealWithNoFildActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".yd.activity.GDDealWithOneFileActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.yd.activity.GDDealWithOneFileActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".yd.activity.UserListActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.yd.activity.UserListActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".yd.activity.GDDealWithMultiFildsActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.yd.activity.GDDealWithMultiFildsActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".yd.activity.ProcessedydActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.yd.activity.ProcessedydActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".yd.activity.GDGTDZActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.yd.activity.GDGTDZActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".yd.activity.PhotoYdActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.yd.activity.PhotoYdActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".yd.activity.PhotoYdClActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.yd.activity.PhotoYdClActivity"
             android:screenOrientation="portrait"/>
 
         <!-- 电信 -->
         <activity
-            android:name=".dx.activity.MainActiity"
+            android:name="com.avicsafety.ShenYangTowerComService.dx.activity.MainActiity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".dx.activity.ProcessedActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.dx.activity.ProcessedActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".dx.activity.RWList0Activity"
+            android:name="com.avicsafety.ShenYangTowerComService.dx.activity.RWList0Activity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".dx.activity.RWList1Activity"
+            android:name="com.avicsafety.ShenYangTowerComService.dx.activity.RWList1Activity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".dx.activity.GDShowAndDealWithNoFildActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.dx.activity.GDShowAndDealWithNoFildActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".dx.activity.UserListActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.dx.activity.UserListActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".dx.activity.GDDealWithOneFileActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.dx.activity.GDDealWithOneFileActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".dx.activity.GDDealWithMultiFildsActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.dx.activity.GDDealWithMultiFildsActivity"
             android:screenOrientation="portrait"/>
 
         <!-- 联通 -->
         <activity
-            android:name=".lt.activity.GDGTDZActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.lt.activity.GDGTDZActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".lt.activity.GDShowAndDealWithNoFildActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.lt.activity.GDShowAndDealWithNoFildActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".lt.activity.GDDealWithMultiFildsActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.lt.activity.GDDealWithMultiFildsActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".lt.activity.GDDealWithOneFileActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.lt.activity.GDDealWithOneFileActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".lt.activity.MainActivityss"
+            android:name="com.avicsafety.ShenYangTowerComService.lt.activity.MainActivityss"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".lt.activity.RWList0Activity"
+            android:name="com.avicsafety.ShenYangTowerComService.lt.activity.RWList0Activity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".lt.activity.RWList1Activity"
+            android:name="com.avicsafety.ShenYangTowerComService.lt.activity.RWList1Activity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".lt.activity.UserListActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.lt.activity.UserListActivity"
             android:screenOrientation="portrait"/>
 
         <!-- 计划发电 -->
-        <!--
+
         <activity
-            android:name=".activity.PlanActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.BNDemoGuideActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.PlanListActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.PlanDetailsActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.PowerWorkerTransfer"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.PlanFaultListActivity"
-            android:screenOrientation="portrait"/>
-        -->
-        <activity
-            android:name=".activity.BNDemoGuideActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.RouteActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.activity.RouteActivity"
             android:screenOrientation="portrait"/>
 
         <!-- 新发电 -->
 
         <activity
-            android:name=".xfd.PlanActivityXin"
+            android:name="com.avicsafety.ShenYangTowerComService.xfd.PlanActivityXin"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".xfd.PlanListActivityXin"
+            android:name="com.avicsafety.ShenYangTowerComService.xfd.PlanListActivityXin"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".xfd.PlanXqActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.xfd.PlanXqActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".xfd.PhotoActivityXin"
+            android:name="com.avicsafety.ShenYangTowerComService.xfd.PhotoActivityXin"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".xfd.PhotoActivityDzXin"
+            android:name="com.avicsafety.ShenYangTowerComService.xfd.PhotoActivityDzXin"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".xfd.InquireActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.xfd.InquireActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".xfd.PlanCxActivity"
+            android:name="com.avicsafety.ShenYangTowerComService.xfd.PlanCxActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
 
         <service
-            android:name=".PowerManager.push.service.PositionService"
+            android:name="com.avicsafety.ShenYangTowerComService.PowerManager.push.service.PositionService"
             android:enabled="true"
             android:label="PositionService">
             <intent-filter>
@@ -520,7 +501,7 @@
             </intent-filter>
         </service>
         <service
-            android:name=".PowerManager.push.NotificationService"
+            android:name="com.avicsafety.ShenYangTowerComService.PowerManager.push.NotificationService"
             android:enabled="true"
             android:label="NotificationService">
             <intent-filter>
@@ -537,13 +518,13 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".xfd.PersonActivity">
+        <activity android:name="com.avicsafety.ShenYangTowerComService.xfd.PersonActivity">
         </activity>
-        <activity android:name=".activity.TomorrowTitleListActivity">
+        <activity android:name="com.avicsafety.ShenYangTowerComService.activity.TomorrowTitleListActivity">
         </activity>
-        <activity android:name=".xfd.WarninDetailsActivity">
+        <activity android:name="com.avicsafety.ShenYangTowerComService.xfd.WarninDetailsActivity">
         </activity>
-        <activity android:name=".xfd.WarningListActivity">
+        <activity android:name="com.avicsafety.ShenYangTowerComService.xfd.WarningListActivity">
         </activity>
     </application>
 

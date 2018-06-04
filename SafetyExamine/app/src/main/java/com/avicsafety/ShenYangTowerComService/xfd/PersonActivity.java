@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.avicsafety.ShenYangTowerComService.R;
 import com.avicsafety.ShenYangTowerComService.activity.BaseActivity;
-import com.avicsafety.ShenYangTowerComService.activity.ChangeOneActivity;
 import com.avicsafety.ShenYangTowerComService.adapter.PersonAdapter;
 import com.avicsafety.ShenYangTowerComService.model.MUser;
 import com.avicsafety.ShenYangTowerComService.model.UserMsgBean;

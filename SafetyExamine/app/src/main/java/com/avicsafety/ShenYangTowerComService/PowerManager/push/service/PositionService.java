@@ -1,19 +1,13 @@
 package com.avicsafety.ShenYangTowerComService.PowerManager.push.service;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.IBinder;
-import android.provider.ContactsContract;
 
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.CTCSRestClientUsage;
 import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.Constants;
 import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.LocationAddressUtils;
 import com.avicsafety.ShenYangTowerComService.model.MUser;

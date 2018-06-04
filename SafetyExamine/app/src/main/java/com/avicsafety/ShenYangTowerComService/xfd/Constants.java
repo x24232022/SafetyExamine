@@ -18,6 +18,8 @@ public class Constants {
     public static final String TEST_URL="http://42.56.72.9:10012/phoneServices/fd/geographicalPositionReceiveServlet";
     public static final String TEST1_URL="http://192.168.1.183:8080/phoneServices/fd/geographicalPositionReceiveServlet";
     public static final String TEST2_URL="http://192.168.1.121:8080/phoneServices/fd/geographicalPositionReceiveServlet";
+    public static final String TEST3_URL="http://192.168.1.135:8080/phoneServices/fd/geographicalPositionReceiveServlet";
+
     public static String Bitmap2StrByBase64(String path){
         BitmapFactory.Options opts = new BitmapFactory.Options();
         opts.inPreferredConfig = Bitmap.Config.ARGB_8888;

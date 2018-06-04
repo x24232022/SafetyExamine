@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.CTCSRestClientUsage;
 import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.Constants;
 import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.ToastUtils;
 import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.Utils;
@@ -28,9 +27,7 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by 刘畅 on 2017/8/28.

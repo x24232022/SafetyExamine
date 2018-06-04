@@ -60,8 +60,7 @@ public class GDDealWithMultiFildsActivity extends BaseActivity {
     @Override
     protected void InitializeEvent() {
         super.InitializeEvent();
-        dialog = new DateTimePickerDialog(oThis,System.currentTimeMillis());
-
+        dialog = new DateTimePickerDialog(GDDealWithMultiFildsActivity.this,System.currentTimeMillis());
         et_sdtdsj.setInputType(InputType.TYPE_NULL);
         et_sdtdsj.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +104,7 @@ public class GDDealWithMultiFildsActivity extends BaseActivity {
         et_fdjssj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.setOnDateTimeSetListener(new DateTimePickerDialog.OnDateTimeSetListener() {
+                        dialog.setOnDateTimeSetListener(new DateTimePickerDialog.OnDateTimeSetListener() {
                     @Override
                     public void OnDateTimeSet(AlertDialog dialog, long date) {
                         et_fdjssj.setText(getStringDate(date));

@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.Utils;
 import com.avicsafety.ShenYangTowerComService.R;
 import com.avicsafety.ShenYangTowerComService.Utils.MyProgressDialog;
 import com.avicsafety.ShenYangTowerComService.activity.BaseActivity;
@@ -582,5 +581,11 @@ public class PlanCxActivity extends BaseActivity implements View.OnClickListener
     public void onBackPressed() {
         super.onBackPressed();
         PlanCxActivity.this.finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        oThis.finish();
     }
 }

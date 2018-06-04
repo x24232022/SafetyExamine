@@ -1,29 +1,14 @@
 package com.avicsafety.ShenYangTowerComService.service;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.telephony.TelephonyManager;
-
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.ToastUtils;
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.Utils;
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.entity.UserBean;
-import com.avicsafety.ShenYangTowerComService.activity.ChangeOneActivity;
-import com.avicsafety.ShenYangTowerComService.activity.LoginActivity;
 import com.avicsafety.lib.interfaces.OnNetworkAccessToListListener;
-import com.avicsafety.lib.tools.AppInfo;
 import com.avicsafety.lib.tools.GsonUtils;
 import com.avicsafety.lib.tools.L;
 
 import com.avicsafety.ShenYangTowerComService.conf.Constants;
 import com.avicsafety.ShenYangTowerComService.dao.D_LoginInfo;
 import com.avicsafety.ShenYangTowerComService.dao.D_IpLib;
-import com.avicsafety.lib.interfaces.OnNetworkAccessToModelListener;
 import com.avicsafety.ShenYangTowerComService.model.M_LoginInfo;
 import com.avicsafety.ShenYangTowerComService.model.M_IpLib;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
