@@ -501,9 +501,9 @@ public class PlanXqActivity extends BaseActivity implements View.OnClickListener
                 break;
 
             case R.id.btn_dzfd://发电状态
-                Intent intent4 = new Intent(this, PhotoActivityDzXin.class);
-                intent4.putExtra("ticketid", id);
-                startActivity(intent4);
+                Intent intent = new Intent(this, PhotoActivityDzXin.class);
+                intent.putExtra("ticketid", id);
+                startActivity(intent);
                 PlanXqActivity.this.finish();
                 break;
             case R.id.btn_warning_fd:
