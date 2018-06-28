@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context="com.avicsafety.safety_examine.prospect.ProspectActivity">
+
+    <include
+        android:layout_height="45dp"
+        android:layout_width="match_parent"
+        layout="@layout/toolbar"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/ll_content_prespect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:id="@+id/ll_btn_prospect"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#3388bb"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_orderReceiving_prospect"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg"
+            android:text="接单"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_margin="2dp"
+            android:visibility="gone"/>
+        <Button
+            android:id="@+id/btn_dot_prospect"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg"
+            android:text="打点"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_margin="2dp"
+            android:visibility="gone"/>
+    </LinearLayout>
+</LinearLayout>

@@ -35,15 +35,15 @@ import org.jivesoftware.smack.packet.Packet;
 import org.jivesoftware.smack.packet.Registration;
 import org.jivesoftware.smack.provider.ProviderManager;
 
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.Constants;
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.LogUtil;
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.NotificationIQ;
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.NotificationIQProvider;
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.NotificationPacketListener;
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.NotificationService;
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.PersistentConnectionListener;
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.ReconnectionThread;
-import com.avicsafety.ShenYangTowerComService.PowerManager.push.Utils.SharedUtils;
+import com.avicsafety.safety_examine.PowerManager.push.Constants;
+import com.avicsafety.safety_examine.PowerManager.push.LogUtil;
+import com.avicsafety.safety_examine.PowerManager.push.NotificationIQ;
+import com.avicsafety.safety_examine.PowerManager.push.NotificationIQProvider;
+import com.avicsafety.safety_examine.PowerManager.push.NotificationPacketListener;
+import com.avicsafety.safety_examine.PowerManager.push.NotificationService;
+import com.avicsafety.safety_examine.PowerManager.push.PersistentConnectionListener;
+import com.avicsafety.safety_examine.PowerManager.push.ReconnectionThread;
+import com.avicsafety.safety_examine.PowerManager.push.Utils.SharedUtils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

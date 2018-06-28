@@ -1,3 +1,4 @@
+
 include ':AvicLibrarys'
 project (':AvicLibrarys').projectDir = new File('../AvicLibrarys/')
 include ':AvicLibrarys:AvicsafetyLib'

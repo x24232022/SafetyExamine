@@ -1,1 +1,1 @@
-include ':AvicsafetyLib', ':TencentMapLib', ':AreaSelector', ':Zxing'
+include ':AvicsafetyLib', ':AreaSelector', ':Zxing'

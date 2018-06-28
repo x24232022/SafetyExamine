@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/item_list_name_prospect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="15dp"
+            android:text="工单名称 "
+            android:textColor="@android:color/black"
+            tools:ignore="RtlCompat"/>
+
+        <TextView
+
+            android:id="@+id/item_list_type_prospect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/item_list_name_prospect"
+            android:layout_alignBottom="@+id/item_list_name_prospect"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="44dp"
+            android:layout_marginRight="44dp"
+            android:text="工单类型"
+            android:textColor="@color/color_AMB_gray"/>
+
+        <TextView
+
+            android:id="@+id/item_list_time_prospect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/item_list_type_prospect"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/item_list_type_prospect"
+            android:text="工单时间"
+            android:textColor="@color/color_AMB_gray"/>
+
+
+    </RelativeLayout>
+</LinearLayout>
